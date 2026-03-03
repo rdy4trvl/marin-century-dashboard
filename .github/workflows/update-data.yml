@@ -1,0 +1,66 @@
+name: Update Marin Century Dashboard Data
+
+on:
+  schedule:
+    # Daily at 6:00 AM Pacific (14:00 UTC during PDT, 13:00 UTC during PST)
+    - cron: '0 14 * * *'
+  workflow_dispatch:
+    inputs:
+      years:
+        description: 'Years to fetch (comma-separated)'
+        required: false
+        default: '2024,2025,2026'
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Determine years to fetch
+        id: years
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "years=${{ github.event.inputs.years }}" >> $GITHUB_OUTPUT
+          else
+            # Daily: only refresh 2026 (current year)
+            # Full refresh of all years runs on Mondays
+            DOW=$(date +%u)
+            if [ "$DOW" = "1" ]; then
+              echo "years=2024,2025,2026" >> $GITHUB_OUTPUT
+            else
+              echo "years=2026" >> $GITHUB_OUTPUT
+            fi
+          fi
+
+      - name: Fetch and aggregate data
+        env:
+          REDPODIUM_API_KEY: ${{ secrets.REDPODIUM_API_KEY }}
+        run: |
+          python scripts/aggregate.py --years "${{ steps.years.outputs.years }}"
+
+      - name: Merge with existing data (if partial refresh)
+        run: |
+          python scripts/merge_partial.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/summary.json
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            RIDERS_2026=$(python -c "import json; d=json.load(open('data/summary.json')); print(d['years'].get('2026',{}).get('totalRiders','?'))")
+            git commit -m "📊 Update dashboard data — 2026: ${RIDERS_2026} riders [$(date -u +%Y-%m-%d)]"
+            git push
+          fi

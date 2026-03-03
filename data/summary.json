@@ -1,0 +1,152 @@
+{
+  "generatedAt": "2026-03-02T00:00:00Z",
+  "years": {
+    "2024": {
+      "year": "2024",
+      "lastUpdated": "2026-03-02T00:00:00Z",
+      "totalRiders": 1765,
+      "totalRevenue": 270445,
+      "avgOrder": 153,
+      "totalCanceled": 18,
+      "clothingOnlyPurchases": 12,
+      "cumulative": [],
+      "routes": {
+        "Century 100": 720,
+        "Metric Century 64": 570,
+        "Mt Tam 93": 125,
+        "Geronimo 37": 220,
+        "Double Metric 127": 130
+      },
+      "coupons": { "totalUsed": 210, "codes": {} },
+      "gender": { "male": 1200, "female": 510, "other": 55, "pctMale": 67.9 },
+      "avgAge": 47.2,
+      "food": { "noPreference": 80.5, "vegetarian": 10.2, "vegan": 4.1, "glutenFree": 5.2, "raw": {} },
+      "clothing": {
+        "jersey": { "units": 580, "revenue": 49300 },
+        "bibs": { "units": 420, "revenue": 37800 },
+        "shorts": { "units": 310, "revenue": 21700 },
+        "socks": { "units": 290, "revenue": 4930 },
+        "totalExSocks": 1310,
+        "totalRevenue": 113730
+      },
+      "tshirts": 0,
+      "membership": { "newMembers": 85, "raw": {} },
+      "geography": {
+        "topCities": [
+          { "city": "San Francisco, CA", "riders": 285 },
+          { "city": "San Rafael, CA", "riders": 95 },
+          { "city": "Oakland, CA", "riders": 78 },
+          { "city": "Berkeley, CA", "riders": 62 },
+          { "city": "Mill Valley, CA", "riders": 55 }
+        ],
+        "otherCA": 980,
+        "nonCAStates": { "OR": 22, "WA": 18, "NV": 12, "NY": 8 },
+        "totalCA": 1555
+      },
+      "ebike": 32
+    },
+    "2025": {
+      "year": "2025",
+      "lastUpdated": "2026-03-02T00:00:00Z",
+      "totalRiders": 2107,
+      "totalRevenue": 322571,
+      "avgOrder": 153,
+      "totalCanceled": 24,
+      "clothingOnlyPurchases": 15,
+      "cumulative": [],
+      "routes": {
+        "Century 100": 880,
+        "Metric Century 64": 700,
+        "Mt Tam 93": 145,
+        "Geronimo 37": 240,
+        "Double Metric 127": 142
+      },
+      "coupons": { "totalUsed": 298, "codes": { "MCBC2025": 45, "MT2025": 30, "GGTC2025": 28 } },
+      "gender": { "male": 1430, "female": 610, "other": 67, "pctMale": 67.9 },
+      "avgAge": 46.8,
+      "food": { "noPreference": 79.8, "vegetarian": 10.5, "vegan": 4.3, "glutenFree": 5.4, "raw": {} },
+      "clothing": {
+        "jersey": { "units": 710, "revenue": 60350 },
+        "bibs": { "units": 520, "revenue": 46800 },
+        "shorts": { "units": 380, "revenue": 26600 },
+        "socks": { "units": 350, "revenue": 5950 },
+        "totalExSocks": 1610,
+        "totalRevenue": 139700
+      },
+      "tshirts": 0,
+      "membership": { "newMembers": 102, "raw": {} },
+      "geography": {
+        "topCities": [
+          { "city": "San Francisco, CA", "riders": 342 },
+          { "city": "San Rafael, CA", "riders": 118 },
+          { "city": "Oakland, CA", "riders": 95 },
+          { "city": "Berkeley, CA", "riders": 78 },
+          { "city": "Mill Valley, CA", "riders": 68 }
+        ],
+        "otherCA": 1175,
+        "nonCAStates": { "OR": 28, "WA": 22, "NV": 15, "NY": 10, "CO": 8 },
+        "totalCA": 1876
+      },
+      "ebike": 58
+    },
+    "2026": {
+      "year": "2026",
+      "lastUpdated": "2026-03-02T00:00:00Z",
+      "totalRiders": 565,
+      "totalRevenue": 86845,
+      "avgOrder": 154,
+      "totalCanceled": 1,
+      "clothingOnlyPurchases": 3,
+      "cumulative": [],
+      "routes": {
+        "Century 100": 230,
+        "Metric Century 64": 185,
+        "Mt Tam 93": 42,
+        "Geronimo 37": 68,
+        "Double Metric 127": 40
+      },
+      "coupons": { "totalUsed": 0, "codes": {} },
+      "gender": { "male": 385, "female": 162, "other": 18, "pctMale": 68.1 },
+      "avgAge": 47.0,
+      "food": { "noPreference": 80.2, "vegetarian": 10.1, "vegan": 4.2, "glutenFree": 5.5, "raw": {} },
+      "clothing": {
+        "jersey": { "units": 185, "revenue": 15725 },
+        "bibs": { "units": 140, "revenue": 12600 },
+        "shorts": { "units": 98, "revenue": 6860 },
+        "socks": { "units": 92, "revenue": 1564 },
+        "totalExSocks": 423,
+        "totalRevenue": 36749
+      },
+      "tshirts": 0,
+      "membership": { "newMembers": 28, "raw": {} },
+      "geography": {
+        "topCities": [
+          { "city": "San Francisco, CA", "riders": 92 },
+          { "city": "San Rafael, CA", "riders": 38 },
+          { "city": "Oakland, CA", "riders": 28 },
+          { "city": "Berkeley, CA", "riders": 22 },
+          { "city": "Mill Valley, CA", "riders": 19 },
+          { "city": "Novato, CA", "riders": 16 },
+          { "city": "San Jose, CA", "riders": 15 },
+          { "city": "Larkspur, CA", "riders": 14 },
+          { "city": "Corte Madera, CA", "riders": 12 },
+          { "city": "Walnut Creek, CA", "riders": 11 },
+          { "city": "Palo Alto, CA", "riders": 10 },
+          { "city": "Sausalito, CA", "riders": 9 },
+          { "city": "Petaluma, CA", "riders": 8 },
+          { "city": "Santa Rosa, CA", "riders": 8 },
+          { "city": "San Anselmo, CA", "riders": 7 },
+          { "city": "Tiburon, CA", "riders": 6 },
+          { "city": "Fairfax, CA", "riders": 6 },
+          { "city": "Richmond, CA", "riders": 5 },
+          { "city": "Concord, CA", "riders": 5 },
+          { "city": "Mountain View, CA", "riders": 5 }
+        ],
+        "otherCA": 170,
+        "nonCAStates": { "OR": 8, "WA": 5, "NV": 4, "NY": 3, "CO": 2 },
+        "totalCA": 506
+      },
+      "ebike": 23
+    }
+  }
+}
