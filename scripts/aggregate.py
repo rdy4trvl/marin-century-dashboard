@@ -129,7 +129,7 @@ def fetch_registrants(api_key, form_id, limit=PAGE_LIMIT):
         )
         if starting_after > 0:
             url += f"&startingAfter={starting_after}"
-print(f"  API key length: {len(api_key)}, starts with: {api_key[:4]}...")
+        print(f"  API key length: {len(api_key)}, starts with: {api_key[:4]}...")
         req = Request(url, headers={"apiKey": api_key})
 
         try:
