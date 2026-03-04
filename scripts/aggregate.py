@@ -75,9 +75,36 @@ def normalize_route(field_data):
     if reg_option == "clothingPurchaseOnly":
         return "Clothing Only"
 
+    # Match by path value first (most reliable)
+    PATH_MAP = {
+        "traditionalCentury": "Century 100",
+        "metricCentury": "Metric Century 64",
+        "mountTamChallenge": "Mt Tam 93",
+        "doubleMetricCentury": "Double Metric 127",
+        "geronimo": "Geronimo 37",
+    }
+    if reg_option and reg_option in PATH_MAP:
+        return PATH_MAP[reg_option]
+
+    # Fallback: match by label (for older years with different path values)
     if route_label:
         label_upper = route_label.upper()
-        for key, name in ROUTE_LABEL_MAP.items():
+        # Check specific/longer keys before generic ones
+        LABEL_MAP_ORDERED = [
+            ("COMPACT CLASSIC", "Metric Century 64"),
+            ("CLASSIC CENTURY", "Century 100"),
+            ("MT TAM CENTURY", "Mt Tam 93"),
+            ("MT. TAM CENTURY", "Mt Tam 93"),
+            ("DOUBLE METRIC", "Double Metric 127"),
+            ("METRIC CENTURY", "Metric Century 64"),
+            ("MOUNT TAM", "Mt Tam 93"),
+            ("MT. TAM", "Mt Tam 93"),
+            ("GERONIMO", "Geronimo 37"),
+            ("METRIC", "Metric Century 64"),
+            ("CENTURY", "Century 100"),
+            ("CLOTHING ONLY", "Clothing Only"),
+        ]
+        for key, name in LABEL_MAP_ORDERED:
             if key in label_upper:
                 return name
 
