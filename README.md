@@ -15,6 +15,12 @@ Open `index.html` in a browser — sample data is pre-loaded in `data/summary.js
 6. ON PC Ctrl+Shift+R to reload dashboard
 7. https://rdy4trvl.github.io/marin-century-dashboard/
 
+### Update BAT file
+1.Downloads/marin-century-dashboar/marin-century-dashboard/refresh-dashboar.bat
+2. double click .bat file
+
+### Update 
+1.
 
 ---
 
