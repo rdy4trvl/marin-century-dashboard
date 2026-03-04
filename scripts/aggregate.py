@@ -45,6 +45,7 @@ ROUTE_MAP = {
 
 # Canonical route names from sub-labels
 ROUTE_LABEL_MAP = {
+    # 2025/2026 route labels
     "CENTURY": "Century 100",
     "METRIC CENTURY": "Metric Century 64",
     "METRIC": "Metric Century 64",
@@ -53,6 +54,11 @@ ROUTE_LABEL_MAP = {
     "MT. TAM": "Mt Tam 93",
     "DOUBLE METRIC": "Double Metric 127",
     "CLOTHING ONLY": "Clothing Only",
+    # 2024 route labels (only 3 routes existed)
+    "COMPACT CLASSIC": "Metric Century 64",
+    "CLASSIC CENTURY": "Century 100",
+    "MT TAM CENTURY": "Mt Tam 93",
+    "MT. TAM CENTURY": "Mt Tam 93",
 }
 
 def normalize_route(field_data):
