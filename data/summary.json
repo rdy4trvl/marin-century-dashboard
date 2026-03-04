@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-03-04T00:27:52Z",
+  "generatedAt": "2026-03-04T04:21:47Z",
   "years": {
     "2024": {
       "year": "2024",
-      "lastUpdated": "2026-03-04T00:27:46Z",
+      "lastUpdated": "2026-03-04T04:21:30Z",
       "totalRiders": 1737,
       "totalRevenue": 246658.62,
       "avgOrder": 142.0,
@@ -1236,70 +1236,1650 @@
     },
     "2025": {
       "year": "2025",
-      "lastUpdated": "2026-03-04T00:27:46Z",
-      "totalRiders": 0,
-      "totalRevenue": 0,
-      "avgOrder": 0,
-      "totalCanceled": 0,
-      "clothingOnlyPurchases": 1,
-      "cumulative": [],
-      "routes": {},
+      "lastUpdated": "2026-03-04T04:21:43Z",
+      "totalRiders": 1857,
+      "totalRevenue": 267670.65,
+      "avgOrder": 144.14,
+      "totalCanceled": 24,
+      "clothingOnlyPurchases": 250,
+      "cumulative": [
+        {
+          "date": "2025-01-01",
+          "daily": 33,
+          "cumRiders": 33,
+          "dailyRevenue": 5018.64,
+          "cumRevenue": 5018.64
+        },
+        {
+          "date": "2025-01-02",
+          "daily": 28,
+          "cumRiders": 61,
+          "dailyRevenue": 3825.52,
+          "cumRevenue": 8844.16
+        },
+        {
+          "date": "2025-01-03",
+          "daily": 8,
+          "cumRiders": 69,
+          "dailyRevenue": 1021.33,
+          "cumRevenue": 9865.49
+        },
+        {
+          "date": "2025-01-04",
+          "daily": 11,
+          "cumRiders": 80,
+          "dailyRevenue": 1683.37,
+          "cumRevenue": 11548.86
+        },
+        {
+          "date": "2025-01-05",
+          "daily": 8,
+          "cumRiders": 88,
+          "dailyRevenue": 1106.18,
+          "cumRevenue": 12655.04
+        },
+        {
+          "date": "2025-01-06",
+          "daily": 5,
+          "cumRiders": 93,
+          "dailyRevenue": 764.68,
+          "cumRevenue": 13419.72
+        },
+        {
+          "date": "2025-01-07",
+          "daily": 4,
+          "cumRiders": 97,
+          "dailyRevenue": 445.19,
+          "cumRevenue": 13864.91
+        },
+        {
+          "date": "2025-01-08",
+          "daily": 5,
+          "cumRiders": 102,
+          "dailyRevenue": 719.64,
+          "cumRevenue": 14584.55
+        },
+        {
+          "date": "2025-01-09",
+          "daily": 5,
+          "cumRiders": 107,
+          "dailyRevenue": 1047.51,
+          "cumRevenue": 15632.06
+        },
+        {
+          "date": "2025-01-10",
+          "daily": 5,
+          "cumRiders": 112,
+          "dailyRevenue": 986.75,
+          "cumRevenue": 16618.81
+        },
+        {
+          "date": "2025-01-11",
+          "daily": 1,
+          "cumRiders": 113,
+          "dailyRevenue": 146.65,
+          "cumRevenue": 16765.46
+        },
+        {
+          "date": "2025-01-12",
+          "daily": 4,
+          "cumRiders": 117,
+          "dailyRevenue": 450.43,
+          "cumRevenue": 17215.89
+        },
+        {
+          "date": "2025-01-13",
+          "daily": 6,
+          "cumRiders": 123,
+          "dailyRevenue": 733.26,
+          "cumRevenue": 17949.15
+        },
+        {
+          "date": "2025-01-14",
+          "daily": 4,
+          "cumRiders": 127,
+          "dailyRevenue": 638.98,
+          "cumRevenue": 18588.13
+        },
+        {
+          "date": "2025-01-15",
+          "daily": 1,
+          "cumRiders": 128,
+          "dailyRevenue": 115.23,
+          "cumRevenue": 18703.36
+        },
+        {
+          "date": "2025-01-16",
+          "daily": 5,
+          "cumRiders": 133,
+          "dailyRevenue": 740.59,
+          "cumRevenue": 19443.95
+        },
+        {
+          "date": "2025-01-17",
+          "daily": 7,
+          "cumRiders": 140,
+          "dailyRevenue": 1004.56,
+          "cumRevenue": 20448.51
+        },
+        {
+          "date": "2025-01-18",
+          "daily": 4,
+          "cumRiders": 144,
+          "dailyRevenue": 513.28,
+          "cumRevenue": 20961.79
+        },
+        {
+          "date": "2025-01-19",
+          "daily": 2,
+          "cumRiders": 146,
+          "dailyRevenue": 209.5,
+          "cumRevenue": 21171.29
+        },
+        {
+          "date": "2025-01-20",
+          "daily": 3,
+          "cumRiders": 149,
+          "dailyRevenue": 398.05,
+          "cumRevenue": 21569.34
+        },
+        {
+          "date": "2025-01-21",
+          "daily": 3,
+          "cumRiders": 152,
+          "dailyRevenue": 373.97,
+          "cumRevenue": 21943.31
+        },
+        {
+          "date": "2025-01-22",
+          "daily": 6,
+          "cumRiders": 158,
+          "dailyRevenue": 853.73,
+          "cumRevenue": 22797.04
+        },
+        {
+          "date": "2025-01-23",
+          "daily": 2,
+          "cumRiders": 160,
+          "dailyRevenue": 237.78,
+          "cumRevenue": 23034.82
+        },
+        {
+          "date": "2025-01-24",
+          "daily": 2,
+          "cumRiders": 162,
+          "dailyRevenue": 251.4,
+          "cumRevenue": 23286.22
+        },
+        {
+          "date": "2025-01-25",
+          "daily": 2,
+          "cumRiders": 164,
+          "dailyRevenue": 251.4,
+          "cumRevenue": 23537.62
+        },
+        {
+          "date": "2025-01-26",
+          "daily": 3,
+          "cumRiders": 167,
+          "dailyRevenue": 398.05,
+          "cumRevenue": 23935.67
+        },
+        {
+          "date": "2025-01-27",
+          "daily": 2,
+          "cumRiders": 169,
+          "dailyRevenue": 240.93,
+          "cumRevenue": 24176.6
+        },
+        {
+          "date": "2025-01-28",
+          "daily": 6,
+          "cumRiders": 175,
+          "dailyRevenue": 803.45,
+          "cumRevenue": 24980.05
+        },
+        {
+          "date": "2025-01-29",
+          "daily": 2,
+          "cumRiders": 177,
+          "dailyRevenue": 261.88,
+          "cumRevenue": 25241.93
+        },
+        {
+          "date": "2025-01-30",
+          "daily": 4,
+          "cumRiders": 181,
+          "dailyRevenue": 497.57,
+          "cumRevenue": 25739.5
+        },
+        {
+          "date": "2025-01-31",
+          "daily": 3,
+          "cumRiders": 184,
+          "dailyRevenue": 497.56,
+          "cumRevenue": 26237.06
+        },
+        {
+          "date": "2025-02-01",
+          "daily": 1,
+          "cumRiders": 185,
+          "dailyRevenue": 115.23,
+          "cumRevenue": 26352.29
+        },
+        {
+          "date": "2025-02-02",
+          "daily": 3,
+          "cumRiders": 188,
+          "dailyRevenue": 614.88,
+          "cumRevenue": 26967.17
+        },
+        {
+          "date": "2025-02-03",
+          "daily": 2,
+          "cumRiders": 190,
+          "dailyRevenue": 429.48,
+          "cumRevenue": 27396.65
+        },
+        {
+          "date": "2025-02-05",
+          "daily": 1,
+          "cumRiders": 191,
+          "dailyRevenue": 146.65,
+          "cumRevenue": 27543.3
+        },
+        {
+          "date": "2025-02-07",
+          "daily": 1,
+          "cumRiders": 192,
+          "dailyRevenue": 125.7,
+          "cumRevenue": 27669.0
+        },
+        {
+          "date": "2025-02-08",
+          "daily": 2,
+          "cumRiders": 194,
+          "dailyRevenue": 258.74,
+          "cumRevenue": 27927.74
+        },
+        {
+          "date": "2025-02-09",
+          "daily": 1,
+          "cumRiders": 195,
+          "dailyRevenue": 104.75,
+          "cumRevenue": 28032.49
+        },
+        {
+          "date": "2025-02-10",
+          "daily": 2,
+          "cumRiders": 197,
+          "dailyRevenue": 246.16,
+          "cumRevenue": 28278.65
+        },
+        {
+          "date": "2025-02-11",
+          "daily": 2,
+          "cumRiders": 199,
+          "dailyRevenue": 230.45,
+          "cumRevenue": 28509.1
+        },
+        {
+          "date": "2025-02-12",
+          "daily": 6,
+          "cumRiders": 205,
+          "dailyRevenue": 722.79,
+          "cumRevenue": 29231.89
+        },
+        {
+          "date": "2025-02-13",
+          "daily": 4,
+          "cumRiders": 209,
+          "dailyRevenue": 709.16,
+          "cumRevenue": 29941.05
+        },
+        {
+          "date": "2025-02-14",
+          "daily": 1,
+          "cumRiders": 210,
+          "dailyRevenue": 104.75,
+          "cumRevenue": 30045.8
+        },
+        {
+          "date": "2025-02-17",
+          "daily": 1,
+          "cumRiders": 211,
+          "dailyRevenue": 125.7,
+          "cumRevenue": 30171.5
+        },
+        {
+          "date": "2025-02-18",
+          "daily": 1,
+          "cumRiders": 212,
+          "dailyRevenue": 214.74,
+          "cumRevenue": 30386.24
+        },
+        {
+          "date": "2025-02-19",
+          "daily": 2,
+          "cumRiders": 214,
+          "dailyRevenue": 347.77,
+          "cumRevenue": 30734.01
+        },
+        {
+          "date": "2025-02-20",
+          "daily": 10,
+          "cumRiders": 224,
+          "dailyRevenue": 1272.74,
+          "cumRevenue": 32006.75
+        },
+        {
+          "date": "2025-02-21",
+          "daily": 3,
+          "cumRiders": 227,
+          "dailyRevenue": 431.57,
+          "cumRevenue": 32438.32
+        },
+        {
+          "date": "2025-02-22",
+          "daily": 3,
+          "cumRiders": 230,
+          "dailyRevenue": 345.68,
+          "cumRevenue": 32784.0
+        },
+        {
+          "date": "2025-02-23",
+          "daily": 5,
+          "cumRiders": 235,
+          "dailyRevenue": 965.81,
+          "cumRevenue": 33749.81
+        },
+        {
+          "date": "2025-02-24",
+          "daily": 3,
+          "cumRiders": 238,
+          "dailyRevenue": 272.35,
+          "cumRevenue": 34022.16
+        },
+        {
+          "date": "2025-02-25",
+          "daily": 3,
+          "cumRiders": 241,
+          "dailyRevenue": 366.63,
+          "cumRevenue": 34388.79
+        },
+        {
+          "date": "2025-02-26",
+          "daily": 41,
+          "cumRiders": 282,
+          "dailyRevenue": 5216.65,
+          "cumRevenue": 39605.44
+        },
+        {
+          "date": "2025-02-27",
+          "daily": 14,
+          "cumRiders": 296,
+          "dailyRevenue": 1696.99,
+          "cumRevenue": 41302.43
+        },
+        {
+          "date": "2025-02-28",
+          "daily": 23,
+          "cumRiders": 319,
+          "dailyRevenue": 2985.42,
+          "cumRevenue": 44287.85
+        },
+        {
+          "date": "2025-03-01",
+          "daily": 16,
+          "cumRiders": 335,
+          "dailyRevenue": 1803.82,
+          "cumRevenue": 46091.67
+        },
+        {
+          "date": "2025-03-02",
+          "daily": 27,
+          "cumRiders": 362,
+          "dailyRevenue": 3118.48,
+          "cumRevenue": 49210.15
+        },
+        {
+          "date": "2025-03-03",
+          "daily": 120,
+          "cumRiders": 482,
+          "dailyRevenue": 16753.97,
+          "cumRevenue": 65964.12
+        },
+        {
+          "date": "2025-03-04",
+          "daily": 70,
+          "cumRiders": 552,
+          "dailyRevenue": 8403.69,
+          "cumRevenue": 74367.81
+        },
+        {
+          "date": "2025-03-05",
+          "daily": 6,
+          "cumRiders": 558,
+          "dailyRevenue": 795.58,
+          "cumRevenue": 75163.39
+        },
+        {
+          "date": "2025-03-06",
+          "daily": 2,
+          "cumRiders": 560,
+          "dailyRevenue": 240.92,
+          "cumRevenue": 75404.31
+        },
+        {
+          "date": "2025-03-08",
+          "daily": 3,
+          "cumRiders": 563,
+          "dailyRevenue": 518.51,
+          "cumRevenue": 75922.82
+        },
+        {
+          "date": "2025-03-09",
+          "daily": 4,
+          "cumRiders": 567,
+          "dailyRevenue": 696.6,
+          "cumRevenue": 76619.42
+        },
+        {
+          "date": "2025-03-10",
+          "daily": 2,
+          "cumRiders": 569,
+          "dailyRevenue": 272.35,
+          "cumRevenue": 76891.77
+        },
+        {
+          "date": "2025-03-11",
+          "daily": 6,
+          "cumRiders": 575,
+          "dailyRevenue": 1075.8,
+          "cumRevenue": 77967.57
+        },
+        {
+          "date": "2025-03-12",
+          "daily": 3,
+          "cumRiders": 578,
+          "dailyRevenue": 371.86,
+          "cumRevenue": 78339.43
+        },
+        {
+          "date": "2025-03-13",
+          "daily": 1,
+          "cumRiders": 579,
+          "dailyRevenue": 130.94,
+          "cumRevenue": 78470.37
+        },
+        {
+          "date": "2025-03-14",
+          "daily": 3,
+          "cumRiders": 582,
+          "dailyRevenue": 413.76,
+          "cumRevenue": 78884.13
+        },
+        {
+          "date": "2025-03-15",
+          "daily": 3,
+          "cumRiders": 585,
+          "dailyRevenue": 410.63,
+          "cumRevenue": 79294.76
+        },
+        {
+          "date": "2025-03-16",
+          "daily": 2,
+          "cumRiders": 587,
+          "dailyRevenue": 225.21,
+          "cumRevenue": 79519.97
+        },
+        {
+          "date": "2025-03-18",
+          "daily": 1,
+          "cumRiders": 588,
+          "dailyRevenue": 104.75,
+          "cumRevenue": 79624.72
+        },
+        {
+          "date": "2025-03-19",
+          "daily": 5,
+          "cumRiders": 593,
+          "dailyRevenue": 680.35,
+          "cumRevenue": 80305.07
+        },
+        {
+          "date": "2025-03-20",
+          "daily": 2,
+          "cumRiders": 595,
+          "dailyRevenue": 272.35,
+          "cumRevenue": 80577.42
+        },
+        {
+          "date": "2025-03-21",
+          "daily": 4,
+          "cumRiders": 599,
+          "dailyRevenue": 482.2,
+          "cumRevenue": 81059.62
+        },
+        {
+          "date": "2025-03-22",
+          "daily": 3,
+          "cumRiders": 602,
+          "dailyRevenue": 517.47,
+          "cumRevenue": 81577.09
+        },
+        {
+          "date": "2025-03-23",
+          "daily": 6,
+          "cumRiders": 608,
+          "dailyRevenue": 696.6,
+          "cumRevenue": 82273.69
+        },
+        {
+          "date": "2025-03-24",
+          "daily": 1,
+          "cumRiders": 609,
+          "dailyRevenue": 230.45,
+          "cumRevenue": 82504.14
+        },
+        {
+          "date": "2025-03-25",
+          "daily": 2,
+          "cumRiders": 611,
+          "dailyRevenue": 282.83,
+          "cumRevenue": 82786.97
+        },
+        {
+          "date": "2025-03-26",
+          "daily": 2,
+          "cumRiders": 613,
+          "dailyRevenue": 576.13,
+          "cumRevenue": 83363.1
+        },
+        {
+          "date": "2025-03-27",
+          "daily": 6,
+          "cumRiders": 619,
+          "dailyRevenue": 1177.39,
+          "cumRevenue": 84540.49
+        },
+        {
+          "date": "2025-03-28",
+          "daily": 2,
+          "cumRiders": 621,
+          "dailyRevenue": 220.33,
+          "cumRevenue": 84760.82
+        },
+        {
+          "date": "2025-03-29",
+          "daily": 1,
+          "cumRiders": 622,
+          "dailyRevenue": 390.72,
+          "cumRevenue": 85151.54
+        },
+        {
+          "date": "2025-04-01",
+          "daily": 4,
+          "cumRiders": 626,
+          "dailyRevenue": 497.67,
+          "cumRevenue": 85649.21
+        },
+        {
+          "date": "2025-04-02",
+          "daily": 2,
+          "cumRiders": 628,
+          "dailyRevenue": 282.83,
+          "cumRevenue": 85932.04
+        },
+        {
+          "date": "2025-04-03",
+          "daily": 1,
+          "cumRiders": 629,
+          "dailyRevenue": 130.94,
+          "cumRevenue": 86062.98
+        },
+        {
+          "date": "2025-04-04",
+          "daily": 1,
+          "cumRiders": 630,
+          "dailyRevenue": 130.94,
+          "cumRevenue": 86193.92
+        },
+        {
+          "date": "2025-04-05",
+          "daily": 5,
+          "cumRiders": 635,
+          "dailyRevenue": 900.85,
+          "cumRevenue": 87094.77
+        },
+        {
+          "date": "2025-04-06",
+          "daily": 2,
+          "cumRiders": 637,
+          "dailyRevenue": 293.3,
+          "cumRevenue": 87388.07
+        },
+        {
+          "date": "2025-04-12",
+          "daily": 1,
+          "cumRiders": 638,
+          "dailyRevenue": 151.89,
+          "cumRevenue": 87539.96
+        },
+        {
+          "date": "2025-04-13",
+          "daily": 2,
+          "cumRiders": 640,
+          "dailyRevenue": 261.88,
+          "cumRevenue": 87801.84
+        },
+        {
+          "date": "2025-04-14",
+          "daily": 4,
+          "cumRiders": 644,
+          "dailyRevenue": 666.32,
+          "cumRevenue": 88468.16
+        },
+        {
+          "date": "2025-04-15",
+          "daily": 4,
+          "cumRiders": 648,
+          "dailyRevenue": 487.54,
+          "cumRevenue": 88955.7
+        },
+        {
+          "date": "2025-04-16",
+          "daily": 4,
+          "cumRiders": 652,
+          "dailyRevenue": 502.8,
+          "cumRevenue": 89458.5
+        },
+        {
+          "date": "2025-04-17",
+          "daily": 4,
+          "cumRiders": 656,
+          "dailyRevenue": 577.72,
+          "cumRevenue": 90036.22
+        },
+        {
+          "date": "2025-04-18",
+          "daily": 3,
+          "cumRiders": 659,
+          "dailyRevenue": 392.81,
+          "cumRevenue": 90429.03
+        },
+        {
+          "date": "2025-04-19",
+          "daily": 2,
+          "cumRiders": 661,
+          "dailyRevenue": 251.4,
+          "cumRevenue": 90680.43
+        },
+        {
+          "date": "2025-04-20",
+          "daily": 2,
+          "cumRiders": 663,
+          "dailyRevenue": 290.16,
+          "cumRevenue": 90970.59
+        },
+        {
+          "date": "2025-04-21",
+          "daily": 1,
+          "cumRiders": 664,
+          "dailyRevenue": 118.44,
+          "cumRevenue": 91089.03
+        },
+        {
+          "date": "2025-04-22",
+          "daily": 4,
+          "cumRiders": 668,
+          "dailyRevenue": 572.99,
+          "cumRevenue": 91662.02
+        },
+        {
+          "date": "2025-04-23",
+          "daily": 7,
+          "cumRiders": 675,
+          "dailyRevenue": 895.62,
+          "cumRevenue": 92557.64
+        },
+        {
+          "date": "2025-04-24",
+          "daily": 1,
+          "cumRiders": 676,
+          "dailyRevenue": 141.41,
+          "cumRevenue": 92699.05
+        },
+        {
+          "date": "2025-04-25",
+          "daily": 4,
+          "cumRiders": 680,
+          "dailyRevenue": 555.18,
+          "cumRevenue": 93254.23
+        },
+        {
+          "date": "2025-04-26",
+          "daily": 1,
+          "cumRiders": 681,
+          "dailyRevenue": 162.36,
+          "cumRevenue": 93416.59
+        },
+        {
+          "date": "2025-04-27",
+          "daily": 2,
+          "cumRiders": 683,
+          "dailyRevenue": 361.39,
+          "cumRevenue": 93777.98
+        },
+        {
+          "date": "2025-04-28",
+          "daily": 4,
+          "cumRiders": 687,
+          "dailyRevenue": 550.01,
+          "cumRevenue": 94327.99
+        },
+        {
+          "date": "2025-04-29",
+          "daily": 4,
+          "cumRiders": 691,
+          "dailyRevenue": 535.5,
+          "cumRevenue": 94863.49
+        },
+        {
+          "date": "2025-04-30",
+          "daily": 5,
+          "cumRiders": 696,
+          "dailyRevenue": 994.25,
+          "cumRevenue": 95857.74
+        },
+        {
+          "date": "2025-05-01",
+          "daily": 7,
+          "cumRiders": 703,
+          "dailyRevenue": 1039.11,
+          "cumRevenue": 96896.85
+        },
+        {
+          "date": "2025-05-02",
+          "daily": 4,
+          "cumRiders": 707,
+          "dailyRevenue": 540.94,
+          "cumRevenue": 97437.79
+        },
+        {
+          "date": "2025-05-03",
+          "daily": 6,
+          "cumRiders": 713,
+          "dailyRevenue": 1065.38,
+          "cumRevenue": 98503.17
+        },
+        {
+          "date": "2025-05-04",
+          "daily": 8,
+          "cumRiders": 721,
+          "dailyRevenue": 1025.51,
+          "cumRevenue": 99528.68
+        },
+        {
+          "date": "2025-05-05",
+          "daily": 2,
+          "cumRiders": 723,
+          "dailyRevenue": 378.15,
+          "cumRevenue": 99906.83
+        },
+        {
+          "date": "2025-05-06",
+          "daily": 5,
+          "cumRiders": 728,
+          "dailyRevenue": 687.58,
+          "cumRevenue": 100594.41
+        },
+        {
+          "date": "2025-05-07",
+          "daily": 9,
+          "cumRiders": 737,
+          "dailyRevenue": 1378.93,
+          "cumRevenue": 101973.34
+        },
+        {
+          "date": "2025-05-08",
+          "daily": 6,
+          "cumRiders": 743,
+          "dailyRevenue": 739.96,
+          "cumRevenue": 102713.3
+        },
+        {
+          "date": "2025-05-09",
+          "daily": 7,
+          "cumRiders": 750,
+          "dailyRevenue": 1326.16,
+          "cumRevenue": 104039.46
+        },
+        {
+          "date": "2025-05-10",
+          "daily": 9,
+          "cumRiders": 759,
+          "dailyRevenue": 1247.58,
+          "cumRevenue": 105287.04
+        },
+        {
+          "date": "2025-05-11",
+          "daily": 5,
+          "cumRiders": 764,
+          "dailyRevenue": 570.89,
+          "cumRevenue": 105857.93
+        },
+        {
+          "date": "2025-05-12",
+          "daily": 4,
+          "cumRiders": 768,
+          "dailyRevenue": 523.76,
+          "cumRevenue": 106381.69
+        },
+        {
+          "date": "2025-05-13",
+          "daily": 4,
+          "cumRiders": 772,
+          "dailyRevenue": 424.23,
+          "cumRevenue": 106805.92
+        },
+        {
+          "date": "2025-05-14",
+          "daily": 9,
+          "cumRiders": 781,
+          "dailyRevenue": 1210.91,
+          "cumRevenue": 108016.83
+        },
+        {
+          "date": "2025-05-15",
+          "daily": 4,
+          "cumRiders": 785,
+          "dailyRevenue": 729.12,
+          "cumRevenue": 108745.95
+        },
+        {
+          "date": "2025-05-16",
+          "daily": 5,
+          "cumRiders": 790,
+          "dailyRevenue": 641.59,
+          "cumRevenue": 109387.54
+        },
+        {
+          "date": "2025-05-17",
+          "daily": 4,
+          "cumRiders": 794,
+          "dailyRevenue": 461.01,
+          "cumRevenue": 109848.55
+        },
+        {
+          "date": "2025-05-18",
+          "daily": 6,
+          "cumRiders": 800,
+          "dailyRevenue": 770.26,
+          "cumRevenue": 110618.81
+        },
+        {
+          "date": "2025-05-19",
+          "daily": 7,
+          "cumRiders": 807,
+          "dailyRevenue": 927.22,
+          "cumRevenue": 111546.03
+        },
+        {
+          "date": "2025-05-20",
+          "daily": 7,
+          "cumRiders": 814,
+          "dailyRevenue": 1017.13,
+          "cumRevenue": 112563.16
+        },
+        {
+          "date": "2025-05-21",
+          "daily": 4,
+          "cumRiders": 818,
+          "dailyRevenue": 441.44,
+          "cumRevenue": 113004.6
+        },
+        {
+          "date": "2025-05-22",
+          "daily": 3,
+          "cumRiders": 821,
+          "dailyRevenue": 547.85,
+          "cumRevenue": 113552.45
+        },
+        {
+          "date": "2025-05-23",
+          "daily": 16,
+          "cumRiders": 837,
+          "dailyRevenue": 2883.21,
+          "cumRevenue": 116435.66
+        },
+        {
+          "date": "2025-05-24",
+          "daily": 8,
+          "cumRiders": 845,
+          "dailyRevenue": 1123.18,
+          "cumRevenue": 117558.84
+        },
+        {
+          "date": "2025-05-25",
+          "daily": 3,
+          "cumRiders": 848,
+          "dailyRevenue": 277.82,
+          "cumRevenue": 117836.66
+        },
+        {
+          "date": "2025-05-26",
+          "daily": 5,
+          "cumRiders": 853,
+          "dailyRevenue": 823.52,
+          "cumRevenue": 118660.18
+        },
+        {
+          "date": "2025-05-27",
+          "daily": 10,
+          "cumRiders": 863,
+          "dailyRevenue": 1282.21,
+          "cumRevenue": 119942.39
+        },
+        {
+          "date": "2025-05-28",
+          "daily": 10,
+          "cumRiders": 873,
+          "dailyRevenue": 1363.48,
+          "cumRevenue": 121305.87
+        },
+        {
+          "date": "2025-05-29",
+          "daily": 2,
+          "cumRiders": 875,
+          "dailyRevenue": 542.61,
+          "cumRevenue": 121848.48
+        },
+        {
+          "date": "2025-05-30",
+          "daily": 4,
+          "cumRiders": 879,
+          "dailyRevenue": 739.75,
+          "cumRevenue": 122588.23
+        },
+        {
+          "date": "2025-05-31",
+          "daily": 2,
+          "cumRiders": 881,
+          "dailyRevenue": 453.57,
+          "cumRevenue": 123041.8
+        },
+        {
+          "date": "2025-06-01",
+          "daily": 9,
+          "cumRiders": 890,
+          "dailyRevenue": 1218.34,
+          "cumRevenue": 124260.14
+        },
+        {
+          "date": "2025-06-02",
+          "daily": 20,
+          "cumRiders": 910,
+          "dailyRevenue": 3782.27,
+          "cumRevenue": 128042.41
+        },
+        {
+          "date": "2025-06-03",
+          "daily": 6,
+          "cumRiders": 916,
+          "dailyRevenue": 942.77,
+          "cumRevenue": 128985.18
+        },
+        {
+          "date": "2025-06-04",
+          "daily": 5,
+          "cumRiders": 921,
+          "dailyRevenue": 796.14,
+          "cumRevenue": 129781.32
+        },
+        {
+          "date": "2025-06-05",
+          "daily": 2,
+          "cumRiders": 923,
+          "dailyRevenue": 411.67,
+          "cumRevenue": 130192.99
+        },
+        {
+          "date": "2025-06-06",
+          "daily": 2,
+          "cumRiders": 925,
+          "dailyRevenue": 271.32,
+          "cumRevenue": 130464.31
+        },
+        {
+          "date": "2025-06-07",
+          "daily": 8,
+          "cumRiders": 933,
+          "dailyRevenue": 1370.13,
+          "cumRevenue": 131834.44
+        },
+        {
+          "date": "2025-06-08",
+          "daily": 10,
+          "cumRiders": 943,
+          "dailyRevenue": 1402.8,
+          "cumRevenue": 133237.24
+        },
+        {
+          "date": "2025-06-09",
+          "daily": 13,
+          "cumRiders": 956,
+          "dailyRevenue": 1943.69,
+          "cumRevenue": 135180.93
+        },
+        {
+          "date": "2025-06-10",
+          "daily": 5,
+          "cumRiders": 961,
+          "dailyRevenue": 819.17,
+          "cumRevenue": 136000.1
+        },
+        {
+          "date": "2025-06-11",
+          "daily": 22,
+          "cumRiders": 983,
+          "dailyRevenue": 2800.49,
+          "cumRevenue": 138800.59
+        },
+        {
+          "date": "2025-06-12",
+          "daily": 14,
+          "cumRiders": 997,
+          "dailyRevenue": 2085.72,
+          "cumRevenue": 140886.31
+        },
+        {
+          "date": "2025-06-13",
+          "daily": 14,
+          "cumRiders": 1011,
+          "dailyRevenue": 1792.97,
+          "cumRevenue": 142679.28
+        },
+        {
+          "date": "2025-06-14",
+          "daily": 13,
+          "cumRiders": 1024,
+          "dailyRevenue": 1353.51,
+          "cumRevenue": 144032.79
+        },
+        {
+          "date": "2025-06-15",
+          "daily": 15,
+          "cumRiders": 1039,
+          "dailyRevenue": 1993.52,
+          "cumRevenue": 146026.31
+        },
+        {
+          "date": "2025-06-16",
+          "daily": 53,
+          "cumRiders": 1092,
+          "dailyRevenue": 6958.17,
+          "cumRevenue": 152984.48
+        },
+        {
+          "date": "2025-06-17",
+          "daily": 34,
+          "cumRiders": 1126,
+          "dailyRevenue": 4189.68,
+          "cumRevenue": 157174.16
+        },
+        {
+          "date": "2025-06-18",
+          "daily": 6,
+          "cumRiders": 1132,
+          "dailyRevenue": 816.86,
+          "cumRevenue": 157991.02
+        },
+        {
+          "date": "2025-06-19",
+          "daily": 6,
+          "cumRiders": 1138,
+          "dailyRevenue": 1110.59,
+          "cumRevenue": 159101.61
+        },
+        {
+          "date": "2025-06-20",
+          "daily": 10,
+          "cumRiders": 1148,
+          "dailyRevenue": 1569.79,
+          "cumRevenue": 160671.4
+        },
+        {
+          "date": "2025-06-21",
+          "daily": 5,
+          "cumRiders": 1153,
+          "dailyRevenue": 977.33,
+          "cumRevenue": 161648.73
+        },
+        {
+          "date": "2025-06-22",
+          "daily": 3,
+          "cumRiders": 1156,
+          "dailyRevenue": 437.81,
+          "cumRevenue": 162086.54
+        },
+        {
+          "date": "2025-06-23",
+          "daily": 4,
+          "cumRiders": 1160,
+          "dailyRevenue": 680.89,
+          "cumRevenue": 162767.43
+        },
+        {
+          "date": "2025-06-24",
+          "daily": 10,
+          "cumRiders": 1170,
+          "dailyRevenue": 1682.59,
+          "cumRevenue": 164450.02
+        },
+        {
+          "date": "2025-06-25",
+          "daily": 10,
+          "cumRiders": 1180,
+          "dailyRevenue": 1512.61,
+          "cumRevenue": 165962.63
+        },
+        {
+          "date": "2025-06-26",
+          "daily": 7,
+          "cumRiders": 1187,
+          "dailyRevenue": 1100.18,
+          "cumRevenue": 167062.81
+        },
+        {
+          "date": "2025-06-27",
+          "daily": 9,
+          "cumRiders": 1196,
+          "dailyRevenue": 1601.72,
+          "cumRevenue": 168664.53
+        },
+        {
+          "date": "2025-06-28",
+          "daily": 5,
+          "cumRiders": 1201,
+          "dailyRevenue": 1030.75,
+          "cumRevenue": 169695.28
+        },
+        {
+          "date": "2025-06-29",
+          "daily": 11,
+          "cumRiders": 1212,
+          "dailyRevenue": 1671.41,
+          "cumRevenue": 171366.69
+        },
+        {
+          "date": "2025-06-30",
+          "daily": 13,
+          "cumRiders": 1225,
+          "dailyRevenue": 1988.66,
+          "cumRevenue": 173355.35
+        },
+        {
+          "date": "2025-07-01",
+          "daily": 9,
+          "cumRiders": 1234,
+          "dailyRevenue": 1286.11,
+          "cumRevenue": 174641.46
+        },
+        {
+          "date": "2025-07-02",
+          "daily": 8,
+          "cumRiders": 1242,
+          "dailyRevenue": 1340.44,
+          "cumRevenue": 175981.9
+        },
+        {
+          "date": "2025-07-03",
+          "daily": 3,
+          "cumRiders": 1245,
+          "dailyRevenue": 426.96,
+          "cumRevenue": 176408.86
+        },
+        {
+          "date": "2025-07-04",
+          "daily": 7,
+          "cumRiders": 1252,
+          "dailyRevenue": 852.61,
+          "cumRevenue": 177261.47
+        },
+        {
+          "date": "2025-07-05",
+          "daily": 9,
+          "cumRiders": 1261,
+          "dailyRevenue": 1369.07,
+          "cumRevenue": 178630.54
+        },
+        {
+          "date": "2025-07-06",
+          "daily": 10,
+          "cumRiders": 1271,
+          "dailyRevenue": 1447.3,
+          "cumRevenue": 180077.84
+        },
+        {
+          "date": "2025-07-07",
+          "daily": 16,
+          "cumRiders": 1287,
+          "dailyRevenue": 2630.9,
+          "cumRevenue": 182708.74
+        },
+        {
+          "date": "2025-07-08",
+          "daily": 13,
+          "cumRiders": 1300,
+          "dailyRevenue": 1965.43,
+          "cumRevenue": 184674.17
+        },
+        {
+          "date": "2025-07-09",
+          "daily": 17,
+          "cumRiders": 1317,
+          "dailyRevenue": 2941.29,
+          "cumRevenue": 187615.46
+        },
+        {
+          "date": "2025-07-10",
+          "daily": 20,
+          "cumRiders": 1337,
+          "dailyRevenue": 3181.48,
+          "cumRevenue": 190796.94
+        },
+        {
+          "date": "2025-07-11",
+          "daily": 16,
+          "cumRiders": 1353,
+          "dailyRevenue": 2495.18,
+          "cumRevenue": 193292.12
+        },
+        {
+          "date": "2025-07-12",
+          "daily": 9,
+          "cumRiders": 1362,
+          "dailyRevenue": 1245.62,
+          "cumRevenue": 194537.74
+        },
+        {
+          "date": "2025-07-13",
+          "daily": 23,
+          "cumRiders": 1385,
+          "dailyRevenue": 3582.75,
+          "cumRevenue": 198120.49
+        },
+        {
+          "date": "2025-07-14",
+          "daily": 26,
+          "cumRiders": 1411,
+          "dailyRevenue": 3568.08,
+          "cumRevenue": 201688.57
+        },
+        {
+          "date": "2025-07-15",
+          "daily": 31,
+          "cumRiders": 1442,
+          "dailyRevenue": 4094.81,
+          "cumRevenue": 205783.38
+        },
+        {
+          "date": "2025-07-16",
+          "daily": 18,
+          "cumRiders": 1460,
+          "dailyRevenue": 2762.24,
+          "cumRevenue": 208545.62
+        },
+        {
+          "date": "2025-07-17",
+          "daily": 31,
+          "cumRiders": 1491,
+          "dailyRevenue": 4595.18,
+          "cumRevenue": 213140.8
+        },
+        {
+          "date": "2025-07-18",
+          "daily": 20,
+          "cumRiders": 1511,
+          "dailyRevenue": 2917.91,
+          "cumRevenue": 216058.71
+        },
+        {
+          "date": "2025-07-19",
+          "daily": 34,
+          "cumRiders": 1545,
+          "dailyRevenue": 4619.36,
+          "cumRevenue": 220678.07
+        },
+        {
+          "date": "2025-07-20",
+          "daily": 17,
+          "cumRiders": 1562,
+          "dailyRevenue": 2290.3,
+          "cumRevenue": 222968.37
+        },
+        {
+          "date": "2025-07-21",
+          "daily": 37,
+          "cumRiders": 1599,
+          "dailyRevenue": 4932.81,
+          "cumRevenue": 227901.18
+        },
+        {
+          "date": "2025-07-22",
+          "daily": 23,
+          "cumRiders": 1622,
+          "dailyRevenue": 3477.22,
+          "cumRevenue": 231378.4
+        },
+        {
+          "date": "2025-07-23",
+          "daily": 20,
+          "cumRiders": 1642,
+          "dailyRevenue": 3660.52,
+          "cumRevenue": 235038.92
+        },
+        {
+          "date": "2025-07-24",
+          "daily": 22,
+          "cumRiders": 1664,
+          "dailyRevenue": 3421.64,
+          "cumRevenue": 238460.56
+        },
+        {
+          "date": "2025-07-25",
+          "daily": 16,
+          "cumRiders": 1680,
+          "dailyRevenue": 2295.03,
+          "cumRevenue": 240755.59
+        },
+        {
+          "date": "2025-07-26",
+          "daily": 23,
+          "cumRiders": 1703,
+          "dailyRevenue": 4040.62,
+          "cumRevenue": 244796.21
+        },
+        {
+          "date": "2025-07-27",
+          "daily": 43,
+          "cumRiders": 1746,
+          "dailyRevenue": 6514.25,
+          "cumRevenue": 251310.46
+        },
+        {
+          "date": "2025-07-28",
+          "daily": 51,
+          "cumRiders": 1797,
+          "dailyRevenue": 8157.31,
+          "cumRevenue": 259467.77
+        },
+        {
+          "date": "2025-07-29",
+          "daily": 43,
+          "cumRiders": 1840,
+          "dailyRevenue": 6166.88,
+          "cumRevenue": 265634.65
+        },
+        {
+          "date": "2025-08-03",
+          "daily": 5,
+          "cumRiders": 1845,
+          "dailyRevenue": 786.0,
+          "cumRevenue": 266420.65
+        },
+        {
+          "date": "2025-08-04",
+          "daily": 1,
+          "cumRiders": 1846,
+          "dailyRevenue": 91.0,
+          "cumRevenue": 266511.65
+        },
+        {
+          "date": "2025-08-05",
+          "daily": 2,
+          "cumRiders": 1848,
+          "dailyRevenue": 199.0,
+          "cumRevenue": 266710.65
+        },
+        {
+          "date": "2025-08-06",
+          "daily": 3,
+          "cumRiders": 1851,
+          "dailyRevenue": 294.0,
+          "cumRevenue": 267004.65
+        },
+        {
+          "date": "2025-08-07",
+          "daily": 2,
+          "cumRiders": 1853,
+          "dailyRevenue": 294.0,
+          "cumRevenue": 267298.65
+        },
+        {
+          "date": "2025-08-08",
+          "daily": 2,
+          "cumRiders": 1855,
+          "dailyRevenue": 190.0,
+          "cumRevenue": 267488.65
+        },
+        {
+          "date": "2025-08-09",
+          "daily": 1,
+          "cumRiders": 1856,
+          "dailyRevenue": 91.0,
+          "cumRevenue": 267579.65
+        },
+        {
+          "date": "2025-08-12",
+          "daily": 1,
+          "cumRiders": 1857,
+          "dailyRevenue": 91.0,
+          "cumRevenue": 267670.65
+        }
+      ],
+      "routes": {
+        "Metric Century 64": 885,
+        "Century 100": 780,
+        "Geronimo 37": 175,
+        "Unknown": 17
+      },
       "coupons": {
-        "totalUsed": 0,
-        "codes": {}
+        "totalUsed": 260,
+        "codes": {
+          "MCBC2025": 84,
+          "GGTC2025": 15,
+          "MT2025": 15,
+          "SWELL2025": 11,
+          "PENVELO2025": 11,
+          "PFP2025": 11,
+          "AV2025": 10,
+          "DR2025": 9,
+          "GRIZZLY2025": 8,
+          "SFTRI2025": 8,
+          "BTW2025": 7,
+          "PRIMA2025": 7,
+          "WCCSR2025": 6,
+          "SB25": 5,
+          "CINDY2025": 5,
+          "SRCC2025": 5,
+          "OYJ2025": 5,
+          "FATCAKE2025": 4,
+          "BBC2025": 3,
+          "WW2025": 3
+        }
       },
       "gender": {
-        "male": 0,
-        "female": 0,
-        "other": 0,
-        "pctMale": 0
+        "male": 1389,
+        "female": 445,
+        "other": 5,
+        "pctMale": 74.8
       },
-      "avgAge": null,
+      "avgAge": 50.4,
       "food": {
-        "noPreference": 0,
-        "vegetarian": 0,
-        "vegan": 0,
-        "glutenFree": 0,
-        "raw": {}
+        "noPreference": 81.5,
+        "vegetarian": 11.7,
+        "vegan": 2.5,
+        "glutenFree": 3.4,
+        "raw": {
+          "unknown": 17,
+          "nopreferenceomnivore": 1514,
+          "glutenfree": 63,
+          "vegetarian": 217,
+          "vegan": 46
+        }
       },
       "clothing": {
         "jersey": {
-          "units": 0,
-          "revenue": 0
+          "units": 230,
+          "revenue": 20450.0
         },
         "bibs": {
-          "units": 0,
-          "revenue": 0
+          "units": 75,
+          "revenue": 6990.0
         },
         "shorts": {
-          "units": 0,
-          "revenue": 0
+          "units": 21,
+          "revenue": 1855.0
         },
         "socks": {
-          "units": 1,
-          "revenue": 17.0
+          "units": 169,
+          "revenue": 2873.0
         },
-        "totalExSocks": 0,
-        "totalRevenue": 17.0
+        "totalExSocks": 326,
+        "totalRevenue": 32168.0
       },
-      "tshirts": 0,
+      "tshirts": 225,
       "membership": {
-        "newMembers": 0,
-        "raw": {}
+        "newMembers": 77,
+        "raw": {
+          "unknown": 17,
+          "nothankyou3": 1667,
+          "alreadymember2": 103,
+          "yes": 60,
+          "nothankyou": 6,
+          "alreadymember": 3,
+          "nothankyou2": 1
+        }
       },
       "geography": {
-        "topCities": [],
-        "otherCA": 0,
-        "nonCAStates": {},
-        "totalCA": 0
+        "topCities": [
+          {
+            "city": "San Francisco, CA",
+            "riders": 395
+          },
+          {
+            "city": "Oakland, CA",
+            "riders": 86
+          },
+          {
+            "city": "San Rafael, CA",
+            "riders": 58
+          },
+          {
+            "city": "Mill Valley, CA",
+            "riders": 57
+          },
+          {
+            "city": "Berkeley, CA",
+            "riders": 43
+          },
+          {
+            "city": "Novato, CA",
+            "riders": 43
+          },
+          {
+            "city": "Santa Rosa, CA",
+            "riders": 40
+          },
+          {
+            "city": "San Jose, CA",
+            "riders": 39
+          },
+          {
+            "city": "Mountain View, CA",
+            "riders": 35
+          },
+          {
+            "city": "Corte Madera, CA",
+            "riders": 33
+          },
+          {
+            "city": "Sacramento, CA",
+            "riders": 31
+          },
+          {
+            "city": "Palo Alto, CA",
+            "riders": 31
+          },
+          {
+            "city": "San Anselmo, CA",
+            "riders": 27
+          },
+          {
+            "city": "Los Altos, CA",
+            "riders": 27
+          },
+          {
+            "city": "Petaluma, CA",
+            "riders": 27
+          },
+          {
+            "city": "Alameda, CA",
+            "riders": 23
+          },
+          {
+            "city": "Tiburon, CA",
+            "riders": 21
+          },
+          {
+            "city": "Menlo Park, CA",
+            "riders": 20
+          },
+          {
+            "city": "Redwood City, CA",
+            "riders": 19
+          },
+          {
+            "city": "San Mateo, CA",
+            "riders": 19
+          }
+        ],
+        "otherCA": 723,
+        "nonCAStates": {
+          "NV": 13,
+          "WA": 9,
+          "CO": 6,
+          "OR": 4,
+          "NY": 3,
+          "AZ": 3,
+          "AL": 2,
+          "HI": 2,
+          "IL": 2,
+          "VA": 2,
+          "DE": 2,
+          "MO": 1,
+          "AK": 1,
+          "DC": 1,
+          "TX": 1,
+          "PA": 1,
+          "GA": 1,
+          "MA": 1,
+          "UT": 1,
+          "ID": 1,
+          "MN": 1,
+          "TN": 1
+        },
+        "totalCA": 1797
       },
-      "ebike": 0
+      "ebike": 57
     },
     "2026": {
       "year": "2026",
-      "lastUpdated": "2026-03-04T00:27:52Z",
-      "totalRiders": 557,
-      "totalRevenue": 74386.81,
+      "lastUpdated": "2026-03-04T04:21:47Z",
+      "totalRiders": 558,
+      "totalRevenue": 74522.99,
       "avgOrder": 133.55,
       "totalCanceled": 1,
       "clothingOnlyPurchases": 75,
@@ -1712,14 +3292,14 @@
         },
         {
           "date": "2026-03-03",
-          "daily": 60,
-          "cumRiders": 557,
-          "dailyRevenue": 7706.6,
-          "cumRevenue": 74386.81
+          "daily": 61,
+          "cumRiders": 558,
+          "dailyRevenue": 7842.78,
+          "cumRevenue": 74522.99
         }
       ],
       "routes": {
-        "Century 100": 480,
+        "Century 100": 481,
         "Geronimo 37": 44,
         "Metric Century 64": 33
       },
@@ -1731,19 +3311,19 @@
       },
       "gender": {
         "male": 414,
-        "female": 142,
+        "female": 143,
         "other": 1,
-        "pctMale": 74.3
+        "pctMale": 74.2
       },
-      "avgAge": 54.4,
+      "avgAge": 54.5,
       "food": {
-        "noPreference": 84.7,
+        "noPreference": 84.8,
         "vegetarian": 9.7,
         "vegan": 3.4,
         "glutenFree": 2.2,
         "raw": {
+          "nopreferenceomnivore": 473,
           "vegan": 19,
-          "nopreferenceomnivore": 472,
           "vegetarian": 54,
           "glutenfree": 12
         }
@@ -1772,7 +3352,7 @@
       "membership": {
         "newMembers": 19,
         "raw": {
-          "nothankyou3": 493,
+          "nothankyou3": 494,
           "alreadymember2": 40,
           "yes": 19,
           "alreadymember": 3,
@@ -1794,11 +3374,11 @@
             "riders": 20
           },
           {
-            "city": "Mountain View, CA",
-            "riders": 16
+            "city": "Berkeley, CA",
+            "riders": 17
           },
           {
-            "city": "Berkeley, CA",
+            "city": "Mountain View, CA",
             "riders": 16
           },
           {
@@ -1875,7 +3455,7 @@
           "ID": 1,
           "NV": 1
         },
-        "totalCA": 542
+        "totalCA": 543
       },
       "ebike": 36
     }
