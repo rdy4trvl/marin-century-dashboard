@@ -130,7 +130,7 @@ def fetch_registrants(api_key, form_id, limit=PAGE_LIMIT):
         if starting_after > 0:
             url += f"&startingAfter={starting_after}"
         
-        req = Request(url, headers={"apiKey": api_key})
+        req = Request(url, headers={"apiKey": api_key, "User-Agent": "Mozilla/5.0"})
 
         try:
             with urlopen(req) as resp:
