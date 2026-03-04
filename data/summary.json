@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-03-03T23:50:09Z",
+  "generatedAt": "2026-03-04T00:13:13Z",
   "years": {
     "2024": {
       "year": "2024",
-      "lastUpdated": "2026-03-03T23:50:09Z",
+      "lastUpdated": "2026-03-04T00:13:13Z",
       "totalRiders": 0,
       "totalRevenue": 0,
       "avgOrder": 0,
@@ -64,7 +64,7 @@
     },
     "2025": {
       "year": "2025",
-      "lastUpdated": "2026-03-03T23:50:09Z",
+      "lastUpdated": "2026-03-04T00:13:13Z",
       "totalRiders": 0,
       "totalRevenue": 0,
       "avgOrder": 0,
@@ -125,7 +125,7 @@
     },
     "2026": {
       "year": "2026",
-      "lastUpdated": "2026-03-03T23:50:09Z",
+      "lastUpdated": "2026-03-04T00:13:13Z",
       "totalRiders": 0,
       "totalRevenue": 0,
       "avgOrder": 0,
