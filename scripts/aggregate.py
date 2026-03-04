@@ -164,7 +164,14 @@ def fetch_registrants(api_key, form_id, limit=PAGE_LIMIT):
 def aggregate_year(registrants, year):
     """Aggregate registrant data into summary stats for one year."""
     # Filter to completed, non-clothing-only
-    completed = [r for r in registrants if r.get("status") == "completed"]
+    completed = [r for r in registrants if r.get("status") in ("completed", "pending")]
+    ```
+
+    Commit, then run the batch file again. That should close the gap between 557 and 632.
+
+    Now for **2025** — can you run this quick check:
+     ```
+    py -c "from urllib.request import Request,urlopen;import json;req=Request('https://api.webconnex.com/v2/public/search/registrants?product=redpodium.com&formId=799166&limit=1',headers={'apiKey':'5a9a057a8353407d9efce1cadf7aa8b1','User-Agent':'Mozilla/5.0'});data=json.loads(urlopen(req).read());print('Total:',data['totalResults']);print('Status:',data['data'][0]['status'] if data['data'] else 'no data')"
     all_completed = completed  # includes clothing-only for clothing stats
 
     riders = [r for r in completed if normalize_route(r.get("fieldData", [])) != "Clothing Only"]
