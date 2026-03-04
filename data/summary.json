@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-03-04T22:48:10Z",
+  "generatedAt": "2026-03-04T23:22:37Z",
   "years": {
     "2024": {
       "year": "2024",
-      "lastUpdated": "2026-03-04T22:47:53Z",
+      "lastUpdated": "2026-03-04T23:22:17Z",
       "totalRiders": 1737,
       "totalRevenue": 246658.62,
       "avgOrder": 142.0,
@@ -1237,7 +1237,7 @@
     },
     "2025": {
       "year": "2025",
-      "lastUpdated": "2026-03-04T22:48:04Z",
+      "lastUpdated": "2026-03-04T23:22:32Z",
       "totalRiders": 1857,
       "totalRevenue": 267670.65,
       "avgOrder": 144.14,
@@ -2681,8 +2681,9 @@
         }
       ],
       "routes": {
-        "Century 100": 1517,
-        "Metric Century 64": 175,
+        "Century 100": 780,
+        "Metric Century 64": 737,
+        "Geronimo 37": 175,
         "Double Metric 127": 148,
         "Unknown": 17
       },
@@ -2878,7 +2879,7 @@
     },
     "2026": {
       "year": "2026",
-      "lastUpdated": "2026-03-04T22:48:09Z",
+      "lastUpdated": "2026-03-04T23:22:37Z",
       "totalRiders": 562,
       "totalRevenue": 75443.75,
       "avgOrder": 134.24,
@@ -3307,8 +3308,9 @@
         }
       ],
       "routes": {
-        "Century 100": 484,
-        "Metric Century 64": 44,
+        "Metric Century 64": 255,
+        "Century 100": 229,
+        "Geronimo 37": 44,
         "Double Metric 127": 34
       },
       "coupons": {
