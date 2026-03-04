@@ -5,117 +5,134 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Marin Century 2026 — Registration Dashboard</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #fafaf7; font-family: 'DM Sans', system-ui, sans-serif; color: #292524; }
-  #root { min-height: 100vh; }
-  .loading { padding: 40px; color: #a8a29e; font-size: 14px; }
+:root{--c2024:#7cb668;--c2025:#2d6a2e;--c2026:#c2410c;--c2026b:#9a3412;--muted:#a8a29e;--bg:#fafaf7;--card:#fff;--border:#e7e5e0;--text:#292524;--text2:#78716c;--alt:#f9f8f5;--head:#f3f2ee;--gap:#efeeea}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);font-family:'DM Sans',system-ui,sans-serif;color:var(--text)}
+.hdr{padding:20px 24px 0;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px}
+.hdr h1{font-size:24px;font-weight:900;color:var(--c2026b);letter-spacing:-0.02em}
+.hdr .sub{color:var(--muted);font-size:10px;margin-top:2px}
+.heroes{display:flex;gap:10px;flex-wrap:wrap}
+.hc{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 16px;min-width:130px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.hc .lab{font-size:9px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.hc .val{font-size:22px;font-weight:900;color:var(--c2026);margin:2px 0}
+.bdg{font-size:10px;font-weight:700;padding:1px 6px;border-radius:4px;display:inline-block}
+.bdg.up{color:#166534;background:#dcfce7}.bdg.dn{color:#991b1b;background:#fee2e2}
+.pnl{margin:16px 20px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px 16px 12px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.pnl h2{font-size:14px;font-weight:800;margin-bottom:12px}
+.pnl-c{display:flex;justify-content:center;padding:0 20px 16px}
+.pnl-c .pnl{margin:0;width:100%;max-width:720px}
+.pnl-c .pnl h2{text-align:center}
+.cnote{text-align:center;font-size:9px;color:var(--muted);margin-top:6px}
+.leg{display:flex;gap:16px;font-size:11px}
+.leg .it{display:flex;align-items:center;gap:5px;cursor:pointer;transition:opacity .2s}
+.leg .it.dim{opacity:.2}
+.leg .ln{width:16px;height:0}
+.leg .d24{border-top:2px dashed var(--c2024)}.leg .s25{border-top:2.5px solid var(--c2025)}.leg .s26{border-top:2.5px solid var(--c2026)}
+.leg span{font-weight:700}
+.tw{display:flex;justify-content:center;padding:0 20px 20px}
+.tp{background:var(--card);border:1px solid var(--border);border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.04);overflow:hidden;width:100%;max-width:800px}
+.tp table{width:100%;border-collapse:collapse}
+.tp th{position:sticky;top:0;z-index:10;background:var(--head);padding:3px 4px;font-size:10px;font-weight:600}
+.tp td{padding:3px 5px;font-size:11px;font-variant-numeric:tabular-nums}
+.tp .sh td{padding:8px 6px 3px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--c2026);border-bottom:2px solid var(--c2026);background:var(--card)}
+.tp .sbh td{padding:6px 6px 1px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text2);border-bottom:1px solid var(--border)}
+.gc{background:var(--gap);border-left:1.5px solid var(--border);border-right:1.5px solid var(--border);width:8px}
+.c4{color:var(--c2024);font-weight:500}.c5{color:var(--c2025);font-weight:500}.c6{color:var(--c2026);font-weight:700}
+.ra{text-align:right}.lb{white-space:nowrap;font-weight:500;padding-left:6px!important}
+.um{font-size:9px;color:var(--muted);text-align:center}
+.it2{font-style:italic;font-weight:400!important;color:var(--text2)}
+.ft{padding:4px 24px 20px;text-align:center;font-size:9px;color:var(--muted)}
+@media(max-width:700px){.hdr{flex-direction:column}.heroes{width:100%}.hc{flex:1;min-width:100px}}
 </style>
 </head>
 <body>
-<div id="root"><div class="loading">Loading dashboard...</div></div>
-<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/recharts/2.12.7/Recharts.min.js"></script>
-<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
-<script type="text/babel">
-const{useState}=React;const{AreaChart,Area,BarChart,Bar,XAxis,YAxis,CartesianGrid,Tooltip,ResponsiveContainer,Legend}=Recharts;
-const C2024="#7cb668",C2025="#2d6a2e",C2026="#c2410c",C2026_BOLD="#9a3412",MUTED="#a8a29e",BG="#fafaf7",CARD="#ffffff",BORDER="#e7e5e0",TEXT="#292524",TEXT2="#78716c",ALT_ROW="#f9f8f5",HEAD_BG="#f3f2ee",GAP_BG="#efeeea",YEAR_COLORS={"2024":C2024,"2025":C2025,"2026":C2026};
-const generateCumulativeData=()=>{const data=[];const r24=[30,35,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,68,70,72,74,76,78,80,82,84,86,90,100,110,120,80,50,30];const r25=[48,55,60,65,68,72,76,80,82,78,76,74,72,70,68,66,64,62,60,62,64,66,70,78,82,88,95,110,130,140,160,90,55,30];const r26=[48,58,64,70,74,78,82,84,76];const cw=8;let c24=0,c25=0,c26=0;const s=new Date(2026,0,1);const e=new Date(2026,8,1);const mn=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep"];for(let i=0;i<36;i++){const d=new Date(s);d.setDate(d.getDate()+i*7);if(d>e)break;c24+=r24[i]||0;c25+=r25[i]||0;if(i<=cw)c26+=r26[i]||0;data.push({date:`${mn[d.getMonth()]} ${d.getDate()}`,"2024":c24,"2025":c25,"2026":i<=cw?c26:null});}return data;};
-const chartData=generateCumulativeData();
-const routeData=[{route:"Geronimo 37","2024":10.4,"2025":11.1,"2026":7.0},{route:"Metric 64","2024":27.3,"2025":33.3,"2026":40.1},{route:"Century 100","2024":42.6,"2025":41.7,"2026":36.0},{route:"Mt Tam 93","2024":11.0,"2025":6.9,"2026":11.7},{route:"Dbl Metric 127","2024":8.6,"2025":6.3,"2026":5.2}];
-const sections=[{title:"Registration",rows:[{label:"Riders Registered",uom:"Units",ytd:[400,627,632],full:[1902,2107,null]},{label:"Revenue",uom:"$",ytd:[52000,81297,97328],full:[248760,322671,null]},{label:"Avg Order",uom:"$",ytd:[130,130,154],full:[131,153,null]},{label:"Coupons Used",uom:"Units",ytd:[28,36,0],full:[220,298,null]},{label:"Coupon Value",uom:"$",ytd:[1680,2160,0],full:[13200,17880,null]},{label:"% Ordering Clothing",uom:"%",ytd:[22,24,18],full:[22,23,null]},{label:"% Buying Membership",uom:"%",ytd:[8,9,7],full:[8,8,null]}]},{title:"Routes",rows:[{label:"Geronimo 37",uom:"Units",ytd:[42,70,44],full:[198,234,null]},{label:"Metric Century 64",uom:"Units",ytd:[109,209,254],full:[520,702,null]},{label:"Century 100",uom:"Units",ytd:[170,261,228],full:[810,879,null]},{label:"Mt Tam 93",uom:"Units",ytd:[44,43,74],full:[210,145,null]},{label:"Double Metric 127",uom:"Units",ytd:[34,39,33],full:[164,133,null]}]},{title:"Demographics",rows:[{label:"% Male",uom:"%",ytd:[68,66,64],full:[67,65,null]},{label:"% Female",uom:"%",ytd:[30,32,34],full:[31,33,null]},{label:"Avg Age on Aug 1",uom:"yrs",ytd:[null,null,null],full:[48,47,null]},{label:"E-bike Riders",uom:"Units",ytd:[4,8,23],full:[42,58,null]}]},{title:"Clothing Detail",rows:[{label:"Jersey",uom:"Units",ytd:[18,28,30],full:[172,198,null]},{label:"Bibs",uom:"Units",ytd:[14,22,24],full:[128,152,null]},{label:"Shorts",uom:"Units",ytd:[8,14,14],full:[78,96,null]},{label:"Socks",uom:"Units",ytd:[28,42,48],full:[280,324,null]}]},{title:"Food Preference",rows:[{label:"No Preference",uom:"%",ytd:[72,70,68],full:[71,69,null]},{label:"Vegetarian",uom:"%",ytd:[16,17,18],full:[16,17,null]},{label:"Vegan",uom:"%",ytd:[6,7,8],full:[7,8,null]},{label:"Gluten-Free",uom:"%",ytd:[6,6,6],full:[6,6,null]}]}];
-const geoData={topCities:[{city:"San Francisco, CA",ytd:[52,82,84],full:[245,272,null]},{city:"San Rafael, CA",ytd:[35,55,56],full:[168,188,null]},{city:"Oakland, CA",ytd:[30,47,48],full:[142,160,null]},{city:"Mill Valley, CA",ytd:[24,38,38],full:[112,125,null]},{city:"Berkeley, CA",ytd:[21,33,34],full:[98,110,null]},{city:"San Jose, CA",ytd:[18,29,30],full:[88,98,null]},{city:"Novato, CA",ytd:[16,26,26],full:[78,86,null]},{city:"Walnut Creek, CA",ytd:[15,24,24],full:[72,80,null]},{city:"Sausalito, CA",ytd:[13,21,22],full:[62,70,null]},{city:"Palo Alto, CA",ytd:[12,19,20],full:[58,64,null]},{city:"Corte Madera, CA",ytd:[11,17,18],full:[52,58,null]},{city:"Santa Rosa, CA",ytd:[10,16,16],full:[48,54,null]},{city:"Petaluma, CA",ytd:[9,14,14],full:[42,48,null]},{city:"San Mateo, CA",ytd:[8,13,12],full:[38,42,null]},{city:"Tiburon, CA",ytd:[7,11,12],full:[34,38,null]},{city:"Larkspur, CA",ytd:[6,10,10],full:[30,34,null]},{city:"Fremont, CA",ytd:[6,10,10],full:[28,32,null]},{city:"Sacramento, CA",ytd:[5,8,8],full:[24,28,null]},{city:"Mountain View, CA",ytd:[5,8,8],full:[22,26,null]},{city:"Fairfax, CA",ytd:[4,7,8],full:[20,22,null]}],otherCA:{label:"Other California",ytd:[42,66,72],full:[296,330,null]},states:[{label:"Oregon",ytd:[8,12,12],full:[38,42,null]},{label:"Washington",ytd:[6,9,10],full:[28,32,null]},{label:"Nevada",ytd:[4,7,8],full:[22,26,null]},{label:"Colorado",ytd:[3,5,6],full:[18,20,null]},{label:"Texas",ytd:[2,4,4],full:[14,16,null]},{label:"New York",ytd:[2,4,4],full:[12,14,null]},{label:"Other States",ytd:[8,14,16],full:[52,58,null]}]};
-const fmt=(v,u)=>{if(v===null||v===undefined)return"\u2014";if(u==="$")return"$"+Number(v).toLocaleString();if(u==="%")return v+"%";return Number(v).toLocaleString();};
-const pctChange=(c,p)=>(!p||!c)?null:Math.round(((c-p)/p)*100);
-const ChartTooltip=({active,payload,label})=>{if(!active||!payload)return null;return(<div style={{background:"#fff",border:"1px solid "+BORDER,borderRadius:6,padding:"8px 12px",boxShadow:"0 4px 12px rgba(0,0,0,0.08)"}}><p style={{color:TEXT2,fontSize:10,margin:"0 0 4px",fontWeight:600}}>{label}</p>{payload.map((e,i)=>e.value!=null&&<p key={i} style={{color:YEAR_COLORS[e.name]||TEXT,fontSize:11,margin:"1px 0",fontWeight:500}}>{e.name}: <b>{e.value.toLocaleString()}</b></p>)}</div>);};
-const BarTooltip=({active,payload,label})=>{if(!active||!payload)return null;return(<div style={{background:"#fff",border:"1px solid "+BORDER,borderRadius:6,padding:"8px 12px",boxShadow:"0 4px 12px rgba(0,0,0,0.08)"}}><p style={{color:TEXT2,fontSize:10,margin:"0 0 4px",fontWeight:600}}>{label}</p>{payload.map((e,i)=><p key={i} style={{color:e.fill,fontSize:11,margin:"1px 0",fontWeight:500}}>{e.name}: <b>{e.value}%</b></p>)}</div>);};
+<div class="hdr">
+  <div><h1>Marin Century 2026</h1><p class="sub">Registration Dashboard &bull; SAMPLE DATA &bull; Mar 3, 2026</p></div>
+  <div class="heroes" id="hc"></div>
+</div>
+<div class="pnl">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+    <h2>Cumulative Registrations &bull; Jan 1 – Sep 1</h2>
+    <div class="leg" id="cleg"></div>
+  </div>
+  <div style="height:300px"><canvas id="cc"></canvas></div>
+</div>
+<div class="pnl-c"><div class="pnl">
+  <h2>Route Comparison by Year (% of Riders)</h2>
+  <div style="height:280px"><canvas id="rc"></canvas></div>
+  <p class="cnote">2024/2025 = full year &bull; 2026 = year-to-date as of Mar 3</p>
+</div></div>
+<div class="tw"><div class="tp"><div style="overflow-x:auto"><table id="mt"></table></div></div></div>
+<div class="ft">Marin Century Registration Dashboard &bull; Source: RedPodium &bull; Sample data for prototype review</div>
 
-function Dashboard(){
-  const[activeYear,setActiveYear]=useState(null);
-  const riders26=632,riders25ytd=627,rev26=97328,rev25ytd=81297,avg26=154,avg25ytd=130;
-  const ridersPct=pctChange(riders26,riders25ytd),revenuePct=pctChange(rev26,rev25ytd),avgPct=pctChange(avg26,avg25ytd);
-  const pctBadge=(pct)=>{if(pct===null)return null;const color=pct>=0?"#166534":"#991b1b";const bg=pct>=0?"#dcfce7":"#fee2e2";return <span style={{fontSize:10,fontWeight:700,color,background:bg,padding:"1px 6px",borderRadius:4}}>{pct>=0?"+":""}{pct}% vs 2025 YTD</span>;};
-  const stickyTh={position:"sticky",top:0,zIndex:10,background:HEAD_BG,padding:"3px 4px",fontSize:10,fontWeight:600};
-  const renderRow=(label,uom,ytdV,fullV,idx,opts)=>{opts=opts||{};return(<tr key={label+idx} style={{background:idx%2===0?"transparent":ALT_ROW}}><td style={{padding:"3px 6px",fontSize:11,fontWeight:label?500:400,fontStyle:opts.italic?"italic":"normal",color:label?TEXT:TEXT2,whiteSpace:"nowrap"}}>{label}</td><td style={{padding:"3px 4px",fontSize:9,color:MUTED,textAlign:"center"}}>{uom}</td><td style={{padding:"3px 5px",fontSize:11,textAlign:"right",color:C2024,fontWeight:500,fontVariantNumeric:"tabular-nums"}}>{fmt(ytdV[0],uom)}</td><td style={{padding:"3px 5px",fontSize:11,textAlign:"right",color:C2025,fontWeight:500,fontVariantNumeric:"tabular-nums"}}>{fmt(ytdV[1],uom)}</td><td style={{padding:"3px 5px",fontSize:11,textAlign:"right",color:C2026,fontWeight:700,fontVariantNumeric:"tabular-nums"}}>{fmt(ytdV[2],uom)}</td><td style={{background:GAP_BG,borderLeft:"1.5px solid "+BORDER,borderRight:"1.5px solid "+BORDER,width:8}}></td><td style={{padding:"3px 5px",fontSize:11,textAlign:"right",color:C2024,fontWeight:500,fontVariantNumeric:"tabular-nums"}}>{fmt(fullV[0],uom)}</td><td style={{padding:"3px 5px",fontSize:11,textAlign:"right",color:C2025,fontWeight:500,fontVariantNumeric:"tabular-nums"}}>{fmt(fullV[1],uom)}</td><td style={{padding:"3px 5px",fontSize:11,textAlign:"right",color:C2026,fontWeight:700,fontVariantNumeric:"tabular-nums"}}>{fmt(fullV[2],uom)}</td></tr>);};
-  const sectionHeader=(title)=>(<tr><td colSpan={9} style={{padding:"8px 6px 3px",fontSize:11,fontWeight:800,textTransform:"uppercase",letterSpacing:"0.08em",color:C2026,borderBottom:"2px solid "+C2026,background:CARD}}>{title}</td></tr>);
-  const subHeader=(title)=>(<tr><td colSpan={9} style={{padding:"6px 6px 1px",fontSize:9,fontWeight:700,textTransform:"uppercase",letterSpacing:"0.06em",color:TEXT2,borderBottom:"1px solid "+BORDER}}>{title}</td></tr>);
+<script>
+var C24='#7cb668',C25='#2d6a2e',C26='#c2410c';
+var r24=[30,35,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,68,70,72,74,76,78,80,82,84,86,90,100,110,120,80,50,30];
+var r25=[48,55,60,65,68,72,76,80,82,78,76,74,72,70,68,66,64,62,60,62,64,66,70,78,82,88,95,110,130,140,160,90,55,30];
+var r26=[48,58,64,70,74,78,82,84,76];
+var cw=8;
+function bc(){var l=[],a=[],b=[],c=[];var s=new Date(2026,0,1),e=new Date(2026,8,1);var mn=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep"];var ca=0,cb=0,cc2=0;for(var i=0;i<35;i++){var d=new Date(s);d.setDate(d.getDate()+i*7);if(d>e)break;ca+=r24[i]||0;cb+=r25[i]||0;if(i<=cw)cc2+=r26[i]||0;l.push(mn[d.getMonth()]+' '+d.getDate());a.push(ca);b.push(cb);c.push(i<=cw?cc2:null)}return{l:l,a:a,b:b,c:c}}
 
-  return(<div style={{minHeight:"100vh",background:BG}}>
-    <div style={{padding:"20px 24px 0",display:"flex",justifyContent:"space-between",alignItems:"flex-start",flexWrap:"wrap",gap:12}}>
-      <div><h1 style={{fontSize:24,fontWeight:900,margin:0,color:C2026_BOLD,letterSpacing:"-0.02em"}}>Marin Century 2026</h1><p style={{color:MUTED,fontSize:10,margin:"2px 0 0"}}>Registration Dashboard &bull; SAMPLE DATA &bull; Mar 3, 2026</p></div>
-      <div style={{display:"flex",gap:10,flexWrap:"wrap"}}>
-        {[{l:"2026 Riders YTD",v:riders26.toLocaleString(),pct:ridersPct},{l:"2026 Revenue YTD",v:"$"+rev26.toLocaleString(),pct:revenuePct},{l:"Avg Order",v:"$"+avg26,pct:avgPct}].map((d,i)=>(<div key={i} style={{background:CARD,border:"1px solid "+BORDER,borderRadius:8,padding:"10px 16px",minWidth:130,boxShadow:"0 1px 3px rgba(0,0,0,0.04)"}}><div style={{fontSize:9,color:MUTED,fontWeight:700,textTransform:"uppercase",letterSpacing:"0.08em"}}>{d.l}</div><div style={{fontSize:22,fontWeight:900,color:C2026,margin:"2px 0"}}>{d.v}</div><div>{pctBadge(d.pct)}</div></div>))}
-      </div>
-    </div>
+function f(v,u){if(v===null||v===undefined)return'\u2014';if(u==='$')return'$'+Number(v).toLocaleString();if(u==='%')return v+'%';return Number(v).toLocaleString()}
+function pc(c,p){return(!p||!c)?null:Math.round(((c-p)/p)*100)}
 
-    <div style={{margin:"16px 20px",background:CARD,border:"1px solid "+BORDER,borderRadius:10,padding:"18px 16px 12px",boxShadow:"0 1px 3px rgba(0,0,0,0.04)"}}>
-      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:12,padding:"0 6px"}}>
-        <h2 style={{fontSize:14,fontWeight:800,margin:0}}>Cumulative Registrations &bull; Jan 1 &ndash; Sep 1</h2>
-        <div style={{display:"flex",gap:16,fontSize:11}}>
-          {[{y:"2024",c:C2024,dash:true},{y:"2025",c:C2025,dash:false},{y:"2026",c:C2026,dash:false}].map(item=>(<div key={item.y} style={{display:"flex",alignItems:"center",gap:5,cursor:"pointer",opacity:activeYear&&activeYear!==item.y?0.2:1,transition:"opacity 0.2s"}} onClick={()=>setActiveYear(activeYear===item.y?null:item.y)}><div style={{width:16,height:0,borderTop:item.dash?"2px dashed "+item.c:"2.5px solid "+item.c}}/><span style={{color:item.c,fontWeight:700}}>{item.y}</span></div>))}
-        </div>
-      </div>
-      <ResponsiveContainer width="100%" height={300}>
-        <AreaChart data={chartData} margin={{top:4,right:16,bottom:4,left:8}}>
-          <defs><linearGradient id="grad2026" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor={C2026} stopOpacity={0.18}/><stop offset="100%" stopColor={C2026} stopOpacity={0}/></linearGradient></defs>
-          <CartesianGrid strokeDasharray="3 3" stroke="#e8e5df"/>
-          <XAxis dataKey="date" tick={{fill:MUTED,fontSize:9}} axisLine={{stroke:BORDER}} tickLine={false} interval="preserveStartEnd" minTickGap={40}/>
-          <YAxis tick={{fill:MUTED,fontSize:9}} axisLine={false} tickLine={false} domain={[0,2500]} ticks={[0,500,1000,1500,2000,2500]} tickFormatter={v=>v.toLocaleString()}/>
-          <Tooltip content={<ChartTooltip/>}/>
-          <Area type="monotone" dataKey="2024" stroke={C2024} strokeWidth={1.5} strokeDasharray="5 3" fill="none" dot={false} opacity={activeYear&&activeYear!=="2024"?0.1:0.7}/>
-          <Area type="monotone" dataKey="2025" stroke={C2025} strokeWidth={2} fill="none" dot={false} opacity={activeYear&&activeYear!=="2025"?0.1:0.85}/>
-          <Area type="monotone" dataKey="2026" stroke={C2026} strokeWidth={2.5} fill="url(#grad2026)" dot={false} opacity={activeYear&&activeYear!=="2026"?0.1:1}/>
-        </AreaChart>
-      </ResponsiveContainer>
-    </div>
+// Hero
+(function(){var el=document.getElementById('hc');
+var items=[{l:'2026 Riders YTD',v:'632',c:632,p:627},{l:'2026 Revenue YTD',v:'$97,328',c:97328,p:81297},{l:'Avg Order',v:'$154',c:154,p:130}];
+items.forEach(function(d){var p2=pc(d.c,d.p);var cls=p2>=0?'up':'dn';var s=p2>=0?'+':'';
+el.innerHTML+='<div class="hc"><div class="lab">'+d.l+'</div><div class="val">'+d.v+'</div><span class="bdg '+cls+'">'+s+p2+'% vs 2025 YTD</span></div>'})})();
 
-    <div style={{display:"flex",justifyContent:"center",padding:"0 20px 16px"}}>
-      <div style={{background:CARD,border:"1px solid "+BORDER,borderRadius:10,padding:"18px 24px 14px",boxShadow:"0 1px 3px rgba(0,0,0,0.04)",width:"100%",maxWidth:720}}>
-        <h2 style={{fontSize:14,fontWeight:800,margin:"0 0 14px",textAlign:"center"}}>Route Comparison by Year (% of Riders)</h2>
-        <ResponsiveContainer width="100%" height={280}>
-          <BarChart data={routeData} margin={{top:4,right:20,bottom:4,left:8}}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#e8e5df"/>
-            <XAxis dataKey="route" tick={{fill:TEXT2,fontSize:10}} axisLine={{stroke:BORDER}} tickLine={false}/>
-            <YAxis tick={{fill:MUTED,fontSize:9}} axisLine={false} tickLine={false} tickFormatter={v=>v+"%"} domain={[0,50]}/>
-            <Tooltip content={<BarTooltip/>}/>
-            <Legend wrapperStyle={{fontSize:11,fontWeight:600}} formatter={v=><span style={{color:YEAR_COLORS[v]||TEXT}}>{v}</span>}/>
-            <Bar dataKey="2024" fill={C2024} radius={[2,2,0,0]}/>
-            <Bar dataKey="2025" fill={C2025} radius={[2,2,0,0]}/>
-            <Bar dataKey="2026" fill={C2026} radius={[2,2,0,0]}/>
-          </BarChart>
-        </ResponsiveContainer>
-        <p style={{textAlign:"center",fontSize:9,color:MUTED,margin:"6px 0 0"}}>2024/2025 = full year &bull; 2026 = year-to-date as of Mar 3</p>
-      </div>
-    </div>
+// Cumulative Chart
+(function(){var cd=bc();var ctx=document.getElementById('cc').getContext('2d');
+var ch=new Chart(ctx,{type:'line',data:{labels:cd.l,datasets:[
+{label:'2024',data:cd.a,borderColor:C24,borderWidth:1.5,borderDash:[5,3],pointRadius:0,fill:false,tension:.3},
+{label:'2025',data:cd.b,borderColor:C25,borderWidth:2,pointRadius:0,fill:false,tension:.3},
+{label:'2026',data:cd.c,borderColor:C26,borderWidth:2.5,pointRadius:0,fill:true,
+backgroundColor:function(x){var g=x.chart.ctx.createLinearGradient(0,0,0,x.chart.height);g.addColorStop(0,'rgba(194,65,12,0.18)');g.addColorStop(1,'rgba(194,65,12,0)');return g},tension:.3,spanGaps:false}
+]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+plugins:{legend:{display:false},tooltip:{backgroundColor:'#fff',titleColor:'#78716c',bodyColor:'#292524',borderColor:'#e7e5e0',borderWidth:1,padding:10,cornerRadius:6,titleFont:{size:10,weight:'600'},bodyFont:{size:11,weight:'500'},callbacks:{label:function(x){return x.raw!=null?x.dataset.label+': '+x.raw.toLocaleString():null}}}},
+scales:{x:{grid:{display:false},ticks:{font:{size:9},color:'#a8a29e',maxTicksLimit:10}},y:{min:0,max:2500,ticks:{font:{size:9},color:'#a8a29e',stepSize:500,callback:function(v){return v.toLocaleString()}},grid:{color:'#e8e5df'}}}}});
+var le=document.getElementById('cleg');var its=[{y:'2024',c:C24,s:'d24'},{y:'2025',c:C25,s:'s25'},{y:'2026',c:C26,s:'s26'}];var ay=null;
+its.forEach(function(it,i){var d=document.createElement('div');d.className='it';d.innerHTML='<div class="ln '+it.s+'"></div><span style="color:'+it.c+'">'+it.y+'</span>';
+d.onclick=function(){if(ay===it.y)ay=null;else ay=it.y;ch.data.datasets.forEach(function(ds,di){ds.hidden=ay&&its[di].y!==ay});ch.update();le.querySelectorAll('.it').forEach(function(el,j){el.className=(!ay||its[j].y===ay)?'it':'it dim'})};le.appendChild(d)})})();
 
-    <div style={{display:"flex",justifyContent:"center",padding:"0 20px 20px"}}>
-      <div style={{background:CARD,border:"1px solid "+BORDER,borderRadius:10,boxShadow:"0 1px 3px rgba(0,0,0,0.04)",overflow:"hidden",width:"100%",maxWidth:800}}>
-        <div style={{overflowX:"auto"}}>
-          <table style={{width:"100%",borderCollapse:"collapse"}}>
-            <colgroup><col style={{width:160}}/><col style={{width:38}}/><col style={{width:70}}/><col style={{width:70}}/><col style={{width:70}}/><col style={{width:8}}/><col style={{width:80}}/><col style={{width:80}}/><col style={{width:80}}/></colgroup>
-            <thead>
-              <tr><th style={{...stickyTh,textAlign:"left"}}></th><th style={stickyTh}></th><th colSpan={3} style={{...stickyTh,textAlign:"center",fontSize:10,fontWeight:700,color:TEXT2,letterSpacing:"0.1em",textTransform:"uppercase",borderBottom:"1.5px solid "+BORDER,paddingBottom:2}}>Year to Date (Mar 3)</th><th style={{...stickyTh,background:GAP_BG,borderLeft:"1.5px solid "+BORDER,borderRight:"1.5px solid "+BORDER}}></th><th colSpan={3} style={{...stickyTh,textAlign:"center",fontSize:10,fontWeight:700,color:TEXT2,letterSpacing:"0.1em",textTransform:"uppercase",borderBottom:"1.5px solid "+BORDER,paddingBottom:2}}>Full Year</th></tr>
-              <tr><th style={{...stickyTh,top:24,textAlign:"left"}}></th><th style={{...stickyTh,top:24,fontSize:9,color:MUTED,textAlign:"center"}}>UOM</th><th style={{...stickyTh,top:24,textAlign:"right",color:C2024,padding:"3px 5px",fontWeight:700}}>2024</th><th style={{...stickyTh,top:24,textAlign:"right",color:C2025,padding:"3px 5px",fontWeight:700}}>2025</th><th style={{...stickyTh,top:24,textAlign:"right",color:C2026,fontWeight:800,padding:"3px 5px"}}>2026</th><th style={{...stickyTh,top:24,background:GAP_BG,borderLeft:"1.5px solid "+BORDER,borderRight:"1.5px solid "+BORDER}}></th><th style={{...stickyTh,top:24,textAlign:"right",color:C2024,padding:"3px 5px",fontWeight:700}}>2024</th><th style={{...stickyTh,top:24,textAlign:"right",color:C2025,padding:"3px 5px",fontWeight:700}}>2025</th><th style={{...stickyTh,top:24,textAlign:"right",color:C2026,fontWeight:800,padding:"3px 5px"}}>2026 est</th></tr>
-            </thead>
-            {sections.map((sec,si)=>(<tbody key={si}>{sectionHeader(sec.title)}{sec.rows.map((row,ri)=>renderRow(row.label,row.uom,row.ytd,row.full,ri))}</tbody>))}
-            <tbody>
-              {sectionHeader("Geographics")}
-              {subHeader("Top 20 Cities")}
-              {geoData.topCities.map((c,i)=>renderRow(c.city,"Units",c.ytd,c.full,i))}
-              {subHeader("Other California")}
-              {renderRow(geoData.otherCA.label,"Units",geoData.otherCA.ytd,geoData.otherCA.full,0,{italic:true})}
-              {subHeader("Non-CA States")}
-              {geoData.states.map((s,i)=>renderRow(s.label,"Units",s.ytd,s.full,i,i===geoData.states.length-1?{italic:true}:{}))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div style={{padding:"4px 24px 20px",textAlign:"center",fontSize:9,color:MUTED}}>Marin Century Registration Dashboard &bull; Source: RedPodium &bull; Sample data for prototype review</div>
-  </div>);
-}
-ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(Dashboard));
+// Route Chart
+(function(){var ctx=document.getElementById('rc').getContext('2d');
+new Chart(ctx,{type:'bar',data:{labels:['Geronimo 37','Metric 64','Century 100','Mt Tam 93','Dbl Metric 127'],datasets:[
+{label:'2024',data:[10.4,27.3,42.6,11.0,8.6],backgroundColor:C24,borderRadius:2},
+{label:'2025',data:[11.1,33.3,41.7,6.9,6.3],backgroundColor:C25,borderRadius:2},
+{label:'2026',data:[7.0,40.1,36.0,11.7,5.2],backgroundColor:C26,borderRadius:2}
+]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:11,weight:'600'},usePointStyle:true,pointStyle:'rect',padding:16}},tooltip:{backgroundColor:'#fff',titleColor:'#78716c',bodyColor:'#292524',borderColor:'#e7e5e0',borderWidth:1,padding:10,cornerRadius:6,callbacks:{label:function(x){return x.dataset.label+': '+x.raw+'%'}}}},scales:{x:{grid:{display:false},ticks:{font:{size:10},color:'#78716c'}},y:{min:0,max:50,ticks:{font:{size:9},color:'#a8a29e',callback:function(v){return v+'%'}},grid:{color:'#e8e5df'}}}}})})();
+
+// Metrics Table
+(function(){var t=document.getElementById('mt');var h='<colgroup><col style="width:160px"><col style="width:38px"><col style="width:70px"><col style="width:70px"><col style="width:70px"><col style="width:8px"><col style="width:80px"><col style="width:80px"><col style="width:80px"></colgroup>';
+h+='<thead><tr><th></th><th></th><th colspan="3" style="text-align:center;font-size:10px;font-weight:700;color:var(--text2);letter-spacing:.1em;text-transform:uppercase;border-bottom:1.5px solid var(--border);padding-bottom:2px">Year to Date (Mar 3)</th><th class="gc"></th><th colspan="3" style="text-align:center;font-size:10px;font-weight:700;color:var(--text2);letter-spacing:.1em;text-transform:uppercase;border-bottom:1.5px solid var(--border);padding-bottom:2px">Full Year</th></tr>';
+h+='<tr><th style="text-align:left"></th><th class="um">UOM</th><th class="ra c4">2024</th><th class="ra c5">2025</th><th class="ra c6" style="font-weight:800">2026</th><th class="gc"></th><th class="ra c4">2024</th><th class="ra c5">2025</th><th class="ra c6" style="font-weight:800">2026 est</th></tr></thead><tbody>';
+
+function sh(t2){h+='<tr class="sh"><td colspan="9">'+t2+'</td></tr>'}
+function sbh(t2){h+='<tr class="sbh"><td colspan="9">'+t2+'</td></tr>'}
+function ar(lb,u,y,fl,i,it){var bg=i%2!==0?'background:var(--alt)':'';var lc=it?'lb it2':'lb';
+h+='<tr style="'+bg+'"><td class="'+lc+'">'+lb+'</td><td class="um">'+u+'</td><td class="ra c4">'+f(y[0],u)+'</td><td class="ra c5">'+f(y[1],u)+'</td><td class="ra c6">'+f(y[2],u)+'</td><td class="gc"></td><td class="ra c4">'+f(fl[0],u)+'</td><td class="ra c5">'+f(fl[1],u)+'</td><td class="ra c6">'+f(fl[2],u)+'</td></tr>'}
+
+var secs=[
+{t:'Registration',r:[['Riders Registered','Units',[400,627,632],[1902,2107,null]],['Revenue','$',[52000,81297,97328],[248760,322671,null]],['Avg Order','$',[130,130,154],[131,153,null]],['Coupons Used','Units',[28,36,0],[220,298,null]],['Coupon Value','$',[1680,2160,0],[13200,17880,null]],['% Ordering Clothing','%',[22,24,18],[22,23,null]],['% Buying Membership','%',[8,9,7],[8,8,null]]]},
+{t:'Routes',r:[['Geronimo 37','Units',[42,70,44],[198,234,null]],['Metric Century 64','Units',[109,209,254],[520,702,null]],['Century 100','Units',[170,261,228],[810,879,null]],['Mt Tam 93','Units',[44,43,74],[210,145,null]],['Double Metric 127','Units',[34,39,33],[164,133,null]]]},
+{t:'Demographics',r:[['% Male','%',[68,66,64],[67,65,null]],['% Female','%',[30,32,34],[31,33,null]],['Avg Age on Aug 1','yrs',[null,null,null],[48,47,null]],['E-bike Riders','Units',[4,8,23],[42,58,null]]]},
+{t:'Clothing Detail',r:[['Jersey','Units',[18,28,30],[172,198,null]],['Bibs','Units',[14,22,24],[128,152,null]],['Shorts','Units',[8,14,14],[78,96,null]],['Socks','Units',[28,42,48],[280,324,null]]]},
+{t:'Food Preference',r:[['No Preference','%',[72,70,68],[71,69,null]],['Vegetarian','%',[16,17,18],[16,17,null]],['Vegan','%',[6,7,8],[7,8,null]],['Gluten-Free','%',[6,6,6],[6,6,null]]]}
+];
+secs.forEach(function(s){sh(s.t);s.r.forEach(function(r,i){ar(r[0],r[1],r[2],r[3],i)})});
+
+sh('Geographics');sbh('Top 20 Cities');
+var cities=[['San Francisco, CA',[52,82,84],[245,272,null]],['San Rafael, CA',[35,55,56],[168,188,null]],['Oakland, CA',[30,47,48],[142,160,null]],['Mill Valley, CA',[24,38,38],[112,125,null]],['Berkeley, CA',[21,33,34],[98,110,null]],['San Jose, CA',[18,29,30],[88,98,null]],['Novato, CA',[16,26,26],[78,86,null]],['Walnut Creek, CA',[15,24,24],[72,80,null]],['Sausalito, CA',[13,21,22],[62,70,null]],['Palo Alto, CA',[12,19,20],[58,64,null]],['Corte Madera, CA',[11,17,18],[52,58,null]],['Santa Rosa, CA',[10,16,16],[48,54,null]],['Petaluma, CA',[9,14,14],[42,48,null]],['San Mateo, CA',[8,13,12],[38,42,null]],['Tiburon, CA',[7,11,12],[34,38,null]],['Larkspur, CA',[6,10,10],[30,34,null]],['Fremont, CA',[6,10,10],[28,32,null]],['Sacramento, CA',[5,8,8],[24,28,null]],['Mountain View, CA',[5,8,8],[22,26,null]],['Fairfax, CA',[4,7,8],[20,22,null]]];
+cities.forEach(function(c,i){ar(c[0],'Units',c[1],c[2],i)});
+sbh('Other California');ar('Other California','Units',[42,66,72],[296,330,null],0,true);
+sbh('Non-CA States');
+var sts=[['Oregon',[8,12,12],[38,42,null]],['Washington',[6,9,10],[28,32,null]],['Nevada',[4,7,8],[22,26,null]],['Colorado',[3,5,6],[18,20,null]],['Texas',[2,4,4],[14,16,null]],['New York',[2,4,4],[12,14,null]],['Other States',[8,14,16],[52,58,null]]];
+sts.forEach(function(s,i){ar(s[0],'Units',s[1],s[2],i,i===sts.length-1)});
+h+='</tbody>';t.innerHTML=h})();
 </script>
 </body>
 </html>
