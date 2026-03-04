@@ -44,22 +44,6 @@ ROUTE_MAP = {
 }
 
 # Canonical route names from sub-labels
-ROUTE_LABEL_MAP = {
-    # 2025/2026 route labels
-    "CENTURY": "Century 100",
-    "METRIC CENTURY": "Metric Century 64",
-    "METRIC": "Metric Century 64",
-    "GERONIMO": "Geronimo 37",
-    "MOUNT TAM": "Mt Tam 93",
-    "MT. TAM": "Mt Tam 93",
-    "DOUBLE METRIC": "Double Metric 127",
-    "CLOTHING ONLY": "Clothing Only",
-    # 2024 route labels (only 3 routes existed)
-    "COMPACT CLASSIC": "Metric Century 64",
-    "CLASSIC CENTURY": "Century 100",
-    "MT TAM CENTURY": "Mt Tam 93",
-    "MT. TAM CENTURY": "Mt Tam 93",
-}
 
 def normalize_route(field_data):
     """Extract and normalize route from fieldData."""
@@ -72,44 +56,33 @@ def normalize_route(field_data):
         if field.get("path", "").startswith("registrationOptions.") and field.get("label"):
             route_label = field.get("label", "").strip()
 
-    if reg_option == "clothingPurchaseOnly":
+    # Clothing paths
+    if reg_option in ("clothingPurchaseOnly", "clothingOnlyPurchaseSee"):
+        return "Clothing Only"
+    if route_label and "CLOTHING" in route_label.upper():
         return "Clothing Only"
 
-    # Match by path value first (most reliable)
-    PATH_MAP = {
-        "traditionalCentury": "Century 100",
-        "metricCentury": "Metric Century 64",
-        "mountTamChallenge": "Mt Tam 93",
-        "doubleMetricCentury": "Double Metric 127",
-        "geronimo": "Geronimo 37",
-    }
-    if reg_option and reg_option in PATH_MAP:
-        return PATH_MAP[reg_option]
-
-    # Fallback: match by label (for older years with different path values)
+    # Match by label — ORDER MATTERS (specific before generic)
     if route_label:
-        label_upper = route_label.upper()
-        # Check specific/longer keys before generic ones
-        LABEL_MAP_ORDERED = [
-            ("COMPACT CLASSIC", "Metric Century 64"),
-            ("CLASSIC CENTURY", "Century 100"),
-            ("MT TAM CENTURY", "Mt Tam 93"),
-            ("MT. TAM CENTURY", "Mt Tam 93"),
-            ("DOUBLE METRIC", "Double Metric 127"),
-            ("METRIC CENTURY", "Metric Century 64"),
-            ("MOUNT TAM", "Mt Tam 93"),
-            ("MT. TAM", "Mt Tam 93"),
-            ("GERONIMO", "Geronimo 37"),
-            ("METRIC", "Metric Century 64"),
-            ("CENTURY", "Century 100"),
-            ("CLOTHING ONLY", "Clothing Only"),
-        ]
-        for key, name in LABEL_MAP_ORDERED:
-            if key in label_upper:
-                return name
+        lu = route_label.upper()
+        if "DOUBLE METRIC" in lu:
+            return "Double Metric 127"
+        if "METRIC CENTURY" in lu:
+            return "Metric Century 64"
+        if "COMPACT CLASSIC" in lu:
+            return "Metric Century 64"
+        if "MOUNT TAM" in lu or "MT TAM" in lu or "MT. TAM" in lu:
+            return "Mt Tam 93"
+        if "GERONIMO" in lu:
+            return "Geronimo 37"
+        if "CLASSIC CENTURY" in lu:
+            return "Century 100"
+        if "CENTURY" in lu:
+            return "Century 100"
+        if "METRIC" in lu:
+            return "Metric Century 64"
 
     return "Unknown"
-
 
 def get_field(field_data, path, default=None):
     """Get a field value from fieldData by path."""
