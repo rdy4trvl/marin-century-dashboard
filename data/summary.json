@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-03-04T22:37:36Z",
+  "generatedAt": "2026-03-04T22:48:10Z",
   "years": {
     "2024": {
       "year": "2024",
-      "lastUpdated": "2026-03-04T22:37:20Z",
+      "lastUpdated": "2026-03-04T22:47:53Z",
       "totalRiders": 1737,
       "totalRevenue": 246658.62,
       "avgOrder": 142.0,
@@ -1048,8 +1048,9 @@
         }
       ],
       "routes": {
-        "Century 100": 1016,
-        "Metric Century 64": 721
+        "Metric Century 64": 721,
+        "Century 100": 640,
+        "Mt Tam 93": 376
       },
       "coupons": {
         "totalUsed": 146,
@@ -1236,7 +1237,7 @@
     },
     "2025": {
       "year": "2025",
-      "lastUpdated": "2026-03-04T22:37:31Z",
+      "lastUpdated": "2026-03-04T22:48:04Z",
       "totalRiders": 1857,
       "totalRevenue": 267670.65,
       "avgOrder": 144.14,
@@ -2680,9 +2681,9 @@
         }
       ],
       "routes": {
-        "Metric Century 64": 885,
-        "Century 100": 780,
-        "Geronimo 37": 175,
+        "Century 100": 1517,
+        "Metric Century 64": 175,
+        "Double Metric 127": 148,
         "Unknown": 17
       },
       "coupons": {
@@ -2877,7 +2878,7 @@
     },
     "2026": {
       "year": "2026",
-      "lastUpdated": "2026-03-04T22:37:36Z",
+      "lastUpdated": "2026-03-04T22:48:09Z",
       "totalRiders": 562,
       "totalRevenue": 75443.75,
       "avgOrder": 134.24,
@@ -3307,8 +3308,8 @@
       ],
       "routes": {
         "Century 100": 484,
-        "Geronimo 37": 44,
-        "Metric Century 64": 34
+        "Metric Century 64": 44,
+        "Double Metric 127": 34
       },
       "coupons": {
         "totalUsed": 1,
