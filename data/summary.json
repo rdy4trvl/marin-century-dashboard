@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-03-04T22:32:24Z",
+  "generatedAt": "2026-03-04T22:37:36Z",
   "years": {
     "2024": {
       "year": "2024",
-      "lastUpdated": "2026-03-04T22:32:05Z",
+      "lastUpdated": "2026-03-04T22:37:20Z",
       "totalRiders": 1737,
       "totalRevenue": 246658.62,
       "avgOrder": 142.0,
@@ -1236,7 +1236,7 @@
     },
     "2025": {
       "year": "2025",
-      "lastUpdated": "2026-03-04T22:32:21Z",
+      "lastUpdated": "2026-03-04T22:37:31Z",
       "totalRiders": 1857,
       "totalRevenue": 267670.65,
       "avgOrder": 144.14,
@@ -2877,7 +2877,7 @@
     },
     "2026": {
       "year": "2026",
-      "lastUpdated": "2026-03-04T22:32:24Z",
+      "lastUpdated": "2026-03-04T22:37:36Z",
       "totalRiders": 562,
       "totalRevenue": 75443.75,
       "avgOrder": 134.24,
