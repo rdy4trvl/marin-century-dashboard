@@ -1,906 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marin Century Dashboard</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #fafaf7;
-      --card-bg: #ffffff;
-      --text: #2c2c2c;
-      --text-muted: #7a7a72;
-      --border: #e8e6e0;
-      --accent-2026: #b45309;
-      --accent-2026-light: rgba(180, 83, 9, 0.08);
-      --accent-2025: #7c8a6e;
-      --accent-2024: #7c8a6e;
-      --accent-2024-dash: #b0b8a6;
-      --positive: #3d7a3d;
-      --negative: #b33a3a;
-      --divider-gap: #d5d3cc;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'DM Sans', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.35;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .dashboard {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 28px 24px 60px;
-    }
-
-    /* --- HEADER --- */
-    .header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      margin-bottom: 28px;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .header h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 28px;
-      font-weight: 400;
-      color: var(--text);
-      letter-spacing: -0.02em;
-    }
-    .header .updated {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    /* --- HERO CHART --- */
-    .chart-container {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 24px 24px 16px;
-      margin-bottom: 24px;
-    }
-    .chart-title {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-    .chart-subtitle {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-    }
-    .chart-wrapper {
-      position: relative;
-      height: 340px;
-    }
-    .chart-legend {
-      display: flex;
-      gap: 20px;
-      margin-top: 12px;
-      justify-content: center;
-    }
-    .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      color: var(--text-muted);
-      cursor: pointer;
-      user-select: none;
-      transition: opacity 0.2s;
-    }
-    .legend-item:hover { opacity: 0.7; }
-    .legend-item.dimmed { opacity: 0.35; }
-    .legend-swatch {
-      width: 18px;
-      height: 3px;
-      border-radius: 2px;
-    }
-    .legend-swatch.dashed {
-      background: repeating-linear-gradient(90deg, var(--accent-2024-dash) 0, var(--accent-2024-dash) 5px, transparent 5px, transparent 9px);
-    }
-
-    /* --- SUMMARY CARDS --- */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 16px 18px;
-    }
-    .card-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-    }
-    .card-value {
-      font-family: 'DM Serif Display', serif;
-      font-size: 28px;
-      font-weight: 400;
-      color: var(--accent-2026);
-    }
-    .card-delta {
-      font-size: 11px;
-      font-weight: 600;
-      margin-top: 4px;
-    }
-    .card-delta.up { color: var(--positive); }
-    .card-delta.down { color: var(--negative); }
-
-    /* --- METRICS TABLE --- */
-    .table-section {
-      max-width: 780px;
-      margin: 0 auto 28px;
-    }
-    .section-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 20px;
-      font-weight: 400;
-      margin-bottom: 12px;
-      padding-bottom: 6px;
-      border-bottom: 2px solid var(--accent-2026);
-      display: inline-block;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-    }
-    thead th {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-muted);
-      font-weight: 600;
-      padding: 8px 10px;
-      text-align: right;
-      border-bottom: 2px solid var(--border);
-      position: sticky;
-      top: 0;
-      background: var(--card-bg);
-      z-index: 2;
-    }
-    thead th:first-child { text-align: left; }
-    thead th.divider {
-      width: 2px;
-      padding: 0;
-      border-bottom: none;
-      background: var(--card-bg);
-    }
-    tbody td {
-      padding: 7px 10px;
-      text-align: right;
-      border-bottom: 1px solid var(--border);
-    }
-    tbody td:first-child {
-      text-align: left;
-      font-weight: 500;
-    }
-    tbody td.divider {
-      width: 2px;
-      padding: 0;
-      background: var(--divider-gap);
-      border-bottom: 1px solid var(--divider-gap);
-    }
-    tbody tr:last-child td { border-bottom: none; }
-    tbody tr:hover td { background: var(--accent-2026-light); }
-    tbody tr:hover td.divider { background: var(--divider-gap); }
-
-    .table-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 4px 0;
-      overflow-x: auto;
-    }
-    .table-card table { min-width: 600px; }
-    .table-card thead th, .table-card tbody td {
-      padding-left: 16px;
-      padding-right: 16px;
-    }
-
-    .row-highlight td {
-      font-weight: 600 !important;
-      border-top: 2px solid var(--border);
-    }
-
-    /* --- ROUTE CHART --- */
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-    @media (max-width: 700px) {
-      .two-col { grid-template-columns: 1fr; }
-    }
-    .mini-chart-container {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 20px;
-    }
-    .mini-chart-title {
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-    .mini-chart-wrapper {
-      position: relative;
-      height: 220px;
-    }
-
-    /* --- GEOGRAPHY --- */
-    .geo-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    @media (max-width: 700px) {
-      .geo-grid { grid-template-columns: 1fr; }
-    }
-    .geo-list {
-      list-style: none;
-      font-size: 13px;
-    }
-    .geo-list li {
-      display: flex;
-      justify-content: space-between;
-      padding: 5px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .geo-list li:last-child { border-bottom: none; }
-    .geo-rank {
-      color: var(--text-muted);
-      font-size: 11px;
-      width: 22px;
-      flex-shrink: 0;
-    }
-    .geo-name { flex: 1; }
-    .geo-count {
-      font-weight: 600;
-      min-width: 30px;
-      text-align: right;
-    }
-    .geo-agg {
-      font-weight: 600;
-      color: var(--text-muted);
-      font-style: italic;
-    }
-
-    /* --- LOADING / ERROR --- */
-    .loading {
-      text-align: center;
-      padding: 80px 20px;
-      color: var(--text-muted);
-      font-size: 15px;
-    }
-    .loading .spinner {
-      display: inline-block;
-      width: 28px;
-      height: 28px;
-      border: 3px solid var(--border);
-      border-top-color: var(--accent-2026);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      margin-bottom: 12px;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    .error-msg {
-      text-align: center;
-      padding: 60px 20px;
-      color: var(--negative);
-      font-size: 14px;
-    }
-
-    /* --- FOOTER --- */
-    .footer {
-      text-align: center;
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 40px;
-      padding-top: 16px;
-      border-top: 1px solid var(--border);
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marin Century 2026 — Registration Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #fafaf7; font-family: 'DM Sans', system-ui, sans-serif; color: #292524; }
+  #root { min-height: 100vh; }
+  .loading { padding: 40px; color: #a8a29e; font-size: 14px; }
+</style>
 </head>
 <body>
+<div id="root"><div class="loading">Loading dashboard...</div></div>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/recharts/2.12.7/Recharts.min.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<script type="text/babel">
+const{useState}=React;const{AreaChart,Area,BarChart,Bar,XAxis,YAxis,CartesianGrid,Tooltip,ResponsiveContainer,Legend}=Recharts;
+const C2024="#7cb668",C2025="#2d6a2e",C2026="#c2410c",C2026_BOLD="#9a3412",MUTED="#a8a29e",BG="#fafaf7",CARD="#ffffff",BORDER="#e7e5e0",TEXT="#292524",TEXT2="#78716c",ALT_ROW="#f9f8f5",HEAD_BG="#f3f2ee",GAP_BG="#efeeea",YEAR_COLORS={"2024":C2024,"2025":C2025,"2026":C2026};
+const generateCumulativeData=()=>{const data=[];const r24=[30,35,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,68,70,72,74,76,78,80,82,84,86,90,100,110,120,80,50,30];const r25=[48,55,60,65,68,72,76,80,82,78,76,74,72,70,68,66,64,62,60,62,64,66,70,78,82,88,95,110,130,140,160,90,55,30];const r26=[48,58,64,70,74,78,82,84,76];const cw=8;let c24=0,c25=0,c26=0;const s=new Date(2026,0,1);const e=new Date(2026,8,1);const mn=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep"];for(let i=0;i<36;i++){const d=new Date(s);d.setDate(d.getDate()+i*7);if(d>e)break;c24+=r24[i]||0;c25+=r25[i]||0;if(i<=cw)c26+=r26[i]||0;data.push({date:`${mn[d.getMonth()]} ${d.getDate()}`,"2024":c24,"2025":c25,"2026":i<=cw?c26:null});}return data;};
+const chartData=generateCumulativeData();
+const routeData=[{route:"Geronimo 37","2024":10.4,"2025":11.1,"2026":7.0},{route:"Metric 64","2024":27.3,"2025":33.3,"2026":40.1},{route:"Century 100","2024":42.6,"2025":41.7,"2026":36.0},{route:"Mt Tam 93","2024":11.0,"2025":6.9,"2026":11.7},{route:"Dbl Metric 127","2024":8.6,"2025":6.3,"2026":5.2}];
+const sections=[{title:"Registration",rows:[{label:"Riders Registered",uom:"Units",ytd:[400,627,632],full:[1902,2107,null]},{label:"Revenue",uom:"$",ytd:[52000,81297,97328],full:[248760,322671,null]},{label:"Avg Order",uom:"$",ytd:[130,130,154],full:[131,153,null]},{label:"Coupons Used",uom:"Units",ytd:[28,36,0],full:[220,298,null]},{label:"Coupon Value",uom:"$",ytd:[1680,2160,0],full:[13200,17880,null]},{label:"% Ordering Clothing",uom:"%",ytd:[22,24,18],full:[22,23,null]},{label:"% Buying Membership",uom:"%",ytd:[8,9,7],full:[8,8,null]}]},{title:"Routes",rows:[{label:"Geronimo 37",uom:"Units",ytd:[42,70,44],full:[198,234,null]},{label:"Metric Century 64",uom:"Units",ytd:[109,209,254],full:[520,702,null]},{label:"Century 100",uom:"Units",ytd:[170,261,228],full:[810,879,null]},{label:"Mt Tam 93",uom:"Units",ytd:[44,43,74],full:[210,145,null]},{label:"Double Metric 127",uom:"Units",ytd:[34,39,33],full:[164,133,null]}]},{title:"Demographics",rows:[{label:"% Male",uom:"%",ytd:[68,66,64],full:[67,65,null]},{label:"% Female",uom:"%",ytd:[30,32,34],full:[31,33,null]},{label:"Avg Age on Aug 1",uom:"yrs",ytd:[null,null,null],full:[48,47,null]},{label:"E-bike Riders",uom:"Units",ytd:[4,8,23],full:[42,58,null]}]},{title:"Clothing Detail",rows:[{label:"Jersey",uom:"Units",ytd:[18,28,30],full:[172,198,null]},{label:"Bibs",uom:"Units",ytd:[14,22,24],full:[128,152,null]},{label:"Shorts",uom:"Units",ytd:[8,14,14],full:[78,96,null]},{label:"Socks",uom:"Units",ytd:[28,42,48],full:[280,324,null]}]},{title:"Food Preference",rows:[{label:"No Preference",uom:"%",ytd:[72,70,68],full:[71,69,null]},{label:"Vegetarian",uom:"%",ytd:[16,17,18],full:[16,17,null]},{label:"Vegan",uom:"%",ytd:[6,7,8],full:[7,8,null]},{label:"Gluten-Free",uom:"%",ytd:[6,6,6],full:[6,6,null]}]}];
+const geoData={topCities:[{city:"San Francisco, CA",ytd:[52,82,84],full:[245,272,null]},{city:"San Rafael, CA",ytd:[35,55,56],full:[168,188,null]},{city:"Oakland, CA",ytd:[30,47,48],full:[142,160,null]},{city:"Mill Valley, CA",ytd:[24,38,38],full:[112,125,null]},{city:"Berkeley, CA",ytd:[21,33,34],full:[98,110,null]},{city:"San Jose, CA",ytd:[18,29,30],full:[88,98,null]},{city:"Novato, CA",ytd:[16,26,26],full:[78,86,null]},{city:"Walnut Creek, CA",ytd:[15,24,24],full:[72,80,null]},{city:"Sausalito, CA",ytd:[13,21,22],full:[62,70,null]},{city:"Palo Alto, CA",ytd:[12,19,20],full:[58,64,null]},{city:"Corte Madera, CA",ytd:[11,17,18],full:[52,58,null]},{city:"Santa Rosa, CA",ytd:[10,16,16],full:[48,54,null]},{city:"Petaluma, CA",ytd:[9,14,14],full:[42,48,null]},{city:"San Mateo, CA",ytd:[8,13,12],full:[38,42,null]},{city:"Tiburon, CA",ytd:[7,11,12],full:[34,38,null]},{city:"Larkspur, CA",ytd:[6,10,10],full:[30,34,null]},{city:"Fremont, CA",ytd:[6,10,10],full:[28,32,null]},{city:"Sacramento, CA",ytd:[5,8,8],full:[24,28,null]},{city:"Mountain View, CA",ytd:[5,8,8],full:[22,26,null]},{city:"Fairfax, CA",ytd:[4,7,8],full:[20,22,null]}],otherCA:{label:"Other California",ytd:[42,66,72],full:[296,330,null]},states:[{label:"Oregon",ytd:[8,12,12],full:[38,42,null]},{label:"Washington",ytd:[6,9,10],full:[28,32,null]},{label:"Nevada",ytd:[4,7,8],full:[22,26,null]},{label:"Colorado",ytd:[3,5,6],full:[18,20,null]},{label:"Texas",ytd:[2,4,4],full:[14,16,null]},{label:"New York",ytd:[2,4,4],full:[12,14,null]},{label:"Other States",ytd:[8,14,16],full:[52,58,null]}]};
+const fmt=(v,u)=>{if(v===null||v===undefined)return"\u2014";if(u==="$")return"$"+Number(v).toLocaleString();if(u==="%")return v+"%";return Number(v).toLocaleString();};
+const pctChange=(c,p)=>(!p||!c)?null:Math.round(((c-p)/p)*100);
+const ChartTooltip=({active,payload,label})=>{if(!active||!payload)return null;return(<div style={{background:"#fff",border:"1px solid "+BORDER,borderRadius:6,padding:"8px 12px",boxShadow:"0 4px 12px rgba(0,0,0,0.08)"}}><p style={{color:TEXT2,fontSize:10,margin:"0 0 4px",fontWeight:600}}>{label}</p>{payload.map((e,i)=>e.value!=null&&<p key={i} style={{color:YEAR_COLORS[e.name]||TEXT,fontSize:11,margin:"1px 0",fontWeight:500}}>{e.name}: <b>{e.value.toLocaleString()}</b></p>)}</div>);};
+const BarTooltip=({active,payload,label})=>{if(!active||!payload)return null;return(<div style={{background:"#fff",border:"1px solid "+BORDER,borderRadius:6,padding:"8px 12px",boxShadow:"0 4px 12px rgba(0,0,0,0.08)"}}><p style={{color:TEXT2,fontSize:10,margin:"0 0 4px",fontWeight:600}}>{label}</p>{payload.map((e,i)=><p key={i} style={{color:e.fill,fontSize:11,margin:"1px 0",fontWeight:500}}>{e.name}: <b>{e.value}%</b></p>)}</div>);};
 
-<div class="dashboard" id="app">
-  <div class="loading" id="loading">
-    <div class="spinner"></div>
-    <div>Loading dashboard data…</div>
-  </div>
-</div>
+function Dashboard(){
+  const[activeYear,setActiveYear]=useState(null);
+  const riders26=632,riders25ytd=627,rev26=97328,rev25ytd=81297,avg26=154,avg25ytd=130;
+  const ridersPct=pctChange(riders26,riders25ytd),revenuePct=pctChange(rev26,rev25ytd),avgPct=pctChange(avg26,avg25ytd);
+  const pctBadge=(pct)=>{if(pct===null)return null;const color=pct>=0?"#166534":"#991b1b";const bg=pct>=0?"#dcfce7":"#fee2e2";return <span style={{fontSize:10,fontWeight:700,color,background:bg,padding:"1px 6px",borderRadius:4}}>{pct>=0?"+":""}{pct}% vs 2025 YTD</span>;};
+  const stickyTh={position:"sticky",top:0,zIndex:10,background:HEAD_BG,padding:"3px 4px",fontSize:10,fontWeight:600};
+  const renderRow=(label,uom,ytdV,fullV,idx,opts)=>{opts=opts||{};return(<tr key={label+idx} style={{background:idx%2===0?"transparent":ALT_ROW}}><td style={{padding:"3px 6px",fontSize:11,fontWeight:label?500:400,fontStyle:opts.italic?"italic":"normal",color:label?TEXT:TEXT2,whiteSpace:"nowrap"}}>{label}</td><td style={{padding:"3px 4px",fontSize:9,color:MUTED,textAlign:"center"}}>{uom}</td><td style={{padding:"3px 5px",fontSize:11,textAlign:"right",color:C2024,fontWeight:500,fontVariantNumeric:"tabular-nums"}}>{fmt(ytdV[0],uom)}</td><td style={{padding:"3px 5px",fontSize:11,textAlign:"right",color:C2025,fontWeight:500,fontVariantNumeric:"tabular-nums"}}>{fmt(ytdV[1],uom)}</td><td style={{padding:"3px 5px",fontSize:11,textAlign:"right",color:C2026,fontWeight:700,fontVariantNumeric:"tabular-nums"}}>{fmt(ytdV[2],uom)}</td><td style={{background:GAP_BG,borderLeft:"1.5px solid "+BORDER,borderRight:"1.5px solid "+BORDER,width:8}}></td><td style={{padding:"3px 5px",fontSize:11,textAlign:"right",color:C2024,fontWeight:500,fontVariantNumeric:"tabular-nums"}}>{fmt(fullV[0],uom)}</td><td style={{padding:"3px 5px",fontSize:11,textAlign:"right",color:C2025,fontWeight:500,fontVariantNumeric:"tabular-nums"}}>{fmt(fullV[1],uom)}</td><td style={{padding:"3px 5px",fontSize:11,textAlign:"right",color:C2026,fontWeight:700,fontVariantNumeric:"tabular-nums"}}>{fmt(fullV[2],uom)}</td></tr>);};
+  const sectionHeader=(title)=>(<tr><td colSpan={9} style={{padding:"8px 6px 3px",fontSize:11,fontWeight:800,textTransform:"uppercase",letterSpacing:"0.08em",color:C2026,borderBottom:"2px solid "+C2026,background:CARD}}>{title}</td></tr>);
+  const subHeader=(title)=>(<tr><td colSpan={9} style={{padding:"6px 6px 1px",fontSize:9,fontWeight:700,textTransform:"uppercase",letterSpacing:"0.06em",color:TEXT2,borderBottom:"1px solid "+BORDER}}>{title}</td></tr>);
 
-<script>
-// ============================================================
-// MARIN CENTURY DASHBOARD
-// ============================================================
-
-const COLORS = {
-  '2026': { line: '#b45309', fill: 'rgba(180, 83, 9, 0.10)', width: 3 },
-  '2025': { line: '#7c8a6e', fill: 'transparent', width: 2 },
-  '2024': { line: '#b0b8a6', fill: 'transparent', width: 1.5, dash: [6, 4] },
-};
-
-const ROUTE_ORDER = ['Century 100', 'Metric Century 64', 'Mt Tam 93', 'Geronimo 37', 'Double Metric 127'];
-const ROUTE_COLORS = ['#b45309', '#7c8a6e', '#c9956b', '#5a7052', '#d4a574'];
-
-// --- Load data ---
-async function loadData() {
-  try {
-    const resp = await fetch('data/summary.json');
-    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-    return await resp.json();
-  } catch (e) {
-    console.error('Failed to load data:', e);
-    return null;
-  }
-}
-
-// --- Utility ---
-function fmt(n) {
-  if (n == null) return '—';
-  return n.toLocaleString('en-US');
-}
-function fmtDollar(n) {
-  if (n == null) return '—';
-  return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-}
-function fmtPct(n) {
-  if (n == null) return '—';
-  return n.toFixed(1) + '%';
-}
-function delta(current, previous) {
-  if (!previous || previous === 0) return { text: '', cls: '' };
-  const pct = ((current - previous) / previous * 100);
-  const sign = pct >= 0 ? '+' : '';
-  return {
-    text: `${sign}${pct.toFixed(0)}% vs prior year`,
-    cls: pct >= 0 ? 'up' : 'down'
-  };
-}
-
-// --- Normalize cumulative data to day-of-year index ---
-function toDayOfYear(dateStr) {
-  const d = new Date(dateStr + 'T00:00:00');
-  const start = new Date(d.getFullYear(), 0, 0);
-  return Math.floor((d - start) / 86400000);
-}
-
-function buildCumulativeByDOY(cumData) {
-  // Convert to registration-open-relative days
-  // Find earliest date, normalize everything relative to it
-  if (!cumData || !cumData.length) return [];
-  const firstDate = new Date(cumData[0].date + 'T00:00:00');
-  return cumData.map(d => ({
-    day: Math.floor((new Date(d.date + 'T00:00:00') - firstDate) / 86400000),
-    date: d.date,
-    riders: d.cumRiders,
-    revenue: d.cumRevenue,
-  }));
-}
-
-// Align all years to same x-axis (days since registration opened)
-function alignYears(allYearData) {
-  let maxDay = 0;
-  const series = {};
-  for (const [year, data] of Object.entries(allYearData)) {
-    const pts = buildCumulativeByDOY(data.cumulative || []);
-    series[year] = pts;
-    if (pts.length) maxDay = Math.max(maxDay, pts[pts.length - 1].day);
-  }
-  return { series, maxDay };
-}
-
-// --- Render ---
-async function render() {
-  const raw = await loadData();
-  const app = document.getElementById('app');
-
-  if (!raw || !raw.years) {
-    app.innerHTML = `
-      <div class="error-msg">
-        <p><strong>Could not load dashboard data.</strong></p>
-        <p>Make sure <code>data/summary.json</code> exists. Run the aggregation script first.</p>
-      </div>`;
-    return;
-  }
-
-  const years = raw.years;
-  const y26 = years['2026'] || {};
-  const y25 = years['2025'] || {};
-  const y24 = years['2024'] || {};
-
-  const generatedAt = raw.generatedAt ? new Date(raw.generatedAt).toLocaleString() : 'Unknown';
-
-  // --- Build HTML ---
-  let html = '';
-
-  // Header
-  html += `
-    <div class="header">
-      <h1>Marin Century Dashboard</h1>
-      <div class="updated">Updated ${generatedAt}</div>
-    </div>`;
-
-  // Summary cards
-  const d_riders = delta(y26.totalRiders || 0, y25.totalRiders || 0);
-  const d_revenue = delta(y26.totalRevenue || 0, y25.totalRevenue || 0);
-  html += `
-    <div class="cards">
-      <div class="card">
-        <div class="card-label">2026 Riders</div>
-        <div class="card-value">${fmt(y26.totalRiders)}</div>
-        <div class="card-delta ${d_riders.cls}">${d_riders.text}</div>
-      </div>
-      <div class="card">
-        <div class="card-label">Revenue</div>
-        <div class="card-value">${fmtDollar(y26.totalRevenue)}</div>
-      </div>
-      <div class="card">
-        <div class="card-label">Avg Order</div>
-        <div class="card-value">${fmtDollar(y26.avgOrder)}</div>
-      </div>
-      <div class="card">
-        <div class="card-label">Conversion</div>
-        <div class="card-value">31%</div>
-        <div class="card-delta" style="color:var(--text-muted)">RedPodium page</div>
-      </div>
-    </div>`;
-
-  // Hero chart
-  html += `
-    <div class="chart-container">
-      <div class="chart-title">Cumulative Registrations</div>
-      <div class="chart-subtitle">Days since registration opened — click legend to highlight</div>
-      <div class="chart-wrapper"><canvas id="heroChart"></canvas></div>
-      <div class="chart-legend" id="heroLegend"></div>
-    </div>`;
-
-  // Route & Food mini charts
-  html += `
-    <div class="two-col">
-      <div class="mini-chart-container">
-        <div class="mini-chart-title">2026 Route Breakdown</div>
-        <div class="mini-chart-wrapper"><canvas id="routeChart"></canvas></div>
-      </div>
-      <div class="mini-chart-container">
-        <div class="mini-chart-title">Route Comparison by Year</div>
-        <div class="mini-chart-wrapper"><canvas id="routeCompChart"></canvas></div>
-      </div>
-    </div>`;
-
-  // --- Registration Metrics Table ---
-  html += `<div class="table-section">
-    <div class="section-title">Registration Metrics</div>
-    <div class="table-card">
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th>2026 YTD</th>
-            <th class="divider"></th>
-            <th>2025</th>
-            <th>2024</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${metricRow('Riders', y26.totalRiders, y25.totalRiders, y24.totalRiders)}
-          ${metricRow('Revenue', fmtDollar(y26.totalRevenue), fmtDollar(y25.totalRevenue), fmtDollar(y24.totalRevenue), true)}
-          ${metricRow('$/Rider', fmtDollar(y26.avgOrder), fmtDollar(y25.avgOrder), fmtDollar(y24.avgOrder), true)}
-          ${metricRow('Coupons Used', y26.coupons?.totalUsed, y25.coupons?.totalUsed, y24.coupons?.totalUsed)}
-          ${metricRow('Clothing (ex-socks)', y26.clothing?.totalExSocks, y25.clothing?.totalExSocks, y24.clothing?.totalExSocks)}
-          ${metricRow('Clothing Rev', fmtDollar(y26.clothing?.totalRevenue), fmtDollar(y25.clothing?.totalRevenue), fmtDollar(y24.clothing?.totalRevenue), true)}
-          ${metricRow('T-Shirts', y26.tshirts, y25.tshirts, y24.tshirts)}
-          ${metricRow('New Members', y26.membership?.newMembers, y25.membership?.newMembers, y24.membership?.newMembers)}
-          ${metricRow('% Male', fmtPct(y26.gender?.pctMale), fmtPct(y25.gender?.pctMale), fmtPct(y24.gender?.pctMale), true)}
-          ${metricRow('Avg Age (Aug 1)', y26.avgAge, y25.avgAge, y24.avgAge)}
-          ${metricRow('E-Bike', y26.ebike, y25.ebike, y24.ebike)}
-        </tbody>
-      </table>
-    </div>
-  </div>`;
-
-  // --- Route Breakdown Table ---
-  html += `<div class="table-section">
-    <div class="section-title">Routes</div>
-    <div class="table-card">
-      <table>
-        <thead>
-          <tr>
-            <th>Route</th>
-            <th>2026 YTD</th>
-            <th class="divider"></th>
-            <th>2025</th>
-            <th>2024</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${ROUTE_ORDER.map(r => metricRow(r,
-            y26.routes?.[r] || 0,
-            y25.routes?.[r] || 0,
-            y24.routes?.[r] || 0
-          )).join('')}
-        </tbody>
-      </table>
-    </div>
-  </div>`;
-
-  // --- Clothing Table ---
-  html += `<div class="table-section">
-    <div class="section-title">Clothing</div>
-    <div class="table-card">
-      <table>
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>2026 Units</th>
-            <th>2026 Rev</th>
-            <th class="divider"></th>
-            <th>2025 Units</th>
-            <th>2025 Rev</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${clothingRow('Jersey', y26.clothing?.jersey, y25.clothing?.jersey)}
-          ${clothingRow('Bibs', y26.clothing?.bibs, y25.clothing?.bibs)}
-          ${clothingRow('Shorts', y26.clothing?.shorts, y25.clothing?.shorts)}
-          ${clothingRow('Socks', y26.clothing?.socks, y25.clothing?.socks)}
-        </tbody>
-      </table>
-    </div>
-  </div>`;
-
-  // --- Food Preferences ---
-  html += `<div class="table-section">
-    <div class="section-title">Food Preferences</div>
-    <div class="table-card">
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th>2026 YTD</th>
-            <th class="divider"></th>
-            <th>2025</th>
-            <th>2024</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${metricRow('No Preference', fmtPct(y26.food?.noPreference), fmtPct(y25.food?.noPreference), fmtPct(y24.food?.noPreference), true)}
-          ${metricRow('Vegetarian', fmtPct(y26.food?.vegetarian), fmtPct(y25.food?.vegetarian), fmtPct(y24.food?.vegetarian), true)}
-          ${metricRow('Vegan', fmtPct(y26.food?.vegan), fmtPct(y25.food?.vegan), fmtPct(y24.food?.vegan), true)}
-          ${metricRow('Gluten-Free', fmtPct(y26.food?.glutenFree), fmtPct(y25.food?.glutenFree), fmtPct(y24.food?.glutenFree), true)}
-        </tbody>
-      </table>
-    </div>
-  </div>`;
-
-  // --- Geography ---
-  html += `<div class="table-section" style="max-width:100%">
-    <div class="section-title">Geography — 2026</div>
-    <div class="geo-grid">
-      <div class="mini-chart-container">
-        <div class="mini-chart-title">Top 20 Cities</div>
-        <ul class="geo-list" id="geoTopCities"></ul>
-      </div>
-      <div class="mini-chart-container">
-        <div class="mini-chart-title">Non-CA States</div>
-        <ul class="geo-list" id="geoStates"></ul>
+  return(<div style={{minHeight:"100vh",background:BG}}>
+    <div style={{padding:"20px 24px 0",display:"flex",justifyContent:"space-between",alignItems:"flex-start",flexWrap:"wrap",gap:12}}>
+      <div><h1 style={{fontSize:24,fontWeight:900,margin:0,color:C2026_BOLD,letterSpacing:"-0.02em"}}>Marin Century 2026</h1><p style={{color:MUTED,fontSize:10,margin:"2px 0 0"}}>Registration Dashboard &bull; SAMPLE DATA &bull; Mar 3, 2026</p></div>
+      <div style={{display:"flex",gap:10,flexWrap:"wrap"}}>
+        {[{l:"2026 Riders YTD",v:riders26.toLocaleString(),pct:ridersPct},{l:"2026 Revenue YTD",v:"$"+rev26.toLocaleString(),pct:revenuePct},{l:"Avg Order",v:"$"+avg26,pct:avgPct}].map((d,i)=>(<div key={i} style={{background:CARD,border:"1px solid "+BORDER,borderRadius:8,padding:"10px 16px",minWidth:130,boxShadow:"0 1px 3px rgba(0,0,0,0.04)"}}><div style={{fontSize:9,color:MUTED,fontWeight:700,textTransform:"uppercase",letterSpacing:"0.08em"}}>{d.l}</div><div style={{fontSize:22,fontWeight:900,color:C2026,margin:"2px 0"}}>{d.v}</div><div>{pctBadge(d.pct)}</div></div>))}
       </div>
     </div>
-  </div>`;
 
-  // --- Coupon Table ---
-  html += `<div class="table-section">
-    <div class="section-title">Top Coupon Codes — 2026</div>
-    <div class="table-card">
-      <table>
-        <thead><tr><th>Code</th><th>Uses</th></tr></thead>
-        <tbody id="couponBody"></tbody>
-      </table>
+    <div style={{margin:"16px 20px",background:CARD,border:"1px solid "+BORDER,borderRadius:10,padding:"18px 16px 12px",boxShadow:"0 1px 3px rgba(0,0,0,0.04)"}}>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:12,padding:"0 6px"}}>
+        <h2 style={{fontSize:14,fontWeight:800,margin:0}}>Cumulative Registrations &bull; Jan 1 &ndash; Sep 1</h2>
+        <div style={{display:"flex",gap:16,fontSize:11}}>
+          {[{y:"2024",c:C2024,dash:true},{y:"2025",c:C2025,dash:false},{y:"2026",c:C2026,dash:false}].map(item=>(<div key={item.y} style={{display:"flex",alignItems:"center",gap:5,cursor:"pointer",opacity:activeYear&&activeYear!==item.y?0.2:1,transition:"opacity 0.2s"}} onClick={()=>setActiveYear(activeYear===item.y?null:item.y)}><div style={{width:16,height:0,borderTop:item.dash?"2px dashed "+item.c:"2.5px solid "+item.c}}/><span style={{color:item.c,fontWeight:700}}>{item.y}</span></div>))}
+        </div>
+      </div>
+      <ResponsiveContainer width="100%" height={300}>
+        <AreaChart data={chartData} margin={{top:4,right:16,bottom:4,left:8}}>
+          <defs><linearGradient id="grad2026" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor={C2026} stopOpacity={0.18}/><stop offset="100%" stopColor={C2026} stopOpacity={0}/></linearGradient></defs>
+          <CartesianGrid strokeDasharray="3 3" stroke="#e8e5df"/>
+          <XAxis dataKey="date" tick={{fill:MUTED,fontSize:9}} axisLine={{stroke:BORDER}} tickLine={false} interval="preserveStartEnd" minTickGap={40}/>
+          <YAxis tick={{fill:MUTED,fontSize:9}} axisLine={false} tickLine={false} domain={[0,2500]} ticks={[0,500,1000,1500,2000,2500]} tickFormatter={v=>v.toLocaleString()}/>
+          <Tooltip content={<ChartTooltip/>}/>
+          <Area type="monotone" dataKey="2024" stroke={C2024} strokeWidth={1.5} strokeDasharray="5 3" fill="none" dot={false} opacity={activeYear&&activeYear!=="2024"?0.1:0.7}/>
+          <Area type="monotone" dataKey="2025" stroke={C2025} strokeWidth={2} fill="none" dot={false} opacity={activeYear&&activeYear!=="2025"?0.1:0.85}/>
+          <Area type="monotone" dataKey="2026" stroke={C2026} strokeWidth={2.5} fill="url(#grad2026)" dot={false} opacity={activeYear&&activeYear!=="2026"?0.1:1}/>
+        </AreaChart>
+      </ResponsiveContainer>
     </div>
-  </div>`;
 
-  // Footer
-  html += `
-    <div class="footer">
-      Marin Century Dashboard · Data via Webconnex API · Auto-updated daily at 6 AM PT
-    </div>`;
+    <div style={{display:"flex",justifyContent:"center",padding:"0 20px 16px"}}>
+      <div style={{background:CARD,border:"1px solid "+BORDER,borderRadius:10,padding:"18px 24px 14px",boxShadow:"0 1px 3px rgba(0,0,0,0.04)",width:"100%",maxWidth:720}}>
+        <h2 style={{fontSize:14,fontWeight:800,margin:"0 0 14px",textAlign:"center"}}>Route Comparison by Year (% of Riders)</h2>
+        <ResponsiveContainer width="100%" height={280}>
+          <BarChart data={routeData} margin={{top:4,right:20,bottom:4,left:8}}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#e8e5df"/>
+            <XAxis dataKey="route" tick={{fill:TEXT2,fontSize:10}} axisLine={{stroke:BORDER}} tickLine={false}/>
+            <YAxis tick={{fill:MUTED,fontSize:9}} axisLine={false} tickLine={false} tickFormatter={v=>v+"%"} domain={[0,50]}/>
+            <Tooltip content={<BarTooltip/>}/>
+            <Legend wrapperStyle={{fontSize:11,fontWeight:600}} formatter={v=><span style={{color:YEAR_COLORS[v]||TEXT}}>{v}</span>}/>
+            <Bar dataKey="2024" fill={C2024} radius={[2,2,0,0]}/>
+            <Bar dataKey="2025" fill={C2025} radius={[2,2,0,0]}/>
+            <Bar dataKey="2026" fill={C2026} radius={[2,2,0,0]}/>
+          </BarChart>
+        </ResponsiveContainer>
+        <p style={{textAlign:"center",fontSize:9,color:MUTED,margin:"6px 0 0"}}>2024/2025 = full year &bull; 2026 = year-to-date as of Mar 3</p>
+      </div>
+    </div>
 
-  app.innerHTML = html;
-
-  // --- Populate Geography ---
-  const geoTop = document.getElementById('geoTopCities');
-  const topCities = y26.geography?.topCities || [];
-  let geoHTML = '';
-  topCities.forEach((c, i) => {
-    geoHTML += `<li><span class="geo-rank">${i + 1}.</span><span class="geo-name">${c.city}</span><span class="geo-count">${c.riders}</span></li>`;
-  });
-  if (y26.geography?.otherCA > 0) {
-    geoHTML += `<li><span class="geo-rank"></span><span class="geo-name geo-agg">Other California</span><span class="geo-count geo-agg">${y26.geography.otherCA}</span></li>`;
-  }
-  geoTop.innerHTML = geoHTML;
-
-  const geoStates = document.getElementById('geoStates');
-  const ncaStates = y26.geography?.nonCAStates || {};
-  let stateHTML = '';
-  Object.entries(ncaStates).forEach(([st, count]) => {
-    stateHTML += `<li><span class="geo-name">${st}</span><span class="geo-count">${count}</span></li>`;
-  });
-  if (!stateHTML) stateHTML = '<li style="color:var(--text-muted)">No non-CA registrants yet</li>';
-  geoStates.innerHTML = stateHTML;
-
-  // --- Populate Coupons ---
-  const couponBody = document.getElementById('couponBody');
-  const codes = y26.coupons?.codes || {};
-  let coupHTML = '';
-  Object.entries(codes).forEach(([code, count]) => {
-    coupHTML += `<tr><td>${code}</td><td>${count}</td></tr>`;
-  });
-  if (!coupHTML) coupHTML = '<tr><td colspan="2" style="color:var(--text-muted)">No coupons used yet</td></tr>';
-  couponBody.innerHTML = coupHTML;
-
-  // --- CHARTS ---
-  renderHeroChart(years);
-  renderRouteChart(y26);
-  renderRouteCompChart(years);
+    <div style={{display:"flex",justifyContent:"center",padding:"0 20px 20px"}}>
+      <div style={{background:CARD,border:"1px solid "+BORDER,borderRadius:10,boxShadow:"0 1px 3px rgba(0,0,0,0.04)",overflow:"hidden",width:"100%",maxWidth:800}}>
+        <div style={{overflowX:"auto"}}>
+          <table style={{width:"100%",borderCollapse:"collapse"}}>
+            <colgroup><col style={{width:160}}/><col style={{width:38}}/><col style={{width:70}}/><col style={{width:70}}/><col style={{width:70}}/><col style={{width:8}}/><col style={{width:80}}/><col style={{width:80}}/><col style={{width:80}}/></colgroup>
+            <thead>
+              <tr><th style={{...stickyTh,textAlign:"left"}}></th><th style={stickyTh}></th><th colSpan={3} style={{...stickyTh,textAlign:"center",fontSize:10,fontWeight:700,color:TEXT2,letterSpacing:"0.1em",textTransform:"uppercase",borderBottom:"1.5px solid "+BORDER,paddingBottom:2}}>Year to Date (Mar 3)</th><th style={{...stickyTh,background:GAP_BG,borderLeft:"1.5px solid "+BORDER,borderRight:"1.5px solid "+BORDER}}></th><th colSpan={3} style={{...stickyTh,textAlign:"center",fontSize:10,fontWeight:700,color:TEXT2,letterSpacing:"0.1em",textTransform:"uppercase",borderBottom:"1.5px solid "+BORDER,paddingBottom:2}}>Full Year</th></tr>
+              <tr><th style={{...stickyTh,top:24,textAlign:"left"}}></th><th style={{...stickyTh,top:24,fontSize:9,color:MUTED,textAlign:"center"}}>UOM</th><th style={{...stickyTh,top:24,textAlign:"right",color:C2024,padding:"3px 5px",fontWeight:700}}>2024</th><th style={{...stickyTh,top:24,textAlign:"right",color:C2025,padding:"3px 5px",fontWeight:700}}>2025</th><th style={{...stickyTh,top:24,textAlign:"right",color:C2026,fontWeight:800,padding:"3px 5px"}}>2026</th><th style={{...stickyTh,top:24,background:GAP_BG,borderLeft:"1.5px solid "+BORDER,borderRight:"1.5px solid "+BORDER}}></th><th style={{...stickyTh,top:24,textAlign:"right",color:C2024,padding:"3px 5px",fontWeight:700}}>2024</th><th style={{...stickyTh,top:24,textAlign:"right",color:C2025,padding:"3px 5px",fontWeight:700}}>2025</th><th style={{...stickyTh,top:24,textAlign:"right",color:C2026,fontWeight:800,padding:"3px 5px"}}>2026 est</th></tr>
+            </thead>
+            {sections.map((sec,si)=>(<tbody key={si}>{sectionHeader(sec.title)}{sec.rows.map((row,ri)=>renderRow(row.label,row.uom,row.ytd,row.full,ri))}</tbody>))}
+            <tbody>
+              {sectionHeader("Geographics")}
+              {subHeader("Top 20 Cities")}
+              {geoData.topCities.map((c,i)=>renderRow(c.city,"Units",c.ytd,c.full,i))}
+              {subHeader("Other California")}
+              {renderRow(geoData.otherCA.label,"Units",geoData.otherCA.ytd,geoData.otherCA.full,0,{italic:true})}
+              {subHeader("Non-CA States")}
+              {geoData.states.map((s,i)=>renderRow(s.label,"Units",s.ytd,s.full,i,i===geoData.states.length-1?{italic:true}:{}))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div style={{padding:"4px 24px 20px",textAlign:"center",fontSize:9,color:MUTED}}>Marin Century Registration Dashboard &bull; Source: RedPodium &bull; Sample data for prototype review</div>
+  </div>);
 }
-
-// --- Table row helpers ---
-function metricRow(label, v26, v25, v24, isFormatted = false) {
-  const f = isFormatted ? v => v : v => (v != null ? fmt(v) : '—');
-  return `<tr>
-    <td>${label}</td>
-    <td>${isFormatted ? (v26 ?? '—') : f(v26)}</td>
-    <td class="divider"></td>
-    <td>${isFormatted ? (v25 ?? '—') : f(v25)}</td>
-    <td>${isFormatted ? (v24 ?? '—') : f(v24)}</td>
-  </tr>`;
-}
-
-function clothingRow(label, d26, d25) {
-  d26 = d26 || {};
-  d25 = d25 || {};
-  return `<tr>
-    <td>${label}</td>
-    <td>${fmt(d26.units || 0)}</td>
-    <td>${fmtDollar(d26.revenue || 0)}</td>
-    <td class="divider"></td>
-    <td>${fmt(d25.units || 0)}</td>
-    <td>${fmtDollar(d25.revenue || 0)}</td>
-  </tr>`;
-}
-
-// --- Hero Chart ---
-function renderHeroChart(years) {
-  const { series } = alignYears(years);
-  const ctx = document.getElementById('heroChart').getContext('2d');
-
-  const datasets = [];
-  const yearKeys = ['2024', '2025', '2026'];
-
-  yearKeys.forEach(year => {
-    const pts = series[year] || [];
-    if (!pts.length) return;
-    const cfg = COLORS[year];
-    datasets.push({
-      label: year,
-      data: pts.map(p => ({ x: p.day, y: p.riders })),
-      borderColor: cfg.line,
-      backgroundColor: cfg.fill,
-      borderWidth: cfg.width,
-      borderDash: cfg.dash || [],
-      pointRadius: 0,
-      pointHoverRadius: 4,
-      tension: 0.3,
-      fill: year === '2026' ? 'origin' : false,
-    });
-  });
-
-  const chart = new Chart(ctx, {
-    type: 'line',
-    data: { datasets },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      interaction: { mode: 'nearest', axis: 'x', intersect: false },
-      scales: {
-        x: {
-          type: 'linear',
-          title: { display: true, text: 'Days since registration opened', color: '#7a7a72', font: { size: 11 } },
-          grid: { display: false },
-          ticks: { color: '#7a7a72', font: { size: 10 } },
-        },
-        y: {
-          title: { display: true, text: 'Total riders', color: '#7a7a72', font: { size: 11 } },
-          grid: { color: '#eee' },
-          ticks: { color: '#7a7a72', font: { size: 10 } },
-          beginAtZero: true,
-        }
-      },
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          backgroundColor: '#fff',
-          titleColor: '#2c2c2c',
-          bodyColor: '#2c2c2c',
-          borderColor: '#e8e6e0',
-          borderWidth: 1,
-          padding: 10,
-          callbacks: {
-            title: items => `Day ${items[0].parsed.x}`,
-            label: item => `${item.dataset.label}: ${fmt(item.parsed.y)} riders`,
-          }
-        }
-      }
-    }
-  });
-
-  // Build legend
-  const legendEl = document.getElementById('heroLegend');
-  yearKeys.forEach((year, i) => {
-    if (!series[year]?.length) return;
-    const cfg = COLORS[year];
-    const item = document.createElement('div');
-    item.className = 'legend-item';
-    item.dataset.year = year;
-
-    const swatch = document.createElement('div');
-    swatch.className = 'legend-swatch' + (year === '2024' ? ' dashed' : '');
-    swatch.style.background = year === '2024' ? '' : cfg.line;
-    item.appendChild(swatch);
-
-    const label = document.createElement('span');
-    const totalRiders = series[year][series[year].length - 1]?.riders || 0;
-    label.textContent = `${year} (${fmt(totalRiders)})`;
-    item.appendChild(label);
-
-    item.addEventListener('click', () => {
-      const meta = chart.getDatasetMeta(i);
-      meta.hidden = !meta.hidden;
-      item.classList.toggle('dimmed');
-      chart.update();
-    });
-
-    legendEl.appendChild(item);
-  });
-}
-
-// --- Route Donut ---
-function renderRouteChart(y26) {
-  const ctx = document.getElementById('routeChart').getContext('2d');
-  const routes = y26.routes || {};
-  const labels = [];
-  const values = [];
-  const colors = [];
-
-  ROUTE_ORDER.forEach((r, i) => {
-    if (routes[r]) {
-      labels.push(r);
-      values.push(routes[r]);
-      colors.push(ROUTE_COLORS[i % ROUTE_COLORS.length]);
-    }
-  });
-
-  // Add any unknown routes
-  Object.entries(routes).forEach(([r, v]) => {
-    if (!ROUTE_ORDER.includes(r) && r !== 'Clothing Only' && r !== 'Unknown') {
-      labels.push(r);
-      values.push(v);
-      colors.push('#999');
-    }
-  });
-
-  new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-      labels,
-      datasets: [{ data: values, backgroundColor: colors, borderWidth: 2, borderColor: '#fff' }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      cutout: '55%',
-      plugins: {
-        legend: {
-          position: 'right',
-          labels: { font: { size: 11 }, padding: 10, usePointStyle: true, pointStyleWidth: 10 },
-        },
-        tooltip: {
-          callbacks: {
-            label: item => `${item.label}: ${fmt(item.raw)} riders (${(item.raw / values.reduce((a, b) => a + b, 0) * 100).toFixed(1)}%)`
-          }
-        }
-      }
-    }
-  });
-}
-
-// --- Route Comparison Bar ---
-function renderRouteCompChart(years) {
-  const ctx = document.getElementById('routeCompChart').getContext('2d');
-
-  const yearKeys = ['2024', '2025', '2026'];
-  const barColors = ['#b0b8a6', '#7c8a6e', '#b45309'];
-
-  const datasets = yearKeys.map((year, i) => ({
-    label: year,
-    data: ROUTE_ORDER.map(r => years[year]?.routes?.[r] || 0),
-    backgroundColor: barColors[i],
-    borderRadius: 3,
-    barPercentage: 0.8,
-  }));
-
-  // Convert to percentages for better comparison
-  const pctDatasets = yearKeys.map((year, i) => {
-    const total = Object.values(years[year]?.routes || {}).reduce((a, b) => a + b, 0) || 1;
-    return {
-      label: year,
-      data: ROUTE_ORDER.map(r => ((years[year]?.routes?.[r] || 0) / total * 100)),
-      backgroundColor: barColors[i],
-      borderRadius: 3,
-      barPercentage: 0.8,
-    };
-  });
-
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ROUTE_ORDER.map(r => r.replace('Century ', '').replace('Metric ', 'M-')),
-      datasets: pctDatasets,
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        x: {
-          grid: { display: false },
-          ticks: { font: { size: 10 } },
-        },
-        y: {
-          title: { display: true, text: '% of riders', font: { size: 10 }, color: '#7a7a72' },
-          grid: { color: '#eee' },
-          ticks: { font: { size: 10 }, callback: v => v + '%' },
-          beginAtZero: true,
-        }
-      },
-      plugins: {
-        legend: {
-          position: 'top',
-          labels: { font: { size: 11 }, usePointStyle: true, pointStyleWidth: 10, padding: 12 },
-        },
-        tooltip: {
-          callbacks: {
-            label: item => `${item.dataset.label}: ${item.parsed.y.toFixed(1)}%`,
-          }
-        }
-      }
-    }
-  });
-}
-
-// --- Run ---
-render();
+ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(Dashboard));
 </script>
 </body>
 </html>
