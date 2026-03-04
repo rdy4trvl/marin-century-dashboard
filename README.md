@@ -6,6 +6,16 @@ Live dashboard tracking 2024–2026 Marin Century registrations via the Webconne
 
 Open `index.html` in a browser — sample data is pre-loaded in `data/summary.json`.
 
+
+### Update Index file
+2. download Index file to PC
+3. on github go to <> Code, open Index file, hit pencil, CTRL A, CTRL X to delete
+4. on PC open Notepad and find and open Index (search all file types to display) CTRL A, CTRL C to copy
+5. Back on Github, CTRL V to past new code, Commit Changes button
+6. ON PC Ctrl+Shift+R to reload dashboard
+7. https://rdy4trvl.github.io/marin-century-dashboard/
+
+
 ---
 
 ## Setup (15 minutes)
