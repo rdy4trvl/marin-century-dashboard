@@ -31,28 +31,17 @@ body{background:var(--bg);font-family:'DM Sans',system-ui,sans-serif;color:var(-
 .leg .ln{width:16px;height:0}
 .leg .d24{border-top:2px dashed var(--c2024)}.leg .s25{border-top:2.5px solid var(--c2025)}.leg .s26{border-top:2.5px solid var(--c2026)}
 .leg span{font-weight:700}
-
-/* TABLE — condensed, NO overflow wrapper so sticky works at page level */
 .tw{display:flex;justify-content:center;padding:0 20px 20px}
 .tp{background:var(--card);border:1px solid var(--border);border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.04);overflow:visible;width:100%;max-width:740px}
 .tp table{width:100%;border-collapse:collapse}
-
-/* Sticky header rows — stick to PAGE top */
 .tp .hdr1 th{position:sticky;top:0;z-index:20}
 .tp .hdr2 th{position:sticky;top:26px;z-index:19;border-bottom:2px solid var(--border)}
-
-/* Header text: ALL bold black */
 .tp th{padding:3px 4px;font-size:10px;font-weight:700;color:var(--text)}
 .tp td{padding:2px 4px;font-size:11px;font-variant-numeric:tabular-nums}
-
-/* Shaded header bands — bold black text */
 .ytd-band{background:var(--ytd-bg);color:var(--text);font-weight:700}
 .fy-band{background:var(--fy-bg);color:var(--text);font-weight:700}
 .hdr-plain{background:var(--head);color:var(--text);font-weight:700}
-
-/* Year color in header row 2 — bold */
 .h24{color:var(--c2024);font-weight:800}.h25{color:var(--c2025);font-weight:800}.h26{color:var(--c2026);font-weight:900}
-
 .tp .sh td{padding:7px 4px 2px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--c2026);border-bottom:2px solid var(--c2026);background:var(--card)}
 .tp .sbh td{padding:5px 4px 1px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text2);border-bottom:1px solid var(--border)}
 .gc{background:var(--gap);border-left:1.5px solid var(--border);border-right:1.5px solid var(--border);width:6px}
@@ -61,140 +50,261 @@ body{background:var(--bg);font-family:'DM Sans',system-ui,sans-serif;color:var(-
 .um-cell{font-size:9px;color:var(--text);text-align:center;font-weight:600}
 .it2{font-style:italic;font-weight:400!important;color:var(--text2)}
 .ft{padding:4px 24px 20px;text-align:center;font-size:9px;color:var(--muted)}
+.loading{padding:60px;text-align:center;color:var(--muted);font-size:14px}
 @media(max-width:700px){.hdr{flex-direction:column}.heroes{width:100%}.hc{flex:1;min-width:100px}}
 </style>
 </head>
 <body>
-<div class="hdr">
-  <div><h1>Marin Century 2026</h1><p class="sub">Registration Dashboard &bull; SAMPLE DATA &bull; Mar 3, 2026</p></div>
-  <div class="heroes" id="hc"></div>
-</div>
-<div class="pnl">
-  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
-    <h2>Cumulative Registrations &bull; Jan 1 – Sep 1</h2>
-    <div class="leg" id="cleg"></div>
-  </div>
-  <div style="height:300px"><canvas id="cc"></canvas></div>
-</div>
-<div class="pnl-c"><div class="pnl">
-  <h2>Route Comparison by Year (% of Riders)</h2>
-  <div style="height:280px"><canvas id="rc"></canvas></div>
-  <p class="cnote">2024/2025 = full year &bull; 2026 = year-to-date as of Mar 3</p>
-</div></div>
-
-<!-- TABLE: no overflow wrapper so sticky works at page level -->
-<div class="tw"><div class="tp"><table id="mt"></table></div></div>
-
-<div class="ft">Marin Century Registration Dashboard &bull; Source: RedPodium &bull; Sample data for prototype review</div>
+<div id="app"><div class="loading">Loading dashboard data...</div></div>
 
 <script>
 var C24='#7cb668',C25='#2d6a2e',C26='#c2410c';
 
-// Daily cumulative data
-function buildDailyV2(){
-  var labels=[],a24=[],a25=[],a26=[];
-  var w24=[30,35,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,68,70,72,74,76,78,80,82,84,86,90,100,110,120,80,50,30,20];
-  var w25=[48,55,60,65,68,72,76,80,82,78,76,74,72,70,68,66,64,62,60,62,64,66,70,78,82,88,95,110,130,140,160,90,55,30,20];
-  var w26=[48,58,64,70,74,78,82,84,76];
-  var mn=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep"];
-  var s=new Date(2026,0,1),end=new Date(2026,8,1);
-  var c24=0,c25=0,c26=0;
-  var totalDays=Math.round((end-s)/(86400000));
-  var cw26=8;
-  var weights=[0.08,0.12,0.16,0.18,0.16,0.15,0.15];
-  for(var d=0;d<totalDays;d++){
-    var dt=new Date(s);dt.setDate(dt.getDate()+d);
-    var wk=Math.floor(d/7);var diw=d%7;
-    c24+=(w24[wk]||0)*weights[diw];
-    c25+=(w25[wk]||0)*weights[diw];
-    if(wk<=cw26) c26+=(w26[wk]||0)*weights[diw];
-    var mo=dt.getMonth(),day=dt.getDate();
-    var lbl=(day===1||day===15)?mn[mo]+' '+day:'';
-    labels.push(lbl);a24.push(Math.round(c24));a25.push(Math.round(c25));
-    a26.push(wk<=cw26?Math.round(c26):null);
+fetch('data/summary.json').then(function(r){return r.json()}).then(function(data){
+  var Y=data.years;
+  var genAt=data.generatedAt||'';
+
+  // Today's MM-DD for YTD cutoff
+  var now=new Date();
+  var mmdd=('0'+(now.getMonth()+1)).slice(-2)+'-'+('0'+now.getDate()).slice(-2);
+
+  // Get YTD values from cumulative array
+  function ytdVal(yr){
+    var cum=(Y[yr]||{}).cumulative||[];
+    var last=null;
+    for(var i=0;i<cum.length;i++){
+      if(cum[i].date.slice(5)<=mmdd) last=cum[i];
+    }
+    return last?{riders:last.cumRiders,revenue:last.cumRevenue}:{riders:0,revenue:0};
   }
-  return{l:labels,a:a24,b:a25,c:a26};
-}
 
-function f(v,u){if(v===null||v===undefined)return'\u2014';if(u==='$')return'$'+Number(v).toLocaleString();if(u==='%')return v+'%';return Number(v).toLocaleString()}
-function pc(c,p){return(!p||!c)?null:Math.round(((c-p)/p)*100)}
+  var ytd24=ytdVal('2024'),ytd25=ytdVal('2025'),ytd26=ytdVal('2026');
 
-// Hero
-(function(){var el=document.getElementById('hc');
-var items=[{l:'2026 Riders YTD',v:'632',c:632,p:627},{l:'2026 Revenue YTD',v:'$97,328',c:97328,p:81297},{l:'Avg Order',v:'$154',c:154,p:130}];
-items.forEach(function(d){var p2=pc(d.c,d.p);var cls=p2>=0?'up':'dn';var sg=p2>=0?'+':'';
-el.innerHTML+='<div class="hc"><div class="lab">'+d.l+'</div><div class="val">'+d.v+'</div><span class="bdg '+cls+'">'+sg+p2+'% vs 2025 YTD</span></div>'})})();
+  // Full year values
+  function fullVal(yr){var y=Y[yr]||{};return{riders:y.totalRiders||0,revenue:y.totalRevenue||0,avg:y.avgOrder||0}}
+  var fy24=fullVal('2024'),fy25=fullVal('2025'),fy26=fullVal('2026');
 
-// Cumulative Chart — DAILY
-(function(){var cd=buildDailyV2();var ctx=document.getElementById('cc').getContext('2d');
-var ch=new Chart(ctx,{type:'line',data:{labels:cd.l,datasets:[
-{label:'2024',data:cd.a,borderColor:C24,borderWidth:1.5,borderDash:[5,3],pointRadius:0,fill:false,tension:.3},
-{label:'2025',data:cd.b,borderColor:C25,borderWidth:2,pointRadius:0,fill:false,tension:.3},
-{label:'2026',data:cd.c,borderColor:C26,borderWidth:2.5,pointRadius:0,fill:true,
-backgroundColor:function(x){var g=x.chart.ctx.createLinearGradient(0,0,0,x.chart.height);g.addColorStop(0,'rgba(194,65,12,0.18)');g.addColorStop(1,'rgba(194,65,12,0)');return g},tension:.3,spanGaps:false}
-]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
-plugins:{legend:{display:false},tooltip:{backgroundColor:'#fff',titleColor:'#78716c',bodyColor:'#292524',borderColor:'#e7e5e0',borderWidth:1,padding:10,cornerRadius:6,titleFont:{size:10,weight:'600'},bodyFont:{size:11,weight:'500'},callbacks:{label:function(x){return x.raw!=null?x.dataset.label+': '+x.raw.toLocaleString():null}}}},
-scales:{x:{grid:{display:false},ticks:{font:{size:9},color:'#a8a29e',maxTicksLimit:12,autoSkip:true,autoSkipPadding:20,callback:function(v,i){return cd.l[i]||null}}},y:{min:0,max:2500,ticks:{font:{size:9},color:'#a8a29e',stepSize:500,callback:function(v){return v.toLocaleString()}},grid:{color:'#e8e5df'}}}}});
-var le=document.getElementById('cleg');var its=[{y:'2024',c:C24,s:'d24'},{y:'2025',c:C25,s:'s25'},{y:'2026',c:C26,s:'s26'}];var ay=null;
-its.forEach(function(it){var d=document.createElement('div');d.className='it';d.innerHTML='<div class="ln '+it.s+'"></div><span style="color:'+it.c+'">'+it.y+'</span>';
-d.onclick=function(){if(ay===it.y)ay=null;else ay=it.y;ch.data.datasets.forEach(function(ds,di){ds.hidden=ay&&its[di].y!==ay});ch.update();le.querySelectorAll('.it').forEach(function(el2,j){el2.className=(!ay||its[j].y===ay)?'it':'it dim'})};le.appendChild(d)})})();
+  function fmt(v,u){if(v===null||v===undefined)return'\u2014';if(u==='$')return'$'+Number(v).toLocaleString(undefined,{maximumFractionDigits:0});if(u==='%')return Number(v).toFixed(1)+'%';if(u==='yrs')return v;return Number(v).toLocaleString()}
+  function pc(c,p){return(!p||!c)?null:Math.round(((c-p)/p)*100)}
+  function safePct(a,b){return b?(a/b*100):null}
+  function safeDiv(a,b){return b?(a/b):null}
 
-// Route Chart
-(function(){var ctx=document.getElementById('rc').getContext('2d');
-new Chart(ctx,{type:'bar',data:{labels:['Geronimo 37','Metric 64','Century 100','Mt Tam 93','Dbl Metric 127'],datasets:[
-{label:'2024',data:[0,27.3,42.6,11.0,0],backgroundColor:C24,borderRadius:2},
-{label:'2025',data:[11.1,33.3,41.7,6.9,6.3],backgroundColor:C25,borderRadius:2},
-{label:'2026',data:[7.0,40.1,36.0,11.7,5.2],backgroundColor:C26,borderRadius:2}
-]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:11,weight:'600'},usePointStyle:true,pointStyle:'rect',padding:16}},tooltip:{backgroundColor:'#fff',titleColor:'#78716c',bodyColor:'#292524',borderColor:'#e7e5e0',borderWidth:1,padding:10,cornerRadius:6,callbacks:{label:function(x){return x.dataset.label+': '+x.raw+'%'}}}},scales:{x:{grid:{display:false},ticks:{font:{size:10},color:'#78716c'}},y:{min:0,max:50,ticks:{font:{size:9},color:'#a8a29e',callback:function(v){return v+'%'}},grid:{color:'#e8e5df'}}}}})})();
+  var avgYtd26=safeDiv(ytd26.revenue,ytd26.riders);
+  var avgYtd25=safeDiv(ytd25.revenue,ytd25.riders);
 
-// Metrics Table
-(function(){var t=document.getElementById('mt');
-var h='<colgroup><col style="width:140px"><col style="width:30px"><col style="width:58px"><col style="width:58px"><col style="width:58px"><col style="width:6px"><col style="width:62px"><col style="width:62px"><col style="width:62px"></colgroup>';
+  // Format date
+  function fmtDate(iso){if(!iso)return'';var d=new Date(iso);return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}
 
-// Row 1: band headers — bold black text, shaded backgrounds
-h+='<thead><tr class="hdr1">';
-h+='<th class="hdr-plain"></th>';
-h+='<th class="hdr-plain"></th>';
-h+='<th colspan="3" class="ytd-band" style="text-align:center;letter-spacing:.1em;text-transform:uppercase;border-bottom:1.5px solid var(--border);padding:4px 2px 2px">Year to Date (Mar 3)</th>';
-h+='<th style="background:var(--gap);border-left:1.5px solid var(--border);border-right:1.5px solid var(--border);width:6px"></th>';
-h+='<th colspan="3" class="fy-band" style="text-align:center;letter-spacing:.1em;text-transform:uppercase;border-bottom:1.5px solid var(--border);padding:4px 2px 2px">Full Year</th>';
-h+='</tr>';
+  // Route helpers
+  var routeNames=['Geronimo 37','Metric Century 64','Century 100','Mt Tam 93','Double Metric 127'];
+  function getRoute(yr,name){return((Y[yr]||{}).routes||{})[name]||0}
+  function getRoutePct(yr,name){var t=(Y[yr]||{}).totalRiders||0;return t?Math.round(getRoute(yr,name)/t*1000)/10:0}
 
-// Row 2: year labels — bold, year-colored, same band shading
-h+='<tr class="hdr2">';
-h+='<th class="hdr-plain" style="text-align:left"></th>';
-h+='<th class="hdr-plain um-cell">UOM</th>';
-h+='<th class="ytd-band ra h24" style="padding:2px 4px">2024</th>';
-h+='<th class="ytd-band ra h25" style="padding:2px 4px">2025</th>';
-h+='<th class="ytd-band ra h26" style="padding:2px 4px">2026</th>';
-h+='<th style="background:var(--gap);border-left:1.5px solid var(--border);border-right:1.5px solid var(--border);width:6px"></th>';
-h+='<th class="fy-band ra h24" style="padding:2px 4px">2024</th>';
-h+='<th class="fy-band ra h25" style="padding:2px 4px">2025</th>';
-h+='<th class="fy-band ra h26" style="padding:2px 4px">2026 est</th>';
-h+='</tr></thead><tbody>';
+  // Clothing, gender, food, membership, geography helpers
+  function getClothing(yr){return(Y[yr]||{}).clothing||{jersey:{},bibs:{},shorts:{},socks:{},totalExSocks:0}}
+  function getGender(yr){return(Y[yr]||{}).gender||{}}
+  function getFood(yr){return(Y[yr]||{}).food||{}}
+  function getMembership(yr){return(Y[yr]||{}).membership||{}}
+  function getGeo(yr){return(Y[yr]||{}).geography||{}}
+  function getCoupons(yr){return(Y[yr]||{}).coupons||{}}
 
-function sh(t2){h+='<tr class="sh"><td colspan="9">'+t2+'</td></tr>'}
-function sbh(t2){h+='<tr class="sbh"><td colspan="9">'+t2+'</td></tr>'}
-function ar(lb,u,y,fl,i,it){var bg=i%2!==0?'background:var(--alt)':'';var lc=it?'lb it2':'lb';
-h+='<tr style="'+bg+'"><td class="'+lc+'">'+lb+'</td><td class="um-cell">'+u+'</td><td class="ra c4">'+f(y[0],u)+'</td><td class="ra c5">'+f(y[1],u)+'</td><td class="ra c6">'+f(y[2],u)+'</td><td class="gc"></td><td class="ra c4">'+f(fl[0],u)+'</td><td class="ra c5">'+f(fl[1],u)+'</td><td class="ra c6">'+f(fl[2],u)+'</td></tr>'}
+  // ======= BUILD HTML =======
+  var html='';
 
-var secs=[
-{t:'Registration',r:[['Riders Registered','Units',[400,627,632],[1902,2107,null]],['Revenue','$',[52000,81297,97328],[248760,322671,null]],['Avg Order','$',[130,130,154],[131,153,null]],['Coupons Used','Units',[28,36,0],[220,298,null]],['Coupon Value','$',[1680,2160,0],[13200,17880,null]],['% Ordering Clothing','%',[22,24,18],[22,23,null]],['% Buying Membership','%',[8,9,7],[8,8,null]]]},
-{t:'Routes',r:[['Geronimo 37','Units',[null,70,44],[null,234,null]],['Metric Century 64','Units',[109,209,254],[520,702,null]],['Century 100','Units',[170,261,228],[810,879,null]],['Mt Tam 93','Units',[44,43,74],[210,145,null]],['Double Metric 127','Units',[null,39,33],[null,133,null]]]},
-{t:'Demographics',r:[['% Male','%',[68,66,64],[67,65,null]],['% Female','%',[30,32,34],[31,33,null]],['Avg Age on Aug 1','yrs',[null,null,null],[48,47,null]],['E-bike Riders','Units',[4,8,23],[42,58,null]]]},
-{t:'Clothing Detail',r:[['Jersey','Units',[18,28,30],[172,198,null]],['Bibs','Units',[14,22,24],[128,152,null]],['Shorts','Units',[8,14,14],[78,96,null]],['Socks','Units',[28,42,48],[280,324,null]]]},
-{t:'Food Preference',r:[['No Preference','%',[72,70,68],[71,69,null]],['Vegetarian','%',[16,17,18],[16,17,null]],['Vegan','%',[6,7,8],[7,8,null]],['Gluten-Free','%',[6,6,6],[6,6,null]]]}
-];
-secs.forEach(function(s){sh(s.t);s.r.forEach(function(r,i){ar(r[0],r[1],r[2],r[3],i)})});
+  // HEADER
+  html+='<div class="hdr"><div><h1>Marin Century 2026</h1>';
+  html+='<p class="sub">Registration Dashboard &bull; Updated '+fmtDate(genAt)+'</p></div>';
 
-sh('Geographics');sbh('Top 20 Cities');
-var cities=[['San Francisco, CA',[52,82,84],[245,272,null]],['San Rafael, CA',[35,55,56],[168,188,null]],['Oakland, CA',[30,47,48],[142,160,null]],['Mill Valley, CA',[24,38,38],[112,125,null]],['Berkeley, CA',[21,33,34],[98,110,null]],['San Jose, CA',[18,29,30],[88,98,null]],['Novato, CA',[16,26,26],[78,86,null]],['Walnut Creek, CA',[15,24,24],[72,80,null]],['Sausalito, CA',[13,21,22],[62,70,null]],['Palo Alto, CA',[12,19,20],[58,64,null]],['Corte Madera, CA',[11,17,18],[52,58,null]],['Santa Rosa, CA',[10,16,16],[48,54,null]],['Petaluma, CA',[9,14,14],[42,48,null]],['San Mateo, CA',[8,13,12],[38,42,null]],['Tiburon, CA',[7,11,12],[34,38,null]],['Larkspur, CA',[6,10,10],[30,34,null]],['Fremont, CA',[6,10,10],[28,32,null]],['Sacramento, CA',[5,8,8],[24,28,null]],['Mountain View, CA',[5,8,8],[22,26,null]],['Fairfax, CA',[4,7,8],[20,22,null]]];
-cities.forEach(function(c,i){ar(c[0],'Units',c[1],c[2],i)});
-sbh('Other California');ar('Other California','Units',[42,66,72],[296,330,null],0,true);
-sbh('Non-CA States');
-var sts=[['Oregon',[8,12,12],[38,42,null]],['Washington',[6,9,10],[28,32,null]],['Nevada',[4,7,8],[22,26,null]],['Colorado',[3,5,6],[18,20,null]],['Texas',[2,4,4],[14,16,null]],['New York',[2,4,4],[12,14,null]],['Other States',[8,14,16],[52,58,null]]];
-sts.forEach(function(s,i){ar(s[0],'Units',s[1],s[2],i,i===sts.length-1)});
-h+='</tbody>';t.innerHTML=h})();
+  // HERO CARDS
+  var rPct=pc(ytd26.riders,ytd25.riders);
+  var revPct=pc(ytd26.revenue,ytd25.revenue);
+  var avgPct=pc(avgYtd26,avgYtd25);
+  function badge(p){if(p===null)return'';var cls=p>=0?'up':'dn';var s=p>=0?'+':'';return'<span class="bdg '+cls+'">'+s+p+'% vs 2025 YTD</span>'}
+
+  html+='<div class="heroes">';
+  html+='<div class="hc"><div class="lab">2026 Riders YTD</div><div class="val">'+ytd26.riders.toLocaleString()+'</div>'+badge(rPct)+'</div>';
+  html+='<div class="hc"><div class="lab">2026 Revenue YTD</div><div class="val">$'+ytd26.revenue.toLocaleString(undefined,{maximumFractionDigits:0})+'</div>'+badge(revPct)+'</div>';
+  html+='<div class="hc"><div class="lab">Avg Order</div><div class="val">$'+Math.round(avgYtd26||0)+'</div>'+badge(avgPct)+'</div>';
+  html+='</div></div>';
+
+  // CUMULATIVE CHART
+  html+='<div class="pnl"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">';
+  html+='<h2>Cumulative Registrations &bull; Jan 1 &ndash; Sep 1</h2>';
+  html+='<div class="leg" id="cleg"></div></div>';
+  html+='<div style="height:300px"><canvas id="cc"></canvas></div></div>';
+
+  // ROUTE CHART
+  html+='<div class="pnl-c"><div class="pnl">';
+  html+='<h2>Route Comparison by Year (% of Riders)</h2>';
+  html+='<div style="height:280px"><canvas id="rc"></canvas></div>';
+  html+='<p class="cnote">2024 had 3 routes only &bull; 2026 = year-to-date</p>';
+  html+='</div></div>';
+
+  // METRICS TABLE
+  html+='<div class="tw"><div class="tp"><table id="mt"></table></div></div>';
+
+  // FOOTER
+  html+='<div class="ft">Marin Century Registration Dashboard &bull; Source: RedPodium API &bull; Data as of '+fmtDate(genAt)+'</div>';
+
+  document.getElementById('app').innerHTML=html;
+
+  // ======= CUMULATIVE CHART =======
+  // Build daily data aligned by MM-DD across years
+  var allDates={};
+  ['2024','2025','2026'].forEach(function(yr){
+    var cum=(Y[yr]||{}).cumulative||[];
+    cum.forEach(function(e){allDates[e.date.slice(5)]=true});
+  });
+  var sortedDates=Object.keys(allDates).filter(function(d){return d>='01-01'&&d<='09-01'}).sort();
+  var mn={1:'Jan',2:'Feb',3:'Mar',4:'Apr',5:'May',6:'Jun',7:'Jul',8:'Aug',9:'Sep'};
+
+  // Build lookup per year
+  function buildLookup(yr){
+    var cum=(Y[yr]||{}).cumulative||[];
+    var lk={};cum.forEach(function(e){lk[e.date.slice(5)]=e.cumRiders});return lk;
+  }
+  var lk24=buildLookup('2024'),lk25=buildLookup('2025'),lk26=buildLookup('2026');
+
+  function getValAtDate(lk,mmdd2){
+    var v=null;var keys=Object.keys(lk).sort();
+    for(var i=0;i<keys.length;i++){if(keys[i]<=mmdd2)v=lk[keys[i]]}
+    return v;
+  }
+
+  // Thin to ~weekly for chart readability
+  var chartLabels=[],cd24=[],cd25=[],cd26=[];
+  sortedDates.forEach(function(d,i){
+    if(i%3!==0&&i!==sortedDates.length-1)return;
+    var m=parseInt(d.slice(0,2)),dd=parseInt(d.slice(3));
+    var lbl=(dd===1||dd===15)?(mn[m]+' '+dd):'';
+    chartLabels.push(lbl);
+    cd24.push(getValAtDate(lk24,d));
+    cd25.push(getValAtDate(lk25,d));
+    cd26.push(d<=mmdd?getValAtDate(lk26,d):null);
+  });
+
+  var ctx=document.getElementById('cc').getContext('2d');
+  var ch=new Chart(ctx,{type:'line',data:{labels:chartLabels,datasets:[
+    {label:'2024',data:cd24,borderColor:C24,borderWidth:1.5,borderDash:[5,3],pointRadius:0,fill:false,tension:.3},
+    {label:'2025',data:cd25,borderColor:C25,borderWidth:2,pointRadius:0,fill:false,tension:.3},
+    {label:'2026',data:cd26,borderColor:C26,borderWidth:2.5,pointRadius:0,fill:true,
+      backgroundColor:function(x){var g=x.chart.ctx.createLinearGradient(0,0,0,x.chart.height);g.addColorStop(0,'rgba(194,65,12,0.18)');g.addColorStop(1,'rgba(194,65,12,0)');return g},tension:.3,spanGaps:false}
+  ]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+    plugins:{legend:{display:false},tooltip:{backgroundColor:'#fff',titleColor:'#78716c',bodyColor:'#292524',borderColor:'#e7e5e0',borderWidth:1,padding:10,cornerRadius:6,titleFont:{size:10,weight:'600'},bodyFont:{size:11,weight:'500'},callbacks:{label:function(x){return x.raw!=null?x.dataset.label+': '+x.raw.toLocaleString():null}}}},
+    scales:{x:{grid:{display:false},ticks:{font:{size:9},color:'#a8a29e',maxTicksLimit:12,autoSkip:true,autoSkipPadding:20,callback:function(v,i){return chartLabels[i]||null}}},y:{min:0,max:2500,ticks:{font:{size:9},color:'#a8a29e',stepSize:500,callback:function(v){return v.toLocaleString()}},grid:{color:'#e8e5df'}}}}});
+
+  // Legend
+  var le=document.getElementById('cleg');var its=[{y:'2024',c:C24,s:'d24'},{y:'2025',c:C25,s:'s25'},{y:'2026',c:C26,s:'s26'}];var ay=null;
+  its.forEach(function(it){var d=document.createElement('div');d.className='it';d.innerHTML='<div class="ln '+it.s+'"></div><span style="color:'+it.c+'">'+it.y+'</span>';
+  d.onclick=function(){if(ay===it.y)ay=null;else ay=it.y;ch.data.datasets.forEach(function(ds,di){ds.hidden=ay&&its[di].y!==ay});ch.update();le.querySelectorAll('.it').forEach(function(el2,j){el2.className=(!ay||its[j].y===ay)?'it':'it dim'})};le.appendChild(d)});
+
+  // ======= ROUTE CHART =======
+  var rctx=document.getElementById('rc').getContext('2d');
+  new Chart(rctx,{type:'bar',data:{labels:['Geronimo 37','Metric 64','Century 100','Mt Tam 93','Dbl Metric 127'],datasets:[
+    {label:'2024',data:[getRoutePct('2024','Geronimo 37'),getRoutePct('2024','Metric Century 64'),getRoutePct('2024','Century 100'),getRoutePct('2024','Mt Tam 93'),getRoutePct('2024','Double Metric 127')],backgroundColor:C24,borderRadius:2},
+    {label:'2025',data:[getRoutePct('2025','Geronimo 37'),getRoutePct('2025','Metric Century 64'),getRoutePct('2025','Century 100'),getRoutePct('2025','Mt Tam 93'),getRoutePct('2025','Double Metric 127')],backgroundColor:C25,borderRadius:2},
+    {label:'2026',data:[getRoutePct('2026','Geronimo 37'),getRoutePct('2026','Metric Century 64'),getRoutePct('2026','Century 100'),getRoutePct('2026','Mt Tam 93'),getRoutePct('2026','Double Metric 127')],backgroundColor:C26,borderRadius:2}
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:11,weight:'600'},usePointStyle:true,pointStyle:'rect',padding:16}},tooltip:{backgroundColor:'#fff',titleColor:'#78716c',bodyColor:'#292524',borderColor:'#e7e5e0',borderWidth:1,padding:10,cornerRadius:6,callbacks:{label:function(x){return x.dataset.label+': '+x.raw+'%'}}}},scales:{x:{grid:{display:false},ticks:{font:{size:10},color:'#78716c'}},y:{min:0,max:50,ticks:{font:{size:9},color:'#a8a29e',callback:function(v){return v+'%'}},grid:{color:'#e8e5df'}}}}});
+
+  // ======= METRICS TABLE =======
+  var t=document.getElementById('mt');
+  var h='<colgroup><col style="width:140px"><col style="width:30px"><col style="width:58px"><col style="width:58px"><col style="width:58px"><col style="width:6px"><col style="width:62px"><col style="width:62px"><col style="width:62px"></colgroup>';
+  h+='<thead><tr class="hdr1"><th class="hdr-plain"></th><th class="hdr-plain"></th>';
+  h+='<th colspan="3" class="ytd-band" style="text-align:center;letter-spacing:.1em;text-transform:uppercase;border-bottom:1.5px solid var(--border);padding:4px 2px 2px">Year to Date ('+mn[now.getMonth()+1]+' '+now.getDate()+')</th>';
+  h+='<th style="background:var(--gap);border-left:1.5px solid var(--border);border-right:1.5px solid var(--border);width:6px"></th>';
+  h+='<th colspan="3" class="fy-band" style="text-align:center;letter-spacing:.1em;text-transform:uppercase;border-bottom:1.5px solid var(--border);padding:4px 2px 2px">Full Year</th></tr>';
+  h+='<tr class="hdr2"><th class="hdr-plain" style="text-align:left"></th><th class="hdr-plain um-cell">UOM</th>';
+  h+='<th class="ytd-band ra h24" style="padding:2px 4px">2024</th><th class="ytd-band ra h25" style="padding:2px 4px">2025</th><th class="ytd-band ra h26" style="padding:2px 4px">2026</th>';
+  h+='<th style="background:var(--gap);border-left:1.5px solid var(--border);border-right:1.5px solid var(--border);width:6px"></th>';
+  h+='<th class="fy-band ra h24" style="padding:2px 4px">2024</th><th class="fy-band ra h25" style="padding:2px 4px">2025</th><th class="fy-band ra h26" style="padding:2px 4px">2026 est</th></tr></thead><tbody>';
+
+  function sh(t2){h+='<tr class="sh"><td colspan="9">'+t2+'</td></tr>'}
+  function sbh(t2){h+='<tr class="sbh"><td colspan="9">'+t2+'</td></tr>'}
+  function ar(lb,u,y,fl,i,it){var bg=i%2!==0?'background:var(--alt)':'';var lc=it?'lb it2':'lb';
+  h+='<tr style="'+bg+'"><td class="'+lc+'">'+lb+'</td><td class="um-cell">'+u+'</td><td class="ra c4">'+fmt(y[0],u)+'</td><td class="ra c5">'+fmt(y[1],u)+'</td><td class="ra c6">'+fmt(y[2],u)+'</td><td class="gc"></td><td class="ra c4">'+fmt(fl[0],u)+'</td><td class="ra c5">'+fmt(fl[1],u)+'</td><td class="ra c6">'+fmt(fl[2],u)+'</td></tr>'}
+
+  // REGISTRATION
+  sh('Registration');
+  ar('Riders Registered','Units',[ytd24.riders,ytd25.riders,ytd26.riders],[fy24.riders,fy25.riders,null],0);
+  ar('Revenue','$',[ytd24.revenue,ytd25.revenue,ytd26.revenue],[fy24.revenue,fy25.revenue,null],1);
+  ar('Avg Order','$',[Math.round(safeDiv(ytd24.revenue,ytd24.riders)||0),Math.round(safeDiv(ytd25.revenue,ytd25.riders)||0),Math.round(avgYtd26||0)],[Math.round(fy24.avg),Math.round(fy25.avg),null],2);
+  ar('Coupons Used','Units',[null,null,getCoupons('2026').totalUsed||0],[getCoupons('2024').totalUsed||0,getCoupons('2025').totalUsed||0,null],3);
+  ar('% Ordering Clothing','%',[null,null,safePct(getClothing('2026').totalExSocks,ytd26.riders)],[safePct(getClothing('2024').totalExSocks,fy24.riders),safePct(getClothing('2025').totalExSocks,fy25.riders),null],4);
+  ar('% Buying Membership','%',[null,null,safePct(getMembership('2026').newMembers,ytd26.riders)],[safePct(getMembership('2024').newMembers,fy24.riders),safePct(getMembership('2025').newMembers,fy25.riders),null],5);
+
+  // ROUTES
+  sh('Routes');
+  routeNames.forEach(function(rn,i){
+    ar(rn,'Units',[null,null,getRoute('2026',rn)],[getRoute('2024',rn)||null,getRoute('2025',rn)||null,null],i);
+  });
+
+  // DEMOGRAPHICS
+  sh('Demographics');
+  ar('% Male','%',[null,null,getGender('2026').pctMale],[getGender('2024').pctMale,getGender('2025').pctMale,null],0);
+  var femPct=function(yr){var g=getGender(yr);var tot=(g.male||0)+(g.female||0)+(g.other||0);return tot?Math.round(g.female/tot*1000)/10:null};
+  ar('% Female','%',[null,null,femPct('2026')],[femPct('2024'),femPct('2025'),null],1);
+  ar('Avg Age on Aug 1','yrs',[null,null,null],[(Y['2024']||{}).avgAge,(Y['2025']||{}).avgAge,null],2);
+  ar('E-bike Riders','Units',[null,null,(Y['2026']||{}).ebike||0],[(Y['2024']||{}).ebike||0,(Y['2025']||{}).ebike||0,null],3);
+
+  // CLOTHING
+  sh('Clothing Detail');
+  ['jersey','bibs','shorts','socks'].forEach(function(item,i){
+    var lbl=item.charAt(0).toUpperCase()+item.slice(1);
+    ar(lbl,'Units',[null,null,(getClothing('2026')[item]||{}).units||0],[(getClothing('2024')[item]||{}).units||0,(getClothing('2025')[item]||{}).units||0,null],i);
+  });
+
+  // FOOD
+  sh('Food Preference');
+  [['No Preference','noPreference'],['Vegetarian','vegetarian'],['Vegan','vegan'],['Gluten-Free','glutenFree']].forEach(function(pair,i){
+    ar(pair[0],'%',[null,null,getFood('2026')[pair[1]]],[getFood('2024')[pair[1]],getFood('2025')[pair[1]],null],i);
+  });
+
+  // GEOGRAPHICS
+  sh('Geographics');
+
+  // Merge top cities across years, ordered by 2026 count
+  var citySet={};
+  ['2024','2025','2026'].forEach(function(yr){
+    (getGeo(yr).topCities||[]).forEach(function(c){citySet[c.city]=true});
+  });
+  function getCityCount(yr,city){
+    var cities=getGeo(yr).topCities||[];
+    for(var i=0;i<cities.length;i++){if(cities[i].city===city)return cities[i].riders}
+    return 0;
+  }
+  // Sort by 2026 count descending
+  var allCities=Object.keys(citySet).sort(function(a,b){return getCityCount('2026',b)-getCityCount('2026',a)});
+  var topCities=allCities.slice(0,20);
+
+  sbh('Top 20 Cities');
+  topCities.forEach(function(city,i){
+    ar(city,'Units',[null,null,getCityCount('2026',city)],[getCityCount('2024',city)||null,getCityCount('2025',city)||null,null],i);
+  });
+
+  sbh('Other California');
+  ar('Other California','Units',[null,null,getGeo('2026').otherCA||0],[getGeo('2024').otherCA||0,getGeo('2025').otherCA||0,null],0,true);
+
+  // Non-CA states
+  var stateSet={};
+  ['2024','2025','2026'].forEach(function(yr){
+    var s=getGeo(yr).nonCAStates||{};
+    Object.keys(s).forEach(function(k){stateSet[k]=true});
+  });
+  var stateList=Object.keys(stateSet).sort(function(a,b){
+    return((getGeo('2026').nonCAStates||{})[b]||0)-((getGeo('2026').nonCAStates||{})[a]||0);
+  }).slice(0,10);
+
+  sbh('Non-CA States');
+  stateList.forEach(function(st,i){
+    ar(st,'Units',[null,null,(getGeo('2026').nonCAStates||{})[st]||0],[(getGeo('2024').nonCAStates||{})[st]||0,(getGeo('2025').nonCAStates||{})[st]||0,null],i);
+  });
+
+  h+='</tbody>';
+  t.innerHTML=h;
+
+}).catch(function(err){
+  document.getElementById('app').innerHTML='<div class="loading" style="color:#991b1b">Error loading data: '+err.message+'<br>Run refresh-dashboard.bat first.</div>';
+});
 </script>
 </body>
 </html>
