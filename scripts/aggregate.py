@@ -56,9 +56,7 @@ def normalize_route(field_data):
         if field.get("path", "").startswith("registrationOptions.") and field.get("label"):
             route_label = field.get("label", "").strip()
 
-    # Clothing paths
-    if reg_option == "clothingPurchaseOnly":
-        return "Clothing Only"
+
     
 
     # Match by label — ORDER MATTERS (specific before generic)
