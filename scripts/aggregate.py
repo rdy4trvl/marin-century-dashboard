@@ -59,8 +59,7 @@ def normalize_route(field_data):
     # Clothing paths
     if reg_option == "clothingPurchaseOnly":
         return "Clothing Only"
-    if route_label and "CLOTHING" in route_label.upper():
-        return "Clothing Only"
+    
 
     # Match by label — ORDER MATTERS (specific before generic)
     if route_label:
@@ -81,7 +80,8 @@ def normalize_route(field_data):
             return "Century 100"
         if "METRIC" in lu:
             return "Metric Century 64"
-
+        if "CLOTHING" in lu:
+            return "Clothing Only"
     return "Unknown"
 
 def get_field(field_data, path, default=None):
