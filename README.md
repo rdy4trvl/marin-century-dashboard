@@ -7,6 +7,7 @@ Live dashboard tracking 2024–2026 Marin Century registrations via the Webconne
 Open `index.html` in a browser — sample data is pre-loaded in `data/summary.json`.
 
 
+
 ### Update Index file
 2. download Index file to PC
 3. on github go to <> Code, open Index file, hit pencil, CTRL A, CTRL X to delete
