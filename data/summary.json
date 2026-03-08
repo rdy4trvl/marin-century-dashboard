@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-03-08T05:28:53Z",
+  "generatedAt": "2026-03-08T05:42:50Z",
   "years": {
     "2024": {
       "year": "2024",
-      "lastUpdated": "2026-03-08T05:28:38Z",
+      "lastUpdated": "2026-03-08T05:42:35Z",
       "totalRiders": 1737,
       "totalRevenue": 246658.62,
       "avgOrder": 142.0,
@@ -1088,45 +1088,25 @@
         "noPreference": 82.8,
         "vegetarian": 11.6,
         "vegan": 2.8,
-        "glutenFree": 2.9,
-        "raw": {
-          "nopreferenceomnivore": 1438,
-          "vegetarian": 201,
-          "vegan": 48,
-          "glutenfree": 50
-        }
+        "glutenFree": 2.9
       },
       "clothing": {
         "jersey": {
-          "units": 164,
-          "revenue": 13940.0
+          "units": 164
         },
         "bibs": {
-          "units": 50,
-          "revenue": 4500.0
+          "units": 50
         },
         "shorts": {
-          "units": 16,
-          "revenue": 1360.0
+          "units": 16
         },
         "socks": {
-          "units": 128,
-          "revenue": 2176.0
+          "units": 128
         },
-        "totalExSocks": 230,
-        "totalRevenue": 21976.0
+        "totalExSocks": 230
       },
-      "tshirts": 134,
       "membership": {
-        "newMembers": 52,
-        "raw": {
-          "nothankyou3": 1562,
-          "alreadymember2": 113,
-          "yes": 52,
-          "nothankyou": 7,
-          "alreadymember": 2,
-          "nothankyou2": 1
-        }
+        "newMembers": 52
       },
       "geography": {
         "topCities": [
@@ -1233,11 +1213,148 @@
         },
         "totalCA": 1694
       },
-      "ebike": 46
+      "ebike": 46,
+      "ytd": {
+        "totalRiders": 195,
+        "totalRevenue": 28565.14,
+        "avgOrder": 146.49,
+        "routes": {
+          "Metric Century 64": 72,
+          "Century 100": 71,
+          "Mt Tam 93": 52
+        },
+        "coupons": {
+          "totalUsed": 0,
+          "codes": {}
+        },
+        "gender": {
+          "male": 149,
+          "female": 45,
+          "other": 1,
+          "pctMale": 76.4
+        },
+        "avgAge": 55.2,
+        "food": {
+          "noPreference": 82.1,
+          "vegetarian": 9.2,
+          "vegan": 6.2,
+          "glutenFree": 2.6
+        },
+        "clothing": {
+          "jersey": {
+            "units": 19
+          },
+          "bibs": {
+            "units": 6
+          },
+          "shorts": {
+            "units": 1
+          },
+          "socks": {
+            "units": 20
+          },
+          "totalExSocks": 26
+        },
+        "membership": {
+          "newMembers": 11
+        },
+        "geography": {
+          "topCities": [
+            {
+              "city": "San Francisco, CA",
+              "riders": 35
+            },
+            {
+              "city": "Novato, CA",
+              "riders": 10
+            },
+            {
+              "city": "Oakland, CA",
+              "riders": 8
+            },
+            {
+              "city": "Berkeley, CA",
+              "riders": 7
+            },
+            {
+              "city": "Mill Valley, CA",
+              "riders": 6
+            },
+            {
+              "city": "Alameda, CA",
+              "riders": 6
+            },
+            {
+              "city": "Davis, CA",
+              "riders": 5
+            },
+            {
+              "city": "Santa Rosa, CA",
+              "riders": 4
+            },
+            {
+              "city": "Mountain View, CA",
+              "riders": 4
+            },
+            {
+              "city": "Sacramento, CA",
+              "riders": 4
+            },
+            {
+              "city": "Sausalito, CA",
+              "riders": 3
+            },
+            {
+              "city": "Menlo Park, CA",
+              "riders": 3
+            },
+            {
+              "city": "San Jose, CA",
+              "riders": 3
+            },
+            {
+              "city": "Los Altos, CA",
+              "riders": 3
+            },
+            {
+              "city": "San Anselmo, CA",
+              "riders": 3
+            },
+            {
+              "city": "Greenbrae, CA",
+              "riders": 3
+            },
+            {
+              "city": "Petaluma, CA",
+              "riders": 3
+            },
+            {
+              "city": "Los Gatos, CA",
+              "riders": 3
+            },
+            {
+              "city": "Corte Madera, CA",
+              "riders": 3
+            },
+            {
+              "city": "Vacaville, CA",
+              "riders": 2
+            }
+          ],
+          "otherCA": 74,
+          "nonCAStates": {
+            "CO": 1,
+            "NV": 1,
+            "ID": 1
+          },
+          "totalCA": 192
+        },
+        "ebike": 14
+      }
     },
     "2025": {
       "year": "2025",
-      "lastUpdated": "2026-03-08T05:28:49Z",
+      "lastUpdated": "2026-03-08T05:42:47Z",
       "totalRiders": 2069,
       "totalRevenue": 301162.96,
       "avgOrder": 145.56,
@@ -2738,47 +2855,25 @@
         "noPreference": 82.0,
         "vegetarian": 11.4,
         "vegan": 2.5,
-        "glutenFree": 3.3,
-        "raw": {
-          "unknown": 17,
-          "nopreferenceomnivore": 1697,
-          "glutenfree": 68,
-          "vegetarian": 236,
-          "vegan": 51
-        }
+        "glutenFree": 3.3
       },
       "clothing": {
         "jersey": {
-          "units": 230,
-          "revenue": 20450.0
+          "units": 230
         },
         "bibs": {
-          "units": 75,
-          "revenue": 6990.0
+          "units": 75
         },
         "shorts": {
-          "units": 21,
-          "revenue": 1855.0
+          "units": 21
         },
         "socks": {
-          "units": 169,
-          "revenue": 2873.0
+          "units": 169
         },
-        "totalExSocks": 326,
-        "totalRevenue": 32168.0
+        "totalExSocks": 326
       },
-      "tshirts": 225,
       "membership": {
-        "newMembers": 86,
-        "raw": {
-          "unknown": 17,
-          "nothankyou3": 1865,
-          "alreadymember2": 108,
-          "yes": 69,
-          "nothankyou": 6,
-          "alreadymember": 3,
-          "nothankyou2": 1
-        }
+        "newMembers": 86
       },
       "geography": {
         "topCities": [
@@ -2890,11 +2985,158 @@
         },
         "totalCA": 2001
       },
-      "ebike": 58
+      "ebike": 58,
+      "ytd": {
+        "totalRiders": 640,
+        "totalRevenue": 87347.01,
+        "avgOrder": 136.48,
+        "routes": {
+          "Century 100": 276,
+          "Metric Century 64": 184,
+          "Mt Tam 93": 77,
+          "Geronimo 37": 53,
+          "Double Metric 127": 50
+        },
+        "coupons": {
+          "totalUsed": 0,
+          "codes": {}
+        },
+        "gender": {
+          "male": 509,
+          "female": 130,
+          "other": 1,
+          "pctMale": 79.5
+        },
+        "avgAge": 51.4,
+        "food": {
+          "noPreference": 85.8,
+          "vegetarian": 8.9,
+          "vegan": 2.8,
+          "glutenFree": 2.5
+        },
+        "clothing": {
+          "jersey": {
+            "units": 63
+          },
+          "bibs": {
+            "units": 21
+          },
+          "shorts": {
+            "units": 6
+          },
+          "socks": {
+            "units": 47
+          },
+          "totalExSocks": 90
+        },
+        "membership": {
+          "newMembers": 18
+        },
+        "geography": {
+          "topCities": [
+            {
+              "city": "San Francisco, CA",
+              "riders": 144
+            },
+            {
+              "city": "Oakland, CA",
+              "riders": 28
+            },
+            {
+              "city": "Berkeley, CA",
+              "riders": 19
+            },
+            {
+              "city": "Novato, CA",
+              "riders": 19
+            },
+            {
+              "city": "Mill Valley, CA",
+              "riders": 19
+            },
+            {
+              "city": "San Rafael, CA",
+              "riders": 16
+            },
+            {
+              "city": "Sacramento, CA",
+              "riders": 16
+            },
+            {
+              "city": "San Anselmo, CA",
+              "riders": 14
+            },
+            {
+              "city": "Mountain View, CA",
+              "riders": 13
+            },
+            {
+              "city": "Alameda, CA",
+              "riders": 13
+            },
+            {
+              "city": "San Jose, CA",
+              "riders": 12
+            },
+            {
+              "city": "Santa Rosa, CA",
+              "riders": 10
+            },
+            {
+              "city": "Danville, CA",
+              "riders": 10
+            },
+            {
+              "city": "Corte Madera, CA",
+              "riders": 9
+            },
+            {
+              "city": "Palo Alto, CA",
+              "riders": 7
+            },
+            {
+              "city": "Napa, CA",
+              "riders": 7
+            },
+            {
+              "city": "Tiburon, CA",
+              "riders": 7
+            },
+            {
+              "city": "Truckee, CA",
+              "riders": 7
+            },
+            {
+              "city": "Sunnyvale, CA",
+              "riders": 7
+            },
+            {
+              "city": "Petaluma, CA",
+              "riders": 7
+            }
+          ],
+          "otherCA": 234,
+          "nonCAStates": {
+            "NV": 6,
+            "WA": 3,
+            "CO": 3,
+            "UT": 2,
+            "DE": 2,
+            "ID": 1,
+            "MN": 1,
+            "NY": 1,
+            "TN": 1,
+            "IL": 1,
+            "VA": 1
+          },
+          "totalCA": 618
+        },
+        "ebike": 17
+      }
     },
     "2026": {
       "year": "2026",
-      "lastUpdated": "2026-03-08T05:28:53Z",
+      "lastUpdated": "2026-03-08T05:42:50Z",
       "totalRiders": 644,
       "totalRevenue": 87719.45,
       "avgOrder": 136.21,
@@ -3381,44 +3623,25 @@
         "noPreference": 85.2,
         "vegetarian": 9.3,
         "vegan": 3.3,
-        "glutenFree": 2.2,
-        "raw": {
-          "nopreferenceomnivore": 549,
-          "vegan": 21,
-          "vegetarian": 60,
-          "glutenfree": 14
-        }
+        "glutenFree": 2.2
       },
       "clothing": {
         "jersey": {
-          "units": 53,
-          "revenue": 5141.0
+          "units": 53
         },
         "bibs": {
-          "units": 15,
-          "revenue": 1530.0
+          "units": 15
         },
         "shorts": {
-          "units": 6,
-          "revenue": 582.0
+          "units": 6
         },
         "socks": {
-          "units": 37,
-          "revenue": 629.0
+          "units": 37
         },
-        "totalExSocks": 74,
-        "totalRevenue": 7882.0
+        "totalExSocks": 74
       },
-      "tshirts": 138,
       "membership": {
-        "newMembers": 21,
-        "raw": {
-          "nothankyou3": 568,
-          "alreadymember2": 48,
-          "nothankyou": 3,
-          "yes": 21,
-          "alreadymember": 4
-        }
+        "newMembers": 21
       },
       "geography": {
         "topCities": [
@@ -3520,7 +3743,157 @@
         },
         "totalCA": 625
       },
-      "ebike": 38
+      "ebike": 38,
+      "ytd": {
+        "totalRiders": 644,
+        "totalRevenue": 87719.45,
+        "avgOrder": 136.21,
+        "routes": {
+          "Metric Century 64": 257,
+          "Century 100": 232,
+          "Mt Tam 93": 77,
+          "Geronimo 37": 44,
+          "Double Metric 127": 34
+        },
+        "coupons": {
+          "totalUsed": 1,
+          "codes": {
+            "CENTURYDJ2026": 1
+          }
+        },
+        "gender": {
+          "male": 484,
+          "female": 158,
+          "other": 2,
+          "pctMale": 75.2
+        },
+        "avgAge": 54.2,
+        "food": {
+          "noPreference": 85.2,
+          "vegetarian": 9.3,
+          "vegan": 3.3,
+          "glutenFree": 2.2
+        },
+        "clothing": {
+          "jersey": {
+            "units": 53
+          },
+          "bibs": {
+            "units": 15
+          },
+          "shorts": {
+            "units": 6
+          },
+          "socks": {
+            "units": 37
+          },
+          "totalExSocks": 74
+        },
+        "membership": {
+          "newMembers": 21
+        },
+        "geography": {
+          "topCities": [
+            {
+              "city": "San Francisco, CA",
+              "riders": 117
+            },
+            {
+              "city": "Oakland, CA",
+              "riders": 29
+            },
+            {
+              "city": "San Rafael, CA",
+              "riders": 21
+            },
+            {
+              "city": "Berkeley, CA",
+              "riders": 19
+            },
+            {
+              "city": "Mountain View, CA",
+              "riders": 18
+            },
+            {
+              "city": "San Jose, CA",
+              "riders": 18
+            },
+            {
+              "city": "Mill Valley, CA",
+              "riders": 17
+            },
+            {
+              "city": "Walnut Creek, CA",
+              "riders": 13
+            },
+            {
+              "city": "Palo Alto, CA",
+              "riders": 13
+            },
+            {
+              "city": "Novato, CA",
+              "riders": 12
+            },
+            {
+              "city": "Alameda, CA",
+              "riders": 12
+            },
+            {
+              "city": "Napa, CA",
+              "riders": 11
+            },
+            {
+              "city": "San Anselmo, CA",
+              "riders": 10
+            },
+            {
+              "city": "Redwood City, CA",
+              "riders": 9
+            },
+            {
+              "city": "Santa Rosa, CA",
+              "riders": 9
+            },
+            {
+              "city": "Tiburon, CA",
+              "riders": 9
+            },
+            {
+              "city": "Sacramento, CA",
+              "riders": 8
+            },
+            {
+              "city": "San Ramon, CA",
+              "riders": 8
+            },
+            {
+              "city": "Richmond, CA",
+              "riders": 8
+            },
+            {
+              "city": "Los Altos, CA",
+              "riders": 7
+            }
+          ],
+          "otherCA": 257,
+          "nonCAStates": {
+            "WA": 4,
+            "UT": 3,
+            "CO": 3,
+            "VA": 1,
+            "MA": 1,
+            "OR": 1,
+            "KS": 1,
+            "GA": 1,
+            "AZ": 1,
+            "ID": 1,
+            "LA": 1,
+            "NV": 1
+          },
+          "totalCA": 625
+        },
+        "ebike": 38
+      }
     }
   }
 }
