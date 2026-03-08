@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-03-05T06:28:54Z",
+  "generatedAt": "2026-03-08T04:54:59Z",
   "years": {
     "2024": {
       "year": "2024",
-      "lastUpdated": "2026-03-05T06:28:37Z",
+      "lastUpdated": "2026-03-08T04:54:44Z",
       "totalRiders": 1737,
       "totalRevenue": 246658.62,
       "avgOrder": 142.0,
@@ -1237,7 +1237,7 @@
     },
     "2025": {
       "year": "2025",
-      "lastUpdated": "2026-03-05T06:28:51Z",
+      "lastUpdated": "2026-03-08T04:54:56Z",
       "totalRiders": 1857,
       "totalRevenue": 267670.65,
       "avgOrder": 144.14,
@@ -2879,12 +2879,12 @@
     },
     "2026": {
       "year": "2026",
-      "lastUpdated": "2026-03-05T06:28:54Z",
-      "totalRiders": 562,
-      "totalRevenue": 75443.75,
-      "avgOrder": 134.24,
+      "lastUpdated": "2026-03-08T04:54:59Z",
+      "totalRiders": 567,
+      "totalRevenue": 76306.91,
+      "avgOrder": 134.58,
       "totalCanceled": 1,
-      "clothingOnlyPurchases": 75,
+      "clothingOnlyPurchases": 79,
       "cumulative": [
         {
           "date": "2026-01-01",
@@ -3305,11 +3305,32 @@
           "cumRiders": 562,
           "dailyRevenue": 1056.94,
           "cumRevenue": 75443.75
+        },
+        {
+          "date": "2026-03-05",
+          "daily": 1,
+          "cumRiders": 563,
+          "dailyRevenue": 146.65,
+          "cumRevenue": 75590.4
+        },
+        {
+          "date": "2026-03-06",
+          "daily": 2,
+          "cumRiders": 565,
+          "dailyRevenue": 423.2,
+          "cumRevenue": 76013.6
+        },
+        {
+          "date": "2026-03-07",
+          "daily": 2,
+          "cumRiders": 567,
+          "dailyRevenue": 293.31,
+          "cumRevenue": 76306.91
         }
       ],
       "routes": {
-        "Metric Century 64": 255,
-        "Century 100": 229,
+        "Metric Century 64": 257,
+        "Century 100": 232,
         "Geronimo 37": 44,
         "Double Metric 127": 34
       },
@@ -3320,19 +3341,19 @@
         }
       },
       "gender": {
-        "male": 418,
-        "female": 143,
+        "male": 422,
+        "female": 144,
         "other": 1,
         "pctMale": 74.4
       },
-      "avgAge": 54.4,
+      "avgAge": 54.3,
       "food": {
-        "noPreference": 84.9,
-        "vegetarian": 9.6,
+        "noPreference": 85.0,
+        "vegetarian": 9.5,
         "vegan": 3.4,
         "glutenFree": 2.1,
         "raw": {
-          "nopreferenceomnivore": 477,
+          "nopreferenceomnivore": 482,
           "vegan": 19,
           "vegetarian": 54,
           "glutenfree": 12
@@ -3340,31 +3361,31 @@
       },
       "clothing": {
         "jersey": {
-          "units": 51,
-          "revenue": 4947.0
+          "units": 53,
+          "revenue": 5141.0
         },
         "bibs": {
-          "units": 14,
-          "revenue": 1428.0
+          "units": 15,
+          "revenue": 1530.0
         },
         "shorts": {
           "units": 6,
           "revenue": 582.0
         },
         "socks": {
-          "units": 35,
-          "revenue": 595.0
+          "units": 37,
+          "revenue": 629.0
         },
-        "totalExSocks": 71,
-        "totalRevenue": 7552.0
+        "totalExSocks": 74,
+        "totalRevenue": 7882.0
       },
-      "tshirts": 134,
+      "tshirts": 138,
       "membership": {
         "newMembers": 19,
         "raw": {
-          "nothankyou3": 497,
+          "alreadymember2": 41,
+          "nothankyou3": 501,
           "nothankyou": 3,
-          "alreadymember2": 40,
           "yes": 19,
           "alreadymember": 3
         }
@@ -3373,7 +3394,7 @@
         "topCities": [
           {
             "city": "San Francisco, CA",
-            "riders": 101
+            "riders": 102
           },
           {
             "city": "Oakland, CA",
@@ -3405,11 +3426,19 @@
           },
           {
             "city": "Walnut Creek, CA",
-            "riders": 10
+            "riders": 11
           },
           {
             "city": "Napa, CA",
             "riders": 10
+          },
+          {
+            "city": "Novato, CA",
+            "riders": 9
+          },
+          {
+            "city": "Redwood City, CA",
+            "riders": 9
           },
           {
             "city": "Santa Rosa, CA",
@@ -3428,16 +3457,8 @@
             "riders": 9
           },
           {
-            "city": "Novato, CA",
-            "riders": 8
-          },
-          {
             "city": "Richmond, CA",
             "riders": 8
-          },
-          {
-            "city": "Redwood City, CA",
-            "riders": 7
           },
           {
             "city": "San Ramon, CA",
@@ -3465,7 +3486,7 @@
           "ID": 1,
           "NV": 1
         },
-        "totalCA": 547
+        "totalCA": 552
       },
       "ebike": 36
     }
