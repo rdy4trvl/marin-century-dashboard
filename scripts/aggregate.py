@@ -57,7 +57,7 @@ def normalize_route(field_data):
             route_label = field.get("label", "").strip()
 
     # Clothing paths
-    if reg_option in ("clothingPurchaseOnly", "clothingOnlyPurchaseSee"):
+    if reg_option == "clothingPurchaseOnly":
         return "Clothing Only"
     if route_label and "CLOTHING" in route_label.upper():
         return "Clothing Only"
