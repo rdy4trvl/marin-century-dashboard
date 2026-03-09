@@ -194,7 +194,7 @@ fetch('data/summary.json').then(function(r){return r.json()}).then(function(data
   sbh('Other California');
   ar('Other California','Units',[(y24.geography||{}).otherCA||null,(y25.geography||{}).otherCA||null,(y26.geography||{}).otherCA||null],[(f24.geography||{}).otherCA||null,(f25.geography||{}).otherCA||null,null],0,true);
   var stateSet={};['2024','2025','2026'].forEach(function(yr){var s=(fy(yr).geography||{}).nonCAStates||{};Object.keys(s).forEach(function(k){stateSet[k]=true})});
-  var stateList=Object.keys(stateSet).sort(function(a,b){return(((f26.geography||{}).nonCAStates||{})[b]||0)-(((f26.geography||{}).nonCAStates||{})[a]||0))}).slice(0,10);
+  var stateList=Object.keys(stateSet).sort(function(a,b){return(((f26.geography||{}).nonCAStates||{})[b]||0)-(((f26.geography||{}).nonCAStates||{})[a]||0)}).slice(0,10);
   sbh('Non-CA States');
   stateList.forEach(function(st,i){ar(st,'Units',[((y24.geography||{}).nonCAStates||{})[st]||null,((y25.geography||{}).nonCAStates||{})[st]||null,((y26.geography||{}).nonCAStates||{})[st]||null],[((f24.geography||{}).nonCAStates||{})[st]||null,((f25.geography||{}).nonCAStates||{})[st]||null,null],i)});
   h+='</tbody>';t.innerHTML=h;
