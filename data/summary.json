@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-03-08T05:42:50Z",
+  "generatedAt": "2026-03-09T04:41:57Z",
   "years": {
     "2024": {
       "year": "2024",
-      "lastUpdated": "2026-03-08T05:42:35Z",
+      "lastUpdated": "2026-03-09T04:41:41Z",
       "totalRiders": 1737,
       "totalRevenue": 246658.62,
       "avgOrder": 142.0,
@@ -1215,45 +1215,45 @@
       },
       "ebike": 46,
       "ytd": {
-        "totalRiders": 195,
-        "totalRevenue": 28565.14,
-        "avgOrder": 146.49,
+        "totalRiders": 206,
+        "totalRevenue": 30716.52,
+        "avgOrder": 149.11,
         "routes": {
-          "Metric Century 64": 72,
-          "Century 100": 71,
-          "Mt Tam 93": 52
+          "Century 100": 78,
+          "Metric Century 64": 75,
+          "Mt Tam 93": 53
         },
         "coupons": {
           "totalUsed": 0,
           "codes": {}
         },
         "gender": {
-          "male": 149,
-          "female": 45,
+          "male": 158,
+          "female": 47,
           "other": 1,
-          "pctMale": 76.4
+          "pctMale": 76.7
         },
-        "avgAge": 55.2,
+        "avgAge": 55.3,
         "food": {
-          "noPreference": 82.1,
+          "noPreference": 82.5,
           "vegetarian": 9.2,
-          "vegan": 6.2,
-          "glutenFree": 2.6
+          "vegan": 5.8,
+          "glutenFree": 2.4
         },
         "clothing": {
           "jersey": {
-            "units": 19
+            "units": 24
           },
           "bibs": {
             "units": 6
           },
           "shorts": {
-            "units": 1
+            "units": 4
           },
           "socks": {
-            "units": 20
+            "units": 22
           },
-          "totalExSocks": 26
+          "totalExSocks": 34
         },
         "membership": {
           "newMembers": 11
@@ -1262,35 +1262,35 @@
           "topCities": [
             {
               "city": "San Francisco, CA",
-              "riders": 35
+              "riders": 36
+            },
+            {
+              "city": "Oakland, CA",
+              "riders": 10
             },
             {
               "city": "Novato, CA",
               "riders": 10
             },
             {
-              "city": "Oakland, CA",
+              "city": "Berkeley, CA",
               "riders": 8
             },
             {
-              "city": "Berkeley, CA",
-              "riders": 7
-            },
-            {
               "city": "Mill Valley, CA",
-              "riders": 6
+              "riders": 7
             },
             {
               "city": "Alameda, CA",
               "riders": 6
             },
             {
-              "city": "Davis, CA",
+              "city": "Santa Rosa, CA",
               "riders": 5
             },
             {
-              "city": "Santa Rosa, CA",
-              "riders": 4
+              "city": "Davis, CA",
+              "riders": 5
             },
             {
               "city": "Mountain View, CA",
@@ -1299,6 +1299,14 @@
             {
               "city": "Sacramento, CA",
               "riders": 4
+            },
+            {
+              "city": "Napa, CA",
+              "riders": 3
+            },
+            {
+              "city": "Walnut Creek, CA",
+              "riders": 3
             },
             {
               "city": "Sausalito, CA",
@@ -1331,30 +1339,22 @@
             {
               "city": "Los Gatos, CA",
               "riders": 3
-            },
-            {
-              "city": "Corte Madera, CA",
-              "riders": 3
-            },
-            {
-              "city": "Vacaville, CA",
-              "riders": 2
             }
           ],
-          "otherCA": 74,
+          "otherCA": 78,
           "nonCAStates": {
             "CO": 1,
             "NV": 1,
             "ID": 1
           },
-          "totalCA": 192
+          "totalCA": 203
         },
         "ebike": 14
       }
     },
     "2025": {
       "year": "2025",
-      "lastUpdated": "2026-03-08T05:42:47Z",
+      "lastUpdated": "2026-03-09T04:41:54Z",
       "totalRiders": 2069,
       "totalRevenue": 301162.96,
       "avgOrder": 145.56,
@@ -2987,12 +2987,12 @@
       },
       "ebike": 58,
       "ytd": {
-        "totalRiders": 640,
-        "totalRevenue": 87347.01,
-        "avgOrder": 136.48,
+        "totalRiders": 644,
+        "totalRevenue": 88043.61,
+        "avgOrder": 136.71,
         "routes": {
           "Century 100": 276,
-          "Metric Century 64": 184,
+          "Metric Century 64": 188,
           "Mt Tam 93": 77,
           "Geronimo 37": 53,
           "Double Metric 127": 50
@@ -3002,24 +3002,24 @@
           "codes": {}
         },
         "gender": {
-          "male": 509,
-          "female": 130,
+          "male": 511,
+          "female": 132,
           "other": 1,
-          "pctMale": 79.5
+          "pctMale": 79.3
         },
-        "avgAge": 51.4,
+        "avgAge": 51.3,
         "food": {
-          "noPreference": 85.8,
-          "vegetarian": 8.9,
+          "noPreference": 85.6,
+          "vegetarian": 9.2,
           "vegan": 2.8,
           "glutenFree": 2.5
         },
         "clothing": {
           "jersey": {
-            "units": 63
+            "units": 64
           },
           "bibs": {
-            "units": 21
+            "units": 22
           },
           "shorts": {
             "units": 6
@@ -3027,7 +3027,7 @@
           "socks": {
             "units": 47
           },
-          "totalExSocks": 90
+          "totalExSocks": 92
         },
         "membership": {
           "newMembers": 18
@@ -3036,7 +3036,7 @@
           "topCities": [
             {
               "city": "San Francisco, CA",
-              "riders": 144
+              "riders": 146
             },
             {
               "city": "Oakland, CA",
@@ -3115,13 +3115,14 @@
               "riders": 7
             }
           ],
-          "otherCA": 234,
+          "otherCA": 235,
           "nonCAStates": {
             "NV": 6,
             "WA": 3,
             "CO": 3,
             "UT": 2,
             "DE": 2,
+            "AZ": 1,
             "ID": 1,
             "MN": 1,
             "NY": 1,
@@ -3129,17 +3130,17 @@
             "IL": 1,
             "VA": 1
           },
-          "totalCA": 618
+          "totalCA": 621
         },
         "ebike": 17
       }
     },
     "2026": {
       "year": "2026",
-      "lastUpdated": "2026-03-08T05:42:50Z",
-      "totalRiders": 644,
-      "totalRevenue": 87719.45,
-      "avgOrder": 136.21,
+      "lastUpdated": "2026-03-09T04:41:57Z",
+      "totalRiders": 645,
+      "totalRevenue": 87988.66,
+      "avgOrder": 136.42,
       "totalCanceled": 1,
       "clothingOnlyPurchases": 2,
       "cumulative": [
@@ -3597,6 +3598,13 @@
           "cumRiders": 644,
           "dailyRevenue": 146.65,
           "cumRevenue": 87719.45
+        },
+        {
+          "date": "2026-03-09",
+          "daily": 1,
+          "cumRiders": 645,
+          "dailyRevenue": 269.21,
+          "cumRevenue": 87988.66
         }
       ],
       "routes": {
@@ -3604,7 +3612,7 @@
         "Century 100": 232,
         "Mt Tam 93": 77,
         "Geronimo 37": 44,
-        "Double Metric 127": 34
+        "Double Metric 127": 35
       },
       "coupons": {
         "totalUsed": 1,
@@ -3613,21 +3621,21 @@
         }
       },
       "gender": {
-        "male": 484,
+        "male": 485,
         "female": 158,
         "other": 2,
         "pctMale": 75.2
       },
       "avgAge": 54.2,
       "food": {
-        "noPreference": 85.2,
+        "noPreference": 85.3,
         "vegetarian": 9.3,
         "vegan": 3.3,
         "glutenFree": 2.2
       },
       "clothing": {
         "jersey": {
-          "units": 53
+          "units": 54
         },
         "bibs": {
           "units": 15
@@ -3638,7 +3646,7 @@
         "socks": {
           "units": 37
         },
-        "totalExSocks": 74
+        "totalExSocks": 75
       },
       "membership": {
         "newMembers": 21
@@ -3647,7 +3655,7 @@
         "topCities": [
           {
             "city": "San Francisco, CA",
-            "riders": 117
+            "riders": 118
           },
           {
             "city": "Oakland, CA",
@@ -3741,19 +3749,19 @@
           "LA": 1,
           "NV": 1
         },
-        "totalCA": 625
+        "totalCA": 626
       },
       "ebike": 38,
       "ytd": {
-        "totalRiders": 644,
-        "totalRevenue": 87719.45,
-        "avgOrder": 136.21,
+        "totalRiders": 645,
+        "totalRevenue": 87988.66,
+        "avgOrder": 136.42,
         "routes": {
           "Metric Century 64": 257,
           "Century 100": 232,
           "Mt Tam 93": 77,
           "Geronimo 37": 44,
-          "Double Metric 127": 34
+          "Double Metric 127": 35
         },
         "coupons": {
           "totalUsed": 1,
@@ -3762,21 +3770,21 @@
           }
         },
         "gender": {
-          "male": 484,
+          "male": 485,
           "female": 158,
           "other": 2,
           "pctMale": 75.2
         },
         "avgAge": 54.2,
         "food": {
-          "noPreference": 85.2,
+          "noPreference": 85.3,
           "vegetarian": 9.3,
           "vegan": 3.3,
           "glutenFree": 2.2
         },
         "clothing": {
           "jersey": {
-            "units": 53
+            "units": 54
           },
           "bibs": {
             "units": 15
@@ -3787,7 +3795,7 @@
           "socks": {
             "units": 37
           },
-          "totalExSocks": 74
+          "totalExSocks": 75
         },
         "membership": {
           "newMembers": 21
@@ -3796,7 +3804,7 @@
           "topCities": [
             {
               "city": "San Francisco, CA",
-              "riders": 117
+              "riders": 118
             },
             {
               "city": "Oakland, CA",
@@ -3890,7 +3898,7 @@
             "LA": 1,
             "NV": 1
           },
-          "totalCA": 625
+          "totalCA": 626
         },
         "ebike": 38
       }
